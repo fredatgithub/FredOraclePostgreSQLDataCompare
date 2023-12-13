@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Data.OracleClient;
+
 
 namespace FredOraclePostgreSQLDataCompare
 {
@@ -15,6 +17,11 @@ namespace FredOraclePostgreSQLDataCompare
     public FormMain()
     {
       InitializeComponent();
+    }
+
+    private void FormMain_Load(object sender, EventArgs e)
+    {
+
     }
   }
 }

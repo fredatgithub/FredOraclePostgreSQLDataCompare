@@ -7,6 +7,7 @@ using System.Windows.Forms;
 using FredOraclePostgreSQLDataCompare.Properties;
 using System.IO;
 using System.Xml.Linq;
+using log4net;
 
 
 namespace FredOraclePostgreSQLDataCompare
@@ -20,6 +21,9 @@ namespace FredOraclePostgreSQLDataCompare
 
     private readonly Dictionary<string, string> languageDicoEn = new Dictionary<string, string>();
     private readonly Dictionary<string, string> languageDicoFr = new Dictionary<string, string>();
+    internal ILog logger = LogManager.GetLogger(typeof(FormMain));
+    // don't forget to set always copy in properties of the file
+    private string Log4NetConfigFilePath = "log4net.config.xml";
 
 
     private void FormMain_Load(object sender, EventArgs e)

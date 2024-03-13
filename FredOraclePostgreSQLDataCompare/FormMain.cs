@@ -8,6 +8,7 @@ using FredOraclePostgreSQLDataCompare.Properties;
 using System.IO;
 using System.Xml.Linq;
 using log4net;
+using System.Reflection;
 
 
 namespace FredOraclePostgreSQLDataCompare
@@ -28,6 +29,9 @@ namespace FredOraclePostgreSQLDataCompare
 
     private void FormMain_Load(object sender, EventArgs e)
     {
+      log4net.Config.XmlConfigurator.Configure();
+      logger = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
+      logger.Info("Démarrage de l'application");
       GetWindowValue();
       LoadLanguages();
       SetLanguage(Settings.Default.LastLanguageUsed);
@@ -79,6 +83,7 @@ namespace FredOraclePostgreSQLDataCompare
 
     private void FormMain_FormClosed(object sender, FormClosedEventArgs e)
     {
+      logger.Info("Fermeture de l'application");
       SaveWindowValue();
     }
 

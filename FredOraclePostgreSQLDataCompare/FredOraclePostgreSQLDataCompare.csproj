@@ -162,6 +162,9 @@
     <Folder Include="DAL\PostgreSQL\" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="log4net.config.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Translations.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>

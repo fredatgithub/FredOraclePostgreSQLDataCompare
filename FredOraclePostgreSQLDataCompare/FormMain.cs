@@ -60,6 +60,21 @@ namespace FredOraclePostgreSQLDataCompare
       Height = Settings.Default.WindowHeight;
       Top = Settings.Default.WindowTop < 0 ? 0 : Settings.Default.WindowTop;
       Left = Settings.Default.WindowLeft < 0 ? 0 : Settings.Default.WindowLeft;
+      SetLanguageMenu();
+    }
+
+    private void SetLanguageMenu()
+    {
+      if (Settings.Default.LastLanguageUsed == "French")
+      {
+        frenchToolStripMenuItem.Checked = true;
+        englishToolStripMenuItem.Checked = false;
+      }
+      else
+      {
+        frenchToolStripMenuItem.Checked = false;
+        englishToolStripMenuItem.Checked = true;
+      }
     }
 
     private void FormMain_FormClosed(object sender, FormClosedEventArgs e)
@@ -67,14 +82,18 @@ namespace FredOraclePostgreSQLDataCompare
       SaveWindowValue();
     }
 
-    private void frenchToolStripMenuItem_Click(object sender, EventArgs e)
+    private void FrenchToolStripMenuItem_Click(object sender, EventArgs e)
     {
       SetLanguage(Language.French.ToString());
+      frenchToolStripMenuItem.Checked = true;
+      englishToolStripMenuItem.Checked = false;
     }
 
     private void EnglishToolStripMenuItem_Click(object sender, EventArgs e)
     {
       SetLanguage(Language.English.ToString());
+      frenchToolStripMenuItem.Checked = false;
+      englishToolStripMenuItem.Checked = true;
     }
 
     // copy the following methods if you don't have them yet (you shouldn't)
@@ -209,16 +228,6 @@ namespace FredOraclePostgreSQLDataCompare
       }
 
       sw.Close();
-    }
-
-    private void FrenchToolStripMenuItem_Click_1(object sender, EventArgs e)
-    {
-
-    }
-
-    private void EnglishToolStripMenuItem_Click_1(object sender, EventArgs e)
-    {
-
     }
   }
 }

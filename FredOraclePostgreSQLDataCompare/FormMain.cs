@@ -23,5 +23,10 @@ namespace FredOraclePostgreSQLDataCompare
     {
 
     }
+
+    private void QuitToolStripMenuItem_Click(object sender, EventArgs e)
+    {
+      Application.Exit();
+    }
   }
 }

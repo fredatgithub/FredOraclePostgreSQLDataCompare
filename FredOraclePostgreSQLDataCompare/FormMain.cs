@@ -60,12 +60,12 @@ namespace FredOraclePostgreSQLDataCompare
       Height = Settings.Default.WindowHeight;
       Top = Settings.Default.WindowTop < 0 ? 0 : Settings.Default.WindowTop;
       Left = Settings.Default.WindowLeft < 0 ? 0 : Settings.Default.WindowLeft;
-      SetLanguageMenu();
+      SetLanguageMenu(Settings.Default.LastLanguageUsed);
     }
 
-    private void SetLanguageMenu()
+    private void SetLanguageMenu(string language)
     {
-      if (Settings.Default.LastLanguageUsed == "French")
+      if (language == "French")
       {
         frenchToolStripMenuItem.Checked = true;
         englishToolStripMenuItem.Checked = false;

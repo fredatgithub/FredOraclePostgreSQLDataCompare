@@ -53,6 +53,9 @@
       this.outilsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
       this.personnaliserToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
       this.optionsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+      this.toolStripMenuItemLanguage = new System.Windows.Forms.ToolStripMenuItem();
+      this.frenchToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+      this.englishToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
       this.aideToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
       this.sommaireToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
       this.indexToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -73,6 +76,7 @@
             this.fichierToolStripMenuItem,
             this.editionToolStripMenuItem,
             this.outilsToolStripMenuItem,
+            this.toolStripMenuItemLanguage,
             this.aideToolStripMenuItem});
       this.menuStrip1.Location = new System.Drawing.Point(0, 0);
       this.menuStrip1.Name = "menuStrip1";
@@ -262,6 +266,31 @@
       this.optionsToolStripMenuItem.Size = new System.Drawing.Size(144, 22);
       this.optionsToolStripMenuItem.Text = "&Options";
       // 
+      // toolStripMenuItemLanguage
+      // 
+      this.toolStripMenuItemLanguage.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.frenchToolStripMenuItem,
+            this.englishToolStripMenuItem});
+      this.toolStripMenuItemLanguage.Name = "toolStripMenuItemLanguage";
+      this.toolStripMenuItemLanguage.Size = new System.Drawing.Size(71, 20);
+      this.toolStripMenuItemLanguage.Text = "Language";
+      // 
+      // frenchToolStripMenuItem
+      // 
+      this.frenchToolStripMenuItem.Checked = true;
+      this.frenchToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
+      this.frenchToolStripMenuItem.Name = "frenchToolStripMenuItem";
+      this.frenchToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+      this.frenchToolStripMenuItem.Text = "French";
+      this.frenchToolStripMenuItem.Click += new System.EventHandler(this.FrenchToolStripMenuItem_Click_1);
+      // 
+      // englishToolStripMenuItem
+      // 
+      this.englishToolStripMenuItem.Name = "englishToolStripMenuItem";
+      this.englishToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+      this.englishToolStripMenuItem.Text = "English";
+      this.englishToolStripMenuItem.Click += new System.EventHandler(this.EnglishToolStripMenuItem_Click_1);
+      // 
       // aideToolStripMenuItem
       // 
       this.aideToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -302,6 +331,7 @@
       this.àproposdeToolStripMenuItem.Name = "àproposdeToolStripMenuItem";
       this.àproposdeToolStripMenuItem.Size = new System.Drawing.Size(147, 22);
       this.àproposdeToolStripMenuItem.Text = "À &propos de...";
+      this.àproposdeToolStripMenuItem.Click += new System.EventHandler(this.AboutToolStripMenuItem_Click);
       // 
       // statusStrip1
       // 
@@ -353,6 +383,7 @@
       this.MainMenuStrip = this.menuStrip1;
       this.Name = "FormMain";
       this.Text = "Fred Oracle PostgreSQL Data Compare";
+      this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FormMain_FormClosed);
       this.Load += new System.EventHandler(this.FormMain_Load);
       this.menuStrip1.ResumeLayout(false);
       this.menuStrip1.PerformLayout();
@@ -398,6 +429,9 @@
     private System.Windows.Forms.TabControl tabControlMain;
     private System.Windows.Forms.TabPage tabPageConnection;
     private System.Windows.Forms.TabPage tabPageTables;
+    private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemLanguage;
+    private System.Windows.Forms.ToolStripMenuItem frenchToolStripMenuItem;
+    private System.Windows.Forms.ToolStripMenuItem englishToolStripMenuItem;
   }
 }
 

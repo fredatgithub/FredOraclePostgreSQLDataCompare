@@ -5,12 +5,12 @@ using System.Runtime.InteropServices;
 // Les informations générales relatives à un assembly dépendent de
 // l'ensemble d'attributs suivant. Changez les valeurs de ces attributs pour modifier les informations
 // associées à un assembly.
-[assembly: AssemblyTitle("FredOraclePostgreSQLDataCompare")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyTitle("Fred Oracle Postgre SQL Data Compare")]
+[assembly: AssemblyDescription("WinForm to compare data between Oracle and PostgreSQL database")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
 [assembly: AssemblyProduct("FredOraclePostgreSQLDataCompare")]
-[assembly: AssemblyCopyright("Copyright ©  2023")]
+[assembly: AssemblyCopyright("Copyright ©  2023-2024 MIT Freddy Juhel")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 

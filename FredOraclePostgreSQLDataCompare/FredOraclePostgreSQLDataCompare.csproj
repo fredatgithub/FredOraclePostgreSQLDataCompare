@@ -119,6 +119,10 @@
     <Compile Include="AboutBoxApplication.Designer.cs">
       <DependentUpon>AboutBoxApplication.cs</DependentUpon>
     </Compile>
+    <Compile Include="DAL\PostgreSql\PostgreSqlDatabaseAuthentication.cs" />
+    <Compile Include="DAL\PostgreSql\PostgreSqlDALHelper.cs" />
+    <Compile Include="DAL\Oracle\Class1.cs" />
+    <Compile Include="DAL\PostgreSql\PostgreSqlConnectionSqlServer.cs" />
     <Compile Include="FormMain.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -157,10 +161,7 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="DAL\Oracle\" />
-    <Folder Include="DAL\PostgreSQL\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include="log4net.config.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

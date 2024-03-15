@@ -12,6 +12,7 @@ using System.Reflection;
 using log4net.Config;
 using System.Diagnostics;
 using System.Runtime.Versioning;
+using NamespaceYouAreUsing;
 
 
 namespace FredOraclePostgreSQLDataCompare
@@ -28,7 +29,38 @@ namespace FredOraclePostgreSQLDataCompare
     internal ILog logger = LogManager.GetLogger(typeof(FormMain));
     // don't forget to set always copy in properties of the file
     private string Log4NetConfigFilePath = "log4net.config.xml";
+    private bool bothAuthenticationAreOk = false;
+    private bool sourceAuthenticationIsOk = false;
+    private bool targetAuthenticationIsOk = false;
+    /// <summary>
+    /// Key to be used to encrypt source parameters.
+    /// </summary>
+    private const string SourceKeyFilename = "SourceKey.pidb";
+    private const string SourceSaltFilename = "SourceSalt.pidb";
 
+    /// <summary>
+    /// All the values encrypted for source parameters.
+    /// </summary>
+    private const string SourceValue1Filename = "SourceValue1.pidb";
+    private const string SourceValue2Filename = "SourceValue2.pidb";
+    private const string SourceValue3Filename = "SourceValue3.pidb";
+    private const string SourceValue4Filename = "SourceValue4.pidb";
+    private const string SourceValue5Filename = "SourceValue5.pidb";
+
+    /// <summary>
+    /// Key to be used to encrypt target parameters.
+    /// </summary>
+    private const string TargetKeyFilename = "TargetKey.pidb";
+    private const string TargetSaltFilename = "TargetSalt.pidb";
+
+    /// <summary>
+    /// All the values encrypted for source parameters.
+    /// </summary>
+    private const string TargetValue1Filename = "TargetValue1.pidb";
+    private const string TargetValue2Filename = "TargetValue2.pidb";
+    private const string TargetValue3Filename = "TargetValue3.pidb";
+    private const string TargetValue4Filename = "TargetValue4.pidb";
+    private const string TargetValue5Filename = "TargetValue5.pidb";
 
     private void FormMain_Load(object sender, EventArgs e)
     {
@@ -49,6 +81,64 @@ namespace FredOraclePostgreSQLDataCompare
       GetWindowValue();
       LoadLanguages();
       SetLanguage(Settings.Default.LastLanguageUsed);
+      LoadComboboxes();
+      LoadAuthentificationParameters();
+      GetWindowValue();
+      DisplayTitle();
+      DisableNotImplementedMenuItems();
+    }
+
+    private void LoadComboboxes()
+    {
+      textBoxSourceServer.Text = Settings.Default.comboBoxServerSourceItems;
+      textBoxTargetServer.Text = Settings.Default.comboBoxServerTargetItems;
+      checkBoxSourceRememberCredentials.Checked = Settings.Default.CheckBoxSourceRememberCredentials;
+      checkBoxTargetRememberCredentials.Checked = Settings.Default.CheckBoxTargetRememberCredentials;
+
+      comboBoxSourceSchema.Items.Clear();
+      string previousSchemaSource = Settings.Default.comboBoxSourceSchemaItems;
+      if (string.IsNullOrEmpty(previousSchemaSource))
+      {
+        comboBoxSourceSchema.Items.Add("public");
+      }
+      else
+      {
+        var previousSchemasSourceArray = previousSchemaSource.Split(Punctuation.SemiColon);
+        comboBoxSourceSchema.Items.AddRange(previousSchemasSourceArray);
+      }
+
+      comboBoxTargetSchema.Items.Clear();
+      string previousSchemaTarget = Settings.Default.comboBoxTargetSchemaItems;
+      if (string.IsNullOrEmpty(previousSchemaTarget))
+      {
+        comboBoxTargetSchema.Items.Add("public");
+      }
+      else
+      {
+        var previousSchemasTargetArray = previousSchemaTarget.Split(Punctuation.SemiColon);
+        comboBoxTargetSchema.Items.AddRange(previousSchemasTargetArray);
+      }
+
+      comboBoxSourceSchema.SelectedIndex = Settings.Default.comboBoxSourceSchemaIndex;
+      comboBoxTargetSchema.SelectedIndex = Settings.Default.comboBoxTargetSchemaIndex;
+
+      checkBoxSourceRememberCredentials.Checked = Settings.Default.CheckBoxSourceRememberCredentials;
+      checkBoxTargetRememberCredentials.Checked = Settings.Default.CheckBoxTargetRememberCredentials;
+
+      textBoxTargetName.Text = Settings.Default.textBoxTargetName;
+      textBoxSourceName.Text = Settings.Default.textBoxSourceName;
+
+      comboBoxSourceDatabase.Items.Clear();
+      foreach (string item in Settings.Default.comboBoxSourceDatabase.Split(Punctuation.SemiColon))
+      {
+        comboBoxSourceDatabase.Items.Add(item);
+      }
+
+      comboBoxTargetDatabase.Items.Clear();
+      foreach (string item in Settings.Default.comboBoxTargetDatabase.Split(Punctuation.SemiColon))
+      {
+        comboBoxTargetDatabase.Items.Add(item);
+      }
     }
 
     private static string GetApplicationVersion()
@@ -278,6 +368,127 @@ namespace FredOraclePostgreSQLDataCompare
       }
 
       sw.Close();
+    }
+
+    private void ButtonCopyServerName_Click(object sender, EventArgs e)
+    {
+      textBoxTargetServer.Text = textBoxSourceServer.Text;
+    }
+
+    private void ButtonCopyUserName_Click(object sender, EventArgs e)
+    {
+      textBoxTargetName.Text = textBoxSourceName.Text;
+    }
+
+    private void ButtonCopyPassword_Click(object sender, EventArgs e)
+    {
+      textBoxTargetPassword.Text = textBoxSourcePassword.Text;
+    }
+
+    private void ButtonCopyDatabaseName_Click(object sender, EventArgs e)
+    {
+      textBoxDatabaseNameTarget.Text = textBoxDatabaseNameSource.Text;
+    }
+
+    private void ButtonTestConnection_Click(object sender, EventArgs e)
+    {
+      if (string.IsNullOrEmpty(textBoxSourceServer.Text))
+      {
+        MessageBox.Show("You have to choose a source server", "No server selected", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+        sourceAuthenticationIsOk = false;
+        return;
+      }
+
+      if (string.IsNullOrEmpty(textBoxSourcePort.Text))
+      {
+        MessageBox.Show("You have to choose a source port number", "No port number", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+        sourceAuthenticationIsOk = false;
+        return;
+      }
+
+      if (string.IsNullOrEmpty(textBoxSourceName.Text))
+      {
+        MessageBox.Show("You have to choose a source username", "No username", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+        sourceAuthenticationIsOk = false;
+        return;
+      }
+
+      if (string.IsNullOrEmpty(textBoxSourcePassword.Text))
+      {
+        MessageBox.Show("You have to choose a source password", "No password", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+        sourceAuthenticationIsOk = false;
+        return;
+      }
+
+      if (string.IsNullOrEmpty(textBoxDatabaseNameSource.Text))
+      {
+        MessageBox.Show("You have to choose a database to conenct to", "No database", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+        sourceAuthenticationIsOk = false;
+        return;
+      }
+
+      DatabaseAuthentication dbConnexion = new DatabaseAuthentication
+      {
+        UserName = textBoxSourceName.Text,
+        UserPassword = textBoxSourcePassword.Text,
+        ServerName = textBoxSourceServer.Text,
+        Port = int.Parse(textBoxSourcePort.Text),
+        DatabaseName = textBoxDatabaseNameSource.Text
+      };
+
+      string sqlQuery = ConnectionSqlServer.TestRequest();
+      if (DALHelper.TestConnection(dbConnexion.ToString()))
+      {
+        MessageBox.Show("Connection OK", "OK", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        sourceAuthenticationIsOk = true;
+      }
+      else
+      {
+        MessageBox.Show($"Cannot connect to the database: {dbConnexion.DatabaseName} on the server: {dbConnexion.ServerName}", "Connection KO", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+        sourceAuthenticationIsOk = false;
+      }
+
+      CheckBothAuthentication();
+    }
+
+    private void ButtonTestconnectionTarget_Click(object sender, EventArgs e)
+    {
+
+    }
+
+    private void ButtonSourceRefresh_Click(object sender, EventArgs e)
+    {
+
+    }
+
+    private void ButtonRefreshSource_Click(object sender, EventArgs e)
+    {
+
+    }
+
+    private void ButtonTargetRefresh_Click(object sender, EventArgs e)
+    {
+
+    }
+
+    private void ButtonRefreshTarget_Click(object sender, EventArgs e)
+    {
+
+    }
+
+    private void ButtonTargetCreate_Click(object sender, EventArgs e)
+    {
+
+    }
+
+    private void ButtonSourceCreate_Click(object sender, EventArgs e)
+    {
+
+    }
+
+    private void ButtonCompareCompareNow_Click(object sender, EventArgs e)
+    {
+
     }
   }
 }

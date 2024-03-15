@@ -9,6 +9,9 @@ using System.IO;
 using System.Xml.Linq;
 using log4net;
 using System.Reflection;
+using log4net.Config;
+using System.Diagnostics;
+using System.Runtime.Versioning;
 
 
 namespace FredOraclePostgreSQLDataCompare
@@ -29,13 +32,55 @@ namespace FredOraclePostgreSQLDataCompare
 
     private void FormMain_Load(object sender, EventArgs e)
     {
-      log4net.Config.XmlConfigurator.Configure();
+      XmlConfigurator.ConfigureAndWatch(new FileInfo(Log4NetConfigFilePath));
       logger = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
+      logger.Info(string.Empty);
+      logger.Info("**************************");
       logger.Info("Démarrage de l'application");
+      logger.Info($"Utilisateur connecté : {Environment.UserName}");
+      logger.Info($"Version de l'application : {GetApplicationVersion()}");
+      logger.Info($"Le nom du serveur applicatif est : {GetServerName()}");
+      logger.Info($"Framework ciblé : {GetFramework()}");
+      logger.Info($"Application compilée pour architecture : {GetEnvironment64BitProcess()}");
+      logger.Info($"Framework installé sur le serveur en version : {GetFrameworkVersion()}");
+      Text += GetApplicationVersion();
+
+
       GetWindowValue();
       LoadLanguages();
       SetLanguage(Settings.Default.LastLanguageUsed);
     }
+
+    private static string GetApplicationVersion()
+    {
+      var assembly = Assembly.GetExecutingAssembly();
+      var fvi = FileVersionInfo.GetVersionInfo(assembly.Location);
+      return $" V-{fvi.FileMajorPart}.{fvi.FileMinorPart}.{fvi.FileBuildPart}.{fvi.FilePrivatePart}";
+    }
+
+    private static string GetEnvironment64BitProcess()
+    {
+      return Environment.Is64BitProcess ? "X64" : "X86";
+    }
+
+    public static string GetFrameworkVersion()
+    {
+      var version = System.Runtime.InteropServices.RuntimeInformation.FrameworkDescription;
+      return version;
+    }
+
+    private string GetFramework()
+    {
+      object[] list = Assembly.GetExecutingAssembly().GetCustomAttributes(true);
+      var attribute = list.OfType<TargetFrameworkAttribute>().First();
+      return attribute.FrameworkDisplayName;
+    }
+
+    private static string GetServerName()
+    {
+      return Environment.MachineName;
+    }
+
 
     private void QuitToolStripMenuItem_Click(object sender, EventArgs e)
     {

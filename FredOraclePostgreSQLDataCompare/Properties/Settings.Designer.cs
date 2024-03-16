@@ -94,5 +94,197 @@ namespace FredOraclePostgreSQLDataCompare.Properties {
                 this["LastLanguageUsed"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool CheckBoxSourceRememberCredentials {
+            get {
+                return ((bool)(this["CheckBoxSourceRememberCredentials"]));
+            }
+            set {
+                this["CheckBoxSourceRememberCredentials"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool CheckBoxTargetRememberCredentials {
+            get {
+                return ((bool)(this["CheckBoxTargetRememberCredentials"]));
+            }
+            set {
+                this["CheckBoxTargetRememberCredentials"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string textBoxTargetName {
+            get {
+                return ((string)(this["textBoxTargetName"]));
+            }
+            set {
+                this["textBoxTargetName"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string textBoxSourceName {
+            get {
+                return ((string)(this["textBoxSourceName"]));
+            }
+            set {
+                this["textBoxSourceName"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("localhost")]
+        public string comboBoxSourceDatabase {
+            get {
+                return ((string)(this["comboBoxSourceDatabase"]));
+            }
+            set {
+                this["comboBoxSourceDatabase"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("localhost")]
+        public string comboBoxTargetDatabase {
+            get {
+                return ((string)(this["comboBoxTargetDatabase"]));
+            }
+            set {
+                this["comboBoxTargetDatabase"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("1521")]
+        public int TextBoxSourcePort {
+            get {
+                return ((int)(this["TextBoxSourcePort"]));
+            }
+            set {
+                this["TextBoxSourcePort"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("5432")]
+        public int TextBoxTargetPort {
+            get {
+                return ((int)(this["TextBoxTargetPort"]));
+            }
+            set {
+                this["TextBoxTargetPort"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string comboBoxServerSourceItems {
+            get {
+                return ((string)(this["comboBoxServerSourceItems"]));
+            }
+            set {
+                this["comboBoxServerSourceItems"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string comboBoxServerTargetItems {
+            get {
+                return ((string)(this["comboBoxServerTargetItems"]));
+            }
+            set {
+                this["comboBoxServerTargetItems"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string comboBoxSourceSchemaItems {
+            get {
+                return ((string)(this["comboBoxSourceSchemaItems"]));
+            }
+            set {
+                this["comboBoxSourceSchemaItems"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string comboBoxTargetSchemaItems {
+            get {
+                return ((string)(this["comboBoxTargetSchemaItems"]));
+            }
+            set {
+                this["comboBoxTargetSchemaItems"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("-1")]
+        public int comboBoxSourceSchemaIndex {
+            get {
+                return ((int)(this["comboBoxSourceSchemaIndex"]));
+            }
+            set {
+                this["comboBoxSourceSchemaIndex"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("-1")]
+        public int comboBoxTargetSchemaIndex {
+            get {
+                return ((int)(this["comboBoxTargetSchemaIndex"]));
+            }
+            set {
+                this["comboBoxTargetSchemaIndex"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string textBoxSourceServer {
+            get {
+                return ((string)(this["textBoxSourceServer"]));
+            }
+            set {
+                this["textBoxSourceServer"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string textBoxTargetServer {
+            get {
+                return ((string)(this["textBoxTargetServer"]));
+            }
+            set {
+                this["textBoxTargetServer"] = value;
+            }
+        }
     }
 }

@@ -1,6 +1,6 @@
 ﻿namespace FredOraclePostgreSQLDataCompare.DAL.PostgreSql
 {
-  public static class PostgreSqlDatabaseAuthentication
+  public class PostgreSqlDatabaseAuthentication
   {
     public string DatabaseName { get; set; }
     public string ServerName { get; set; }
@@ -9,7 +9,7 @@
     public int Port { get; set; }
     public string Schema { get; set; }
 
-    public DatabaseAuthentication(string dbName, string serverName, string user, string pass, int port = 5432, string schema = "public")
+    public void DatabaseAuthentication(string dbName, string serverName, string user, string pass, int port = 5432, string schema = "public")
     {
       DatabaseName = dbName;
       ServerName = serverName;
@@ -19,7 +19,7 @@
       Schema = schema;
     }
 
-    public DatabaseAuthentication()
+    public void DatabaseAuthentication()
     {
       DatabaseName = "postgres";
       ServerName = string.Empty;

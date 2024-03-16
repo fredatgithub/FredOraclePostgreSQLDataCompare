@@ -6,7 +6,7 @@ using System.Data.SqlClient;
 using System.Data;
 using System.Reflection;
 
-namespace FredOraclePostgreSQLDataCompare.DAL
+namespace FredOraclePostgreSQLDataCompare.DAL.PostgreSql
 {
   public static class PostgreSqlDALHelper
   {

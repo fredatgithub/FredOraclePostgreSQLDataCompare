@@ -1,18 +1,21 @@
-﻿using System;
+﻿//using System.Data.OracleClient;
+using FredOraclePostgreSQLDataCompare.Properties;
+using FredOraclePostgreSQLDataCompare.DAL;
+using FredOraclePostgreSQLDataCompare.DAL.PostgreSql;
+using log4net;
+using log4net.Config;
+using NamespaceYouAreUsing;
+using System;
 using System.Collections.Generic;
 using System.Data;
-using System.Linq;
-using System.Windows.Forms;
-//using System.Data.OracleClient;
-using FredOraclePostgreSQLDataCompare.Properties;
-using System.IO;
-using System.Xml.Linq;
-using log4net;
-using System.Reflection;
-using log4net.Config;
 using System.Diagnostics;
+using System.IO;
+using System.Linq;
+using System.Reflection;
 using System.Runtime.Versioning;
-using NamespaceYouAreUsing;
+using System.Windows.Forms;
+using System.Xml.Linq;
+using Tools;
 
 
 namespace FredOraclePostgreSQLDataCompare
@@ -77,7 +80,6 @@ namespace FredOraclePostgreSQLDataCompare
       logger.Info($"Framework installé sur le serveur en version : {GetFrameworkVersion()}");
       Text += GetApplicationVersion();
 
-
       GetWindowValue();
       LoadLanguages();
       SetLanguage(Settings.Default.LastLanguageUsed);
@@ -86,6 +88,127 @@ namespace FredOraclePostgreSQLDataCompare
       GetWindowValue();
       DisplayTitle();
       DisableNotImplementedMenuItems();
+    }
+
+    private void DisableNotImplementedMenuItems()
+    {
+      // enable them whenever code is created
+      nouveauToolStripMenuItem.Visible = false;
+      ouvrirToolStripMenuItem.Visible = false;
+      toolStripSeparator.Visible = false;
+      enregistrerToolStripMenuItem.Visible = false;
+      enregistrersousToolStripMenuItem.Visible = false;
+      toolStripSeparator1.Visible = false;
+      imprimerToolStripMenuItem.Visible = false;
+      aperçuavantimpressionToolStripMenuItem.Visible = false;
+      toolStripSeparator2.Visible = false;
+
+      annulerToolStripMenuItem.Visible = true;
+
+      outilsToolStripMenuItem.Visible = false;
+
+      aideToolStripMenuItem.Visible = true;
+      sommaireToolStripMenuItem.Visible = false;
+      indexToolStripMenuItem.Visible = false;
+      rechercherToolStripMenuItem.Visible = false;
+    }
+
+    private string DisplayTitle()
+    {
+      Assembly assembly = Assembly.GetExecutingAssembly();
+      FileVersionInfo fvi = FileVersionInfo.GetVersionInfo(assembly.Location);
+      return $"-V{fvi.FileMajorPart}.{fvi.FileMinorPart}.{fvi.FileBuildPart}";
+    }
+
+    private void LoadAuthentificationParameters()
+    {
+      // source parameters
+      if (checkBoxSourceRememberCredentials.Checked)
+      {
+        if (AllFilesExist())
+        {
+          var encryptionKey = Helper.ReadFile(SourceKeyFilename);
+          if (!encryptionKey[Helper.FirstElement].StartsWith(Helper.OK))
+          {
+            MessageBox.Show("There was an error while trying to read the encryption key", "Error while reading file", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+            return;
+          }
+
+          string encryptionKeyFinal = encryptionKey[Helper.SecondElement];
+
+          var encryptionSalt = Helper.ReadFile(SourceSaltFilename);
+          if (!encryptionSalt[Helper.FirstElement].StartsWith(Helper.OK))
+          {
+            MessageBox.Show("There was an error while trying to read the encryption vector", "Error while reading file", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+            return;
+          }
+
+          string encryptionSaltFinal = encryptionSalt[Helper.SecondElement];
+
+          ReadAndDecode(SourceValue1Filename, encryptionKeyFinal, encryptionSaltFinal, textBoxSourceServer);
+          ReadAndDecode(SourceValue2Filename, encryptionKeyFinal, encryptionSaltFinal, textBoxSourcePort);
+          ReadAndDecode(SourceValue3Filename, encryptionKeyFinal, encryptionSaltFinal, textBoxSourceName);
+          ReadAndDecode(SourceValue4Filename, encryptionKeyFinal, encryptionSaltFinal, textBoxSourcePassword);
+          ReadAndDecode(SourceValue5Filename, encryptionKeyFinal, encryptionSaltFinal, textBoxDatabaseNameSource);
+        }
+      }
+
+      // target parameters
+      if (checkBoxSourceRememberCredentials.Checked)
+      {
+        if (AllFilesExist(false))
+        {
+          var encryptionKey = Helper.ReadFile(TargetKeyFilename);
+          if (!encryptionKey[Helper.FirstElement].StartsWith(Helper.OK))
+          {
+            MessageBox.Show("There was an error while trying to read the encryption key", "Error while reading file", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+            return;
+          }
+
+          string encryptionKeyFinal = encryptionKey[Helper.SecondElement];
+
+          var encryptionSalt = Helper.ReadFile(TargetSaltFilename);
+          if (!encryptionSalt[Helper.FirstElement].StartsWith(Helper.OK))
+          {
+            MessageBox.Show("There was an error while trying to read the encryption vector", "Error while reading file", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+            return;
+          }
+
+          string encryptionSaltFinal = encryptionSalt[Helper.SecondElement];
+
+          ReadAndDecode(TargetValue1Filename, encryptionKeyFinal, encryptionSaltFinal, textBoxTargetServer);
+          ReadAndDecode(TargetValue2Filename, encryptionKeyFinal, encryptionSaltFinal, textBoxTargetPort);
+          ReadAndDecode(TargetValue3Filename, encryptionKeyFinal, encryptionSaltFinal, textBoxTargetName);
+          ReadAndDecode(TargetValue4Filename, encryptionKeyFinal, encryptionSaltFinal, textBoxTargetPassword);
+          ReadAndDecode(TargetValue5Filename, encryptionKeyFinal, encryptionSaltFinal, textBoxDatabaseNameTarget);
+        }
+      }
+    }
+
+    private bool AllFilesExist(bool source = true)
+    {
+      if (source)
+      {
+        return File.Exists(SourceKeyFilename) && File.Exists(SourceSaltFilename) && File.Exists(SourceValue1Filename) && File.Exists(SourceValue2Filename) && File.Exists(SourceValue3Filename) && File.Exists(SourceValue4Filename) && File.Exists(SourceValue5Filename);
+      }
+      else
+      {
+        return File.Exists(TargetKeyFilename) && File.Exists(TargetSaltFilename) && File.Exists(TargetValue1Filename) && File.Exists(TargetValue2Filename) && File.Exists(TargetValue3Filename) && File.Exists(TargetValue4Filename) && File.Exists(TargetValue5Filename);
+      }
+    }
+
+    private void ReadAndDecode(string sourceFilename, string encryptionKey, string encryptionSalt, TextBox textBox)
+    {
+      var values = Helper.ReadFile(sourceFilename);
+      if (!values[Helper.FirstElement].StartsWith(Helper.OK))
+      {
+        MessageBox.Show("There was an error while trying to read the values file", "Error while reading file", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+        return;
+      }
+
+      string valuesFinal = values[Helper.SecondElement];
+      var plainText = Helper.DecodeWithAES(valuesFinal, encryptionKey, encryptionSalt);
+      textBox.Text = plainText;
     }
 
     private void LoadComboboxes()
@@ -427,7 +550,7 @@ namespace FredOraclePostgreSQLDataCompare
         return;
       }
 
-      DatabaseAuthentication dbConnexion = new DatabaseAuthentication
+      PostgreSqlDatabaseAuthentication dbConnexion = new PostgreSqlDatabaseAuthentication
       {
         UserName = textBoxSourceName.Text,
         UserPassword = textBoxSourcePassword.Text,
@@ -436,8 +559,8 @@ namespace FredOraclePostgreSQLDataCompare
         DatabaseName = textBoxDatabaseNameSource.Text
       };
 
-      string sqlQuery = ConnectionSqlServer.TestRequest();
-      if (DALHelper.TestConnection(dbConnexion.ToString()))
+      string sqlQuery = PostgreSqlConnectionSqlServer.TestRequest();
+      if (PostgreSqlDALHelper.TestConnection(dbConnexion.ToString()))
       {
         MessageBox.Show("Connection OK", "OK", MessageBoxButtons.OK, MessageBoxIcon.Information);
         sourceAuthenticationIsOk = true;
@@ -449,6 +572,11 @@ namespace FredOraclePostgreSQLDataCompare
       }
 
       CheckBothAuthentication();
+    }
+
+    private void CheckBothAuthentication()
+    {
+      bothAuthenticationAreOk = sourceAuthenticationIsOk && targetAuthenticationIsOk;
     }
 
     private void ButtonTestconnectionTarget_Click(object sender, EventArgs e)

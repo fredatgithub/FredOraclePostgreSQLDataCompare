@@ -585,7 +585,7 @@
       this.textBoxSourcePort.Name = "textBoxSourcePort";
       this.textBoxSourcePort.Size = new System.Drawing.Size(120, 20);
       this.textBoxSourcePort.TabIndex = 125;
-      this.textBoxSourcePort.Text = "5432";
+      this.textBoxSourcePort.Text = "1521";
       // 
       // labelTargetPort
       // 

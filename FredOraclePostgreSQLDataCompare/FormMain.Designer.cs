@@ -627,7 +627,7 @@
       this.buttonCompareCompareNow.BackColor = System.Drawing.Color.RoyalBlue;
       this.buttonCompareCompareNow.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this.buttonCompareCompareNow.ForeColor = System.Drawing.Color.White;
-      this.buttonCompareCompareNow.Location = new System.Drawing.Point(585, 894);
+      this.buttonCompareCompareNow.Location = new System.Drawing.Point(646, 894);
       this.buttonCompareCompareNow.Name = "buttonCompareCompareNow";
       this.buttonCompareCompareNow.Size = new System.Drawing.Size(165, 46);
       this.buttonCompareCompareNow.TabIndex = 120;

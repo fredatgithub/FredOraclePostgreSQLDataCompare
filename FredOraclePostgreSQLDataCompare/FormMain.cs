@@ -35,6 +35,7 @@ namespace FredOraclePostgreSQLDataCompare
     private bool bothAuthenticationAreOk = false;
     private bool sourceAuthenticationIsOk = false;
     private bool targetAuthenticationIsOk = false;
+
     /// <summary>
     /// Key to be used to encrypt source parameters.
     /// </summary>
@@ -294,7 +295,6 @@ namespace FredOraclePostgreSQLDataCompare
       return Environment.MachineName;
     }
 
-
     private void QuitToolStripMenuItem_Click(object sender, EventArgs e)
     {
       Application.Exit();
@@ -484,6 +484,7 @@ namespace FredOraclePostgreSQLDataCompare
           "  </terms>",
           "</Document>"
         };
+
       StreamWriter sw = new StreamWriter(Settings.Default.LanguageFileName);
       foreach (string item in minimumVersion)
       {

@@ -111,9 +111,12 @@
       this.labelSourceServer = new System.Windows.Forms.Label();
       this.labelSourceOperation = new System.Windows.Forms.Label();
       this.tabPageTables = new System.Windows.Forms.TabPage();
+      this.labelTablesTarget = new System.Windows.Forms.Label();
+      this.labelTablesSource = new System.Windows.Forms.Label();
       this.menuStrip1.SuspendLayout();
       this.tabControlMain.SuspendLayout();
       this.tabPageConnection.SuspendLayout();
+      this.tabPageTables.SuspendLayout();
       this.SuspendLayout();
       // 
       // menuStrip1
@@ -128,7 +131,7 @@
       this.menuStrip1.Location = new System.Drawing.Point(0, 0);
       this.menuStrip1.Name = "menuStrip1";
       this.menuStrip1.Padding = new System.Windows.Forms.Padding(9, 3, 0, 3);
-      this.menuStrip1.Size = new System.Drawing.Size(1499, 35);
+      this.menuStrip1.Size = new System.Drawing.Size(1499, 43);
       this.menuStrip1.TabIndex = 0;
       this.menuStrip1.Text = "menuStrip1";
       // 
@@ -146,7 +149,7 @@
             this.toolStripSeparator2,
             this.quitterToolStripMenuItem});
       this.fichierToolStripMenuItem.Name = "fichierToolStripMenuItem";
-      this.fichierToolStripMenuItem.Size = new System.Drawing.Size(78, 29);
+      this.fichierToolStripMenuItem.Size = new System.Drawing.Size(78, 37);
       this.fichierToolStripMenuItem.Text = "&Fichier";
       // 
       // nouveauToolStripMenuItem
@@ -233,7 +236,7 @@
             this.toolStripSeparator4,
             this.sélectionnertoutToolStripMenuItem});
       this.editionToolStripMenuItem.Name = "editionToolStripMenuItem";
-      this.editionToolStripMenuItem.Size = new System.Drawing.Size(83, 29);
+      this.editionToolStripMenuItem.Size = new System.Drawing.Size(83, 37);
       this.editionToolStripMenuItem.Text = "&Edition";
       // 
       // annulerToolStripMenuItem
@@ -299,7 +302,7 @@
             this.personnaliserToolStripMenuItem,
             this.optionsToolStripMenuItem});
       this.outilsToolStripMenuItem.Name = "outilsToolStripMenuItem";
-      this.outilsToolStripMenuItem.Size = new System.Drawing.Size(74, 29);
+      this.outilsToolStripMenuItem.Size = new System.Drawing.Size(74, 37);
       this.outilsToolStripMenuItem.Text = "&Outils";
       // 
       // personnaliserToolStripMenuItem
@@ -320,7 +323,7 @@
             this.frenchToolStripMenuItem,
             this.englishToolStripMenuItem});
       this.toolStripMenuItemLanguage.Name = "toolStripMenuItemLanguage";
-      this.toolStripMenuItemLanguage.Size = new System.Drawing.Size(105, 29);
+      this.toolStripMenuItemLanguage.Size = new System.Drawing.Size(105, 37);
       this.toolStripMenuItemLanguage.Text = "Language";
       // 
       // frenchToolStripMenuItem
@@ -348,7 +351,7 @@
             this.toolStripSeparator5,
             this.àproposdeToolStripMenuItem});
       this.aideToolStripMenuItem.Name = "aideToolStripMenuItem";
-      this.aideToolStripMenuItem.Size = new System.Drawing.Size(64, 29);
+      this.aideToolStripMenuItem.Size = new System.Drawing.Size(64, 37);
       this.aideToolStripMenuItem.Text = "&Aide";
       // 
       // sommaireToolStripMenuItem
@@ -384,10 +387,10 @@
       // statusStrip1
       // 
       this.statusStrip1.ImageScalingSize = new System.Drawing.Size(24, 24);
-      this.statusStrip1.Location = new System.Drawing.Point(0, 1146);
+      this.statusStrip1.Location = new System.Drawing.Point(0, 1141);
       this.statusStrip1.Name = "statusStrip1";
       this.statusStrip1.Padding = new System.Windows.Forms.Padding(2, 0, 21, 0);
-      this.statusStrip1.Size = new System.Drawing.Size(1499, 22);
+      this.statusStrip1.Size = new System.Drawing.Size(1499, 26);
       this.statusStrip1.TabIndex = 1;
       this.statusStrip1.Text = "statusStrip1";
       // 
@@ -396,11 +399,11 @@
       this.tabControlMain.Controls.Add(this.tabPageConnection);
       this.tabControlMain.Controls.Add(this.tabPageTables);
       this.tabControlMain.Dock = System.Windows.Forms.DockStyle.Fill;
-      this.tabControlMain.Location = new System.Drawing.Point(0, 35);
+      this.tabControlMain.Location = new System.Drawing.Point(0, 52);
       this.tabControlMain.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
       this.tabControlMain.Name = "tabControlMain";
       this.tabControlMain.SelectedIndex = 0;
-      this.tabControlMain.Size = new System.Drawing.Size(1499, 1111);
+      this.tabControlMain.Size = new System.Drawing.Size(1499, 1085);
       this.tabControlMain.TabIndex = 2;
       // 
       // tabPageConnection
@@ -455,7 +458,7 @@
       this.tabPageConnection.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
       this.tabPageConnection.Name = "tabPageConnection";
       this.tabPageConnection.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
-      this.tabPageConnection.Size = new System.Drawing.Size(1491, 1078);
+      this.tabPageConnection.Size = new System.Drawing.Size(1491, 1052);
       this.tabPageConnection.TabIndex = 0;
       this.tabPageConnection.Text = "Connection";
       this.tabPageConnection.UseVisualStyleBackColor = true;
@@ -534,7 +537,7 @@
       // 
       this.textBoxDatabaseNameSource.Location = new System.Drawing.Point(222, 446);
       this.textBoxDatabaseNameSource.Name = "textBoxDatabaseNameSource";
-      this.textBoxDatabaseNameSource.Size = new System.Drawing.Size(426, 42);
+      this.textBoxDatabaseNameSource.Size = new System.Drawing.Size(426, 35);
       this.textBoxDatabaseNameSource.TabIndex = 130;
       // 
       // labelDatabaseNameSource
@@ -542,7 +545,7 @@
       this.labelDatabaseNameSource.AutoSize = true;
       this.labelDatabaseNameSource.Location = new System.Drawing.Point(34, 449);
       this.labelDatabaseNameSource.Name = "labelDatabaseNameSource";
-      this.labelDatabaseNameSource.Size = new System.Drawing.Size(223, 35);
+      this.labelDatabaseNameSource.Size = new System.Drawing.Size(186, 29);
       this.labelDatabaseNameSource.TabIndex = 129;
       this.labelDatabaseNameSource.Text = "Database Name";
       // 
@@ -580,7 +583,7 @@
       this.textBoxSourcePort.Location = new System.Drawing.Point(222, 300);
       this.textBoxSourcePort.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
       this.textBoxSourcePort.Name = "textBoxSourcePort";
-      this.textBoxSourcePort.Size = new System.Drawing.Size(214, 42);
+      this.textBoxSourcePort.Size = new System.Drawing.Size(214, 35);
       this.textBoxSourcePort.TabIndex = 125;
       this.textBoxSourcePort.Text = "1521";
       // 
@@ -598,13 +601,13 @@
       this.labelSourcePort.AutoSize = true;
       this.labelSourcePort.Location = new System.Drawing.Point(32, 303);
       this.labelSourcePort.Name = "labelSourcePort";
-      this.labelSourcePort.Size = new System.Drawing.Size(76, 35);
+      this.labelSourcePort.Size = new System.Drawing.Size(63, 29);
       this.labelSourcePort.TabIndex = 123;
       this.labelSourcePort.Text = "Port:";
       // 
       // buttonCopyServerName
       // 
-      this.buttonCopyServerName.Location = new System.Drawing.Point(600, 242);
+      this.buttonCopyServerName.Location = new System.Drawing.Point(680, 242);
       this.buttonCopyServerName.Name = "buttonCopyServerName";
       this.buttonCopyServerName.Size = new System.Drawing.Size(70, 34);
       this.buttonCopyServerName.TabIndex = 122;
@@ -808,14 +811,14 @@
       this.textBoxSourcePassword.Location = new System.Drawing.Point(222, 392);
       this.textBoxSourcePassword.Name = "textBoxSourcePassword";
       this.textBoxSourcePassword.PasswordChar = '*';
-      this.textBoxSourcePassword.Size = new System.Drawing.Size(426, 42);
+      this.textBoxSourcePassword.Size = new System.Drawing.Size(426, 35);
       this.textBoxSourcePassword.TabIndex = 101;
       // 
       // textBoxSourceName
       // 
       this.textBoxSourceName.Location = new System.Drawing.Point(222, 345);
       this.textBoxSourceName.Name = "textBoxSourceName";
-      this.textBoxSourceName.Size = new System.Drawing.Size(426, 42);
+      this.textBoxSourceName.Size = new System.Drawing.Size(426, 35);
       this.textBoxSourceName.TabIndex = 100;
       // 
       // labelSourcePassword
@@ -823,7 +826,7 @@
       this.labelSourcePassword.AutoSize = true;
       this.labelSourcePassword.Location = new System.Drawing.Point(32, 392);
       this.labelSourcePassword.Name = "labelSourcePassword";
-      this.labelSourcePassword.Size = new System.Drawing.Size(144, 35);
+      this.labelSourcePassword.Size = new System.Drawing.Size(120, 29);
       this.labelSourcePassword.TabIndex = 99;
       this.labelSourcePassword.Text = "Password";
       // 
@@ -832,7 +835,7 @@
       this.labelSourceUserName.AutoSize = true;
       this.labelSourceUserName.Location = new System.Drawing.Point(32, 345);
       this.labelSourceUserName.Name = "labelSourceUserName";
-      this.labelSourceUserName.Size = new System.Drawing.Size(162, 35);
+      this.labelSourceUserName.Size = new System.Drawing.Size(135, 29);
       this.labelSourceUserName.TabIndex = 98;
       this.labelSourceUserName.Text = "User Name";
       // 
@@ -849,7 +852,7 @@
       this.labelSourceSchema.AutoSize = true;
       this.labelSourceSchema.Location = new System.Drawing.Point(32, 778);
       this.labelSourceSchema.Name = "labelSourceSchema";
-      this.labelSourceSchema.Size = new System.Drawing.Size(121, 35);
+      this.labelSourceSchema.Size = new System.Drawing.Size(101, 29);
       this.labelSourceSchema.TabIndex = 96;
       this.labelSourceSchema.Text = "Schema";
       // 
@@ -859,7 +862,7 @@
       this.labelSourceServer.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this.labelSourceServer.Location = new System.Drawing.Point(28, 197);
       this.labelSourceServer.Name = "labelSourceServer";
-      this.labelSourceServer.Size = new System.Drawing.Size(210, 35);
+      this.labelSourceServer.Size = new System.Drawing.Size(175, 29);
       this.labelSourceServer.TabIndex = 95;
       this.labelSourceServer.Text = "Oracle Server";
       // 
@@ -875,20 +878,42 @@
       // 
       // tabPageTables
       // 
+      this.tabPageTables.Controls.Add(this.labelTablesTarget);
+      this.tabPageTables.Controls.Add(this.labelTablesSource);
       this.tabPageTables.Location = new System.Drawing.Point(4, 29);
       this.tabPageTables.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
       this.tabPageTables.Name = "tabPageTables";
       this.tabPageTables.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
-      this.tabPageTables.Size = new System.Drawing.Size(1310, 1064);
+      this.tabPageTables.Size = new System.Drawing.Size(1491, 1052);
       this.tabPageTables.TabIndex = 1;
       this.tabPageTables.Text = "Tables";
       this.tabPageTables.UseVisualStyleBackColor = true;
+      // 
+      // labelTablesTarget
+      // 
+      this.labelTablesTarget.AutoSize = true;
+      this.labelTablesTarget.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.labelTablesTarget.Location = new System.Drawing.Point(737, 64);
+      this.labelTablesTarget.Name = "labelTablesTarget";
+      this.labelTablesTarget.Size = new System.Drawing.Size(102, 32);
+      this.labelTablesTarget.TabIndex = 109;
+      this.labelTablesTarget.Text = "Target";
+      // 
+      // labelTablesSource
+      // 
+      this.labelTablesSource.AutoSize = true;
+      this.labelTablesSource.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.labelTablesSource.Location = new System.Drawing.Point(48, 64);
+      this.labelTablesSource.Name = "labelTablesSource";
+      this.labelTablesSource.Size = new System.Drawing.Size(110, 32);
+      this.labelTablesSource.TabIndex = 108;
+      this.labelTablesSource.Text = "Source";
       // 
       // FormMain
       // 
       this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
       this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-      this.ClientSize = new System.Drawing.Size(1499, 1168);
+      this.ClientSize = new System.Drawing.Size(1249, 973);
       this.Controls.Add(this.tabControlMain);
       this.Controls.Add(this.statusStrip1);
       this.Controls.Add(this.menuStrip1);
@@ -903,6 +928,8 @@
       this.tabControlMain.ResumeLayout(false);
       this.tabPageConnection.ResumeLayout(false);
       this.tabPageConnection.PerformLayout();
+      this.tabPageTables.ResumeLayout(false);
+      this.tabPageTables.PerformLayout();
       this.ResumeLayout(false);
       this.PerformLayout();
 
@@ -992,6 +1019,8 @@
     private System.Windows.Forms.Label labelSourceSchema;
     private System.Windows.Forms.Label labelSourceServer;
     private System.Windows.Forms.Label labelSourceOperation;
+    private System.Windows.Forms.Label labelTablesTarget;
+    private System.Windows.Forms.Label labelTablesSource;
   }
 }
 

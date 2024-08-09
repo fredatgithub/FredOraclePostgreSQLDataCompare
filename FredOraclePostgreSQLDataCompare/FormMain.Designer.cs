@@ -131,7 +131,6 @@
       // 
       // menuStrip1
       // 
-      this.menuStrip1.GripMargin = new System.Windows.Forms.Padding(2, 2, 0, 2);
       this.menuStrip1.ImageScalingSize = new System.Drawing.Size(24, 24);
       this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.fichierToolStripMenuItem,
@@ -141,7 +140,8 @@
             this.aideToolStripMenuItem});
       this.menuStrip1.Location = new System.Drawing.Point(0, 0);
       this.menuStrip1.Name = "menuStrip1";
-      this.menuStrip1.Size = new System.Drawing.Size(1473, 33);
+      this.menuStrip1.Padding = new System.Windows.Forms.Padding(4, 1, 0, 1);
+      this.menuStrip1.Size = new System.Drawing.Size(982, 24);
       this.menuStrip1.TabIndex = 0;
       this.menuStrip1.Text = "menuStrip1";
       // 
@@ -159,7 +159,7 @@
             this.toolStripSeparator2,
             this.quitterToolStripMenuItem});
       this.fichierToolStripMenuItem.Name = "fichierToolStripMenuItem";
-      this.fichierToolStripMenuItem.Size = new System.Drawing.Size(78, 29);
+      this.fichierToolStripMenuItem.Size = new System.Drawing.Size(54, 22);
       this.fichierToolStripMenuItem.Text = "&Fichier";
       // 
       // nouveauToolStripMenuItem
@@ -168,7 +168,7 @@
       this.nouveauToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Magenta;
       this.nouveauToolStripMenuItem.Name = "nouveauToolStripMenuItem";
       this.nouveauToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.N)));
-      this.nouveauToolStripMenuItem.Size = new System.Drawing.Size(310, 34);
+      this.nouveauToolStripMenuItem.Size = new System.Drawing.Size(205, 22);
       this.nouveauToolStripMenuItem.Text = "&Nouveau";
       // 
       // ouvrirToolStripMenuItem
@@ -177,13 +177,13 @@
       this.ouvrirToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Magenta;
       this.ouvrirToolStripMenuItem.Name = "ouvrirToolStripMenuItem";
       this.ouvrirToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.O)));
-      this.ouvrirToolStripMenuItem.Size = new System.Drawing.Size(310, 34);
+      this.ouvrirToolStripMenuItem.Size = new System.Drawing.Size(205, 22);
       this.ouvrirToolStripMenuItem.Text = "&Ouvrir";
       // 
       // toolStripSeparator
       // 
       this.toolStripSeparator.Name = "toolStripSeparator";
-      this.toolStripSeparator.Size = new System.Drawing.Size(307, 6);
+      this.toolStripSeparator.Size = new System.Drawing.Size(202, 6);
       // 
       // enregistrerToolStripMenuItem
       // 
@@ -191,19 +191,19 @@
       this.enregistrerToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Magenta;
       this.enregistrerToolStripMenuItem.Name = "enregistrerToolStripMenuItem";
       this.enregistrerToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.S)));
-      this.enregistrerToolStripMenuItem.Size = new System.Drawing.Size(310, 34);
+      this.enregistrerToolStripMenuItem.Size = new System.Drawing.Size(205, 22);
       this.enregistrerToolStripMenuItem.Text = "&Enregistrer";
       // 
       // enregistrersousToolStripMenuItem
       // 
       this.enregistrersousToolStripMenuItem.Name = "enregistrersousToolStripMenuItem";
-      this.enregistrersousToolStripMenuItem.Size = new System.Drawing.Size(310, 34);
+      this.enregistrersousToolStripMenuItem.Size = new System.Drawing.Size(205, 22);
       this.enregistrersousToolStripMenuItem.Text = "Enregistrer &sous";
       // 
       // toolStripSeparator1
       // 
       this.toolStripSeparator1.Name = "toolStripSeparator1";
-      this.toolStripSeparator1.Size = new System.Drawing.Size(307, 6);
+      this.toolStripSeparator1.Size = new System.Drawing.Size(202, 6);
       // 
       // imprimerToolStripMenuItem
       // 
@@ -211,7 +211,7 @@
       this.imprimerToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Magenta;
       this.imprimerToolStripMenuItem.Name = "imprimerToolStripMenuItem";
       this.imprimerToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.P)));
-      this.imprimerToolStripMenuItem.Size = new System.Drawing.Size(310, 34);
+      this.imprimerToolStripMenuItem.Size = new System.Drawing.Size(205, 22);
       this.imprimerToolStripMenuItem.Text = "&Imprimer";
       // 
       // aperçuavantimpressionToolStripMenuItem
@@ -219,18 +219,18 @@
       this.aperçuavantimpressionToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("aperçuavantimpressionToolStripMenuItem.Image")));
       this.aperçuavantimpressionToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Magenta;
       this.aperçuavantimpressionToolStripMenuItem.Name = "aperçuavantimpressionToolStripMenuItem";
-      this.aperçuavantimpressionToolStripMenuItem.Size = new System.Drawing.Size(310, 34);
+      this.aperçuavantimpressionToolStripMenuItem.Size = new System.Drawing.Size(205, 22);
       this.aperçuavantimpressionToolStripMenuItem.Text = "Aperçu a&vant impression";
       // 
       // toolStripSeparator2
       // 
       this.toolStripSeparator2.Name = "toolStripSeparator2";
-      this.toolStripSeparator2.Size = new System.Drawing.Size(307, 6);
+      this.toolStripSeparator2.Size = new System.Drawing.Size(202, 6);
       // 
       // quitterToolStripMenuItem
       // 
       this.quitterToolStripMenuItem.Name = "quitterToolStripMenuItem";
-      this.quitterToolStripMenuItem.Size = new System.Drawing.Size(310, 34);
+      this.quitterToolStripMenuItem.Size = new System.Drawing.Size(205, 22);
       this.quitterToolStripMenuItem.Text = "&Quitter";
       this.quitterToolStripMenuItem.Click += new System.EventHandler(this.QuitToolStripMenuItem_Click);
       // 
@@ -246,27 +246,27 @@
             this.toolStripSeparator4,
             this.sélectionnertoutToolStripMenuItem});
       this.editionToolStripMenuItem.Name = "editionToolStripMenuItem";
-      this.editionToolStripMenuItem.Size = new System.Drawing.Size(83, 29);
+      this.editionToolStripMenuItem.Size = new System.Drawing.Size(56, 22);
       this.editionToolStripMenuItem.Text = "&Edition";
       // 
       // annulerToolStripMenuItem
       // 
       this.annulerToolStripMenuItem.Name = "annulerToolStripMenuItem";
       this.annulerToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Z)));
-      this.annulerToolStripMenuItem.Size = new System.Drawing.Size(248, 34);
+      this.annulerToolStripMenuItem.Size = new System.Drawing.Size(164, 22);
       this.annulerToolStripMenuItem.Text = "&Annuler";
       // 
       // rétablirToolStripMenuItem
       // 
       this.rétablirToolStripMenuItem.Name = "rétablirToolStripMenuItem";
       this.rétablirToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Y)));
-      this.rétablirToolStripMenuItem.Size = new System.Drawing.Size(248, 34);
+      this.rétablirToolStripMenuItem.Size = new System.Drawing.Size(164, 22);
       this.rétablirToolStripMenuItem.Text = "&Rétablir";
       // 
       // toolStripSeparator3
       // 
       this.toolStripSeparator3.Name = "toolStripSeparator3";
-      this.toolStripSeparator3.Size = new System.Drawing.Size(245, 6);
+      this.toolStripSeparator3.Size = new System.Drawing.Size(161, 6);
       // 
       // couperToolStripMenuItem
       // 
@@ -274,7 +274,7 @@
       this.couperToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Magenta;
       this.couperToolStripMenuItem.Name = "couperToolStripMenuItem";
       this.couperToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.X)));
-      this.couperToolStripMenuItem.Size = new System.Drawing.Size(248, 34);
+      this.couperToolStripMenuItem.Size = new System.Drawing.Size(164, 22);
       this.couperToolStripMenuItem.Text = "&Couper";
       // 
       // copierToolStripMenuItem
@@ -283,7 +283,7 @@
       this.copierToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Magenta;
       this.copierToolStripMenuItem.Name = "copierToolStripMenuItem";
       this.copierToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.C)));
-      this.copierToolStripMenuItem.Size = new System.Drawing.Size(248, 34);
+      this.copierToolStripMenuItem.Size = new System.Drawing.Size(164, 22);
       this.copierToolStripMenuItem.Text = "Co&pier";
       // 
       // collerToolStripMenuItem
@@ -292,18 +292,18 @@
       this.collerToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Magenta;
       this.collerToolStripMenuItem.Name = "collerToolStripMenuItem";
       this.collerToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.V)));
-      this.collerToolStripMenuItem.Size = new System.Drawing.Size(248, 34);
+      this.collerToolStripMenuItem.Size = new System.Drawing.Size(164, 22);
       this.collerToolStripMenuItem.Text = "Co&ller";
       // 
       // toolStripSeparator4
       // 
       this.toolStripSeparator4.Name = "toolStripSeparator4";
-      this.toolStripSeparator4.Size = new System.Drawing.Size(245, 6);
+      this.toolStripSeparator4.Size = new System.Drawing.Size(161, 6);
       // 
       // sélectionnertoutToolStripMenuItem
       // 
       this.sélectionnertoutToolStripMenuItem.Name = "sélectionnertoutToolStripMenuItem";
-      this.sélectionnertoutToolStripMenuItem.Size = new System.Drawing.Size(248, 34);
+      this.sélectionnertoutToolStripMenuItem.Size = new System.Drawing.Size(164, 22);
       this.sélectionnertoutToolStripMenuItem.Text = "Sélectio&nner tout";
       // 
       // outilsToolStripMenuItem
@@ -312,19 +312,19 @@
             this.personnaliserToolStripMenuItem,
             this.optionsToolStripMenuItem});
       this.outilsToolStripMenuItem.Name = "outilsToolStripMenuItem";
-      this.outilsToolStripMenuItem.Size = new System.Drawing.Size(74, 29);
+      this.outilsToolStripMenuItem.Size = new System.Drawing.Size(50, 22);
       this.outilsToolStripMenuItem.Text = "&Outils";
       // 
       // personnaliserToolStripMenuItem
       // 
       this.personnaliserToolStripMenuItem.Name = "personnaliserToolStripMenuItem";
-      this.personnaliserToolStripMenuItem.Size = new System.Drawing.Size(217, 34);
+      this.personnaliserToolStripMenuItem.Size = new System.Drawing.Size(144, 22);
       this.personnaliserToolStripMenuItem.Text = "&Personnaliser";
       // 
       // optionsToolStripMenuItem
       // 
       this.optionsToolStripMenuItem.Name = "optionsToolStripMenuItem";
-      this.optionsToolStripMenuItem.Size = new System.Drawing.Size(217, 34);
+      this.optionsToolStripMenuItem.Size = new System.Drawing.Size(144, 22);
       this.optionsToolStripMenuItem.Text = "&Options";
       // 
       // toolStripMenuItemLanguage
@@ -333,7 +333,7 @@
             this.frenchToolStripMenuItem,
             this.englishToolStripMenuItem});
       this.toolStripMenuItemLanguage.Name = "toolStripMenuItemLanguage";
-      this.toolStripMenuItemLanguage.Size = new System.Drawing.Size(105, 29);
+      this.toolStripMenuItemLanguage.Size = new System.Drawing.Size(71, 22);
       this.toolStripMenuItemLanguage.Text = "Language";
       // 
       // frenchToolStripMenuItem
@@ -341,14 +341,14 @@
       this.frenchToolStripMenuItem.Checked = true;
       this.frenchToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
       this.frenchToolStripMenuItem.Name = "frenchToolStripMenuItem";
-      this.frenchToolStripMenuItem.Size = new System.Drawing.Size(170, 34);
+      this.frenchToolStripMenuItem.Size = new System.Drawing.Size(112, 22);
       this.frenchToolStripMenuItem.Text = "French";
       this.frenchToolStripMenuItem.Click += new System.EventHandler(this.FrenchToolStripMenuItem_Click);
       // 
       // englishToolStripMenuItem
       // 
       this.englishToolStripMenuItem.Name = "englishToolStripMenuItem";
-      this.englishToolStripMenuItem.Size = new System.Drawing.Size(170, 34);
+      this.englishToolStripMenuItem.Size = new System.Drawing.Size(112, 22);
       this.englishToolStripMenuItem.Text = "English";
       this.englishToolStripMenuItem.Click += new System.EventHandler(this.EnglishToolStripMenuItem_Click);
       // 
@@ -361,46 +361,45 @@
             this.toolStripSeparator5,
             this.àproposdeToolStripMenuItem});
       this.aideToolStripMenuItem.Name = "aideToolStripMenuItem";
-      this.aideToolStripMenuItem.Size = new System.Drawing.Size(64, 29);
+      this.aideToolStripMenuItem.Size = new System.Drawing.Size(43, 22);
       this.aideToolStripMenuItem.Text = "&Aide";
       // 
       // sommaireToolStripMenuItem
       // 
       this.sommaireToolStripMenuItem.Name = "sommaireToolStripMenuItem";
-      this.sommaireToolStripMenuItem.Size = new System.Drawing.Size(226, 34);
+      this.sommaireToolStripMenuItem.Size = new System.Drawing.Size(147, 22);
       this.sommaireToolStripMenuItem.Text = "&Sommaire";
       // 
       // indexToolStripMenuItem
       // 
       this.indexToolStripMenuItem.Name = "indexToolStripMenuItem";
-      this.indexToolStripMenuItem.Size = new System.Drawing.Size(226, 34);
+      this.indexToolStripMenuItem.Size = new System.Drawing.Size(147, 22);
       this.indexToolStripMenuItem.Text = "&Index";
       // 
       // rechercherToolStripMenuItem
       // 
       this.rechercherToolStripMenuItem.Name = "rechercherToolStripMenuItem";
-      this.rechercherToolStripMenuItem.Size = new System.Drawing.Size(226, 34);
+      this.rechercherToolStripMenuItem.Size = new System.Drawing.Size(147, 22);
       this.rechercherToolStripMenuItem.Text = "&Rechercher";
       // 
       // toolStripSeparator5
       // 
       this.toolStripSeparator5.Name = "toolStripSeparator5";
-      this.toolStripSeparator5.Size = new System.Drawing.Size(223, 6);
+      this.toolStripSeparator5.Size = new System.Drawing.Size(144, 6);
       // 
       // àproposdeToolStripMenuItem
       // 
       this.àproposdeToolStripMenuItem.Name = "àproposdeToolStripMenuItem";
-      this.àproposdeToolStripMenuItem.Size = new System.Drawing.Size(226, 34);
+      this.àproposdeToolStripMenuItem.Size = new System.Drawing.Size(147, 22);
       this.àproposdeToolStripMenuItem.Text = "À &propos de...";
       this.àproposdeToolStripMenuItem.Click += new System.EventHandler(this.AboutToolStripMenuItem_Click);
       // 
       // statusStrip1
       // 
       this.statusStrip1.ImageScalingSize = new System.Drawing.Size(24, 24);
-      this.statusStrip1.Location = new System.Drawing.Point(0, 1041);
+      this.statusStrip1.Location = new System.Drawing.Point(0, 669);
       this.statusStrip1.Name = "statusStrip1";
-      this.statusStrip1.Padding = new System.Windows.Forms.Padding(2, 0, 21, 0);
-      this.statusStrip1.Size = new System.Drawing.Size(1473, 22);
+      this.statusStrip1.Size = new System.Drawing.Size(982, 22);
       this.statusStrip1.TabIndex = 1;
       this.statusStrip1.Text = "statusStrip1";
       // 
@@ -409,11 +408,10 @@
       this.tabControlMain.Controls.Add(this.tabPageConnection);
       this.tabControlMain.Controls.Add(this.tabPageTables);
       this.tabControlMain.Dock = System.Windows.Forms.DockStyle.Fill;
-      this.tabControlMain.Location = new System.Drawing.Point(0, 33);
-      this.tabControlMain.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+      this.tabControlMain.Location = new System.Drawing.Point(0, 24);
       this.tabControlMain.Name = "tabControlMain";
       this.tabControlMain.SelectedIndex = 0;
-      this.tabControlMain.Size = new System.Drawing.Size(1473, 1008);
+      this.tabControlMain.Size = new System.Drawing.Size(982, 645);
       this.tabControlMain.TabIndex = 2;
       this.tabControlMain.SelectedIndexChanged += new System.EventHandler(this.TabControlMain_SelectedIndexChanged);
       // 
@@ -465,11 +463,10 @@
       this.tabPageConnection.Controls.Add(this.labelSourceServer);
       this.tabPageConnection.Controls.Add(this.labelSourceOperation);
       this.tabPageConnection.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.tabPageConnection.Location = new System.Drawing.Point(4, 29);
-      this.tabPageConnection.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+      this.tabPageConnection.Location = new System.Drawing.Point(4, 22);
       this.tabPageConnection.Name = "tabPageConnection";
-      this.tabPageConnection.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
-      this.tabPageConnection.Size = new System.Drawing.Size(1465, 975);
+      this.tabPageConnection.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+      this.tabPageConnection.Size = new System.Drawing.Size(974, 619);
       this.tabPageConnection.TabIndex = 0;
       this.tabPageConnection.Text = "Connection";
       this.tabPageConnection.UseVisualStyleBackColor = true;
@@ -477,9 +474,10 @@
       // 
       // buttonRefreshTarget
       // 
-      this.buttonRefreshTarget.Location = new System.Drawing.Point(1232, 772);
+      this.buttonRefreshTarget.Location = new System.Drawing.Point(821, 502);
+      this.buttonRefreshTarget.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
       this.buttonRefreshTarget.Name = "buttonRefreshTarget";
-      this.buttonRefreshTarget.Size = new System.Drawing.Size(118, 38);
+      this.buttonRefreshTarget.Size = new System.Drawing.Size(79, 25);
       this.buttonRefreshTarget.TabIndex = 138;
       this.buttonRefreshTarget.Text = "Refresh";
       this.buttonRefreshTarget.UseVisualStyleBackColor = true;
@@ -487,9 +485,10 @@
       // 
       // buttonRefreshSource
       // 
-      this.buttonRefreshSource.Location = new System.Drawing.Point(466, 777);
+      this.buttonRefreshSource.Location = new System.Drawing.Point(311, 505);
+      this.buttonRefreshSource.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
       this.buttonRefreshSource.Name = "buttonRefreshSource";
-      this.buttonRefreshSource.Size = new System.Drawing.Size(118, 38);
+      this.buttonRefreshSource.Size = new System.Drawing.Size(79, 25);
       this.buttonRefreshSource.TabIndex = 137;
       this.buttonRefreshSource.Text = "Refresh";
       this.buttonRefreshSource.UseVisualStyleBackColor = true;
@@ -497,9 +496,10 @@
       // 
       // buttonCopyDatabaseName
       // 
-      this.buttonCopyDatabaseName.Location = new System.Drawing.Point(680, 448);
+      this.buttonCopyDatabaseName.Location = new System.Drawing.Point(453, 291);
+      this.buttonCopyDatabaseName.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
       this.buttonCopyDatabaseName.Name = "buttonCopyDatabaseName";
-      this.buttonCopyDatabaseName.Size = new System.Drawing.Size(70, 34);
+      this.buttonCopyDatabaseName.Size = new System.Drawing.Size(47, 22);
       this.buttonCopyDatabaseName.TabIndex = 136;
       this.buttonCopyDatabaseName.Text = "-->";
       this.buttonCopyDatabaseName.UseVisualStyleBackColor = true;
@@ -507,9 +507,10 @@
       // 
       // buttonCopyUserName
       // 
-      this.buttonCopyUserName.Location = new System.Drawing.Point(680, 346);
+      this.buttonCopyUserName.Location = new System.Drawing.Point(453, 225);
+      this.buttonCopyUserName.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
       this.buttonCopyUserName.Name = "buttonCopyUserName";
-      this.buttonCopyUserName.Size = new System.Drawing.Size(70, 34);
+      this.buttonCopyUserName.Size = new System.Drawing.Size(47, 22);
       this.buttonCopyUserName.TabIndex = 135;
       this.buttonCopyUserName.Text = "-->";
       this.buttonCopyUserName.UseVisualStyleBackColor = true;
@@ -517,55 +518,62 @@
       // 
       // textBoxTargetServer
       // 
-      this.textBoxTargetServer.Location = new System.Drawing.Point(790, 240);
+      this.textBoxTargetServer.Location = new System.Drawing.Point(527, 156);
+      this.textBoxTargetServer.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
       this.textBoxTargetServer.Name = "textBoxTargetServer";
-      this.textBoxTargetServer.Size = new System.Drawing.Size(629, 35);
+      this.textBoxTargetServer.Size = new System.Drawing.Size(421, 26);
       this.textBoxTargetServer.TabIndex = 134;
       // 
       // textBoxSourceServer
       // 
-      this.textBoxSourceServer.Location = new System.Drawing.Point(40, 240);
+      this.textBoxSourceServer.Location = new System.Drawing.Point(27, 156);
+      this.textBoxSourceServer.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
       this.textBoxSourceServer.Name = "textBoxSourceServer";
-      this.textBoxSourceServer.Size = new System.Drawing.Size(608, 35);
+      this.textBoxSourceServer.Size = new System.Drawing.Size(407, 26);
       this.textBoxSourceServer.TabIndex = 133;
       // 
       // textBoxDatabaseNameTarget
       // 
-      this.textBoxDatabaseNameTarget.Location = new System.Drawing.Point(994, 449);
+      this.textBoxDatabaseNameTarget.Location = new System.Drawing.Point(663, 292);
+      this.textBoxDatabaseNameTarget.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
       this.textBoxDatabaseNameTarget.Name = "textBoxDatabaseNameTarget";
-      this.textBoxDatabaseNameTarget.Size = new System.Drawing.Size(426, 35);
+      this.textBoxDatabaseNameTarget.Size = new System.Drawing.Size(285, 26);
       this.textBoxDatabaseNameTarget.TabIndex = 132;
       // 
       // labelDatabaseNameTarget
       // 
       this.labelDatabaseNameTarget.AutoSize = true;
-      this.labelDatabaseNameTarget.Location = new System.Drawing.Point(784, 449);
+      this.labelDatabaseNameTarget.Location = new System.Drawing.Point(523, 292);
+      this.labelDatabaseNameTarget.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
       this.labelDatabaseNameTarget.Name = "labelDatabaseNameTarget";
-      this.labelDatabaseNameTarget.Size = new System.Drawing.Size(186, 29);
+      this.labelDatabaseNameTarget.Size = new System.Drawing.Size(125, 20);
       this.labelDatabaseNameTarget.TabIndex = 131;
       this.labelDatabaseNameTarget.Text = "Database Name";
       // 
       // textBoxDatabaseNameSource
       // 
-      this.textBoxDatabaseNameSource.Location = new System.Drawing.Point(222, 446);
+      this.textBoxDatabaseNameSource.Location = new System.Drawing.Point(148, 290);
+      this.textBoxDatabaseNameSource.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
       this.textBoxDatabaseNameSource.Name = "textBoxDatabaseNameSource";
-      this.textBoxDatabaseNameSource.Size = new System.Drawing.Size(426, 35);
+      this.textBoxDatabaseNameSource.Size = new System.Drawing.Size(285, 26);
       this.textBoxDatabaseNameSource.TabIndex = 130;
       // 
       // labelDatabaseNameSource
       // 
       this.labelDatabaseNameSource.AutoSize = true;
-      this.labelDatabaseNameSource.Location = new System.Drawing.Point(34, 449);
+      this.labelDatabaseNameSource.Location = new System.Drawing.Point(23, 292);
+      this.labelDatabaseNameSource.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
       this.labelDatabaseNameSource.Name = "labelDatabaseNameSource";
-      this.labelDatabaseNameSource.Size = new System.Drawing.Size(186, 29);
+      this.labelDatabaseNameSource.Size = new System.Drawing.Size(125, 20);
       this.labelDatabaseNameSource.TabIndex = 129;
       this.labelDatabaseNameSource.Text = "Database Name";
       // 
       // buttonTestconnectionTarget
       // 
-      this.buttonTestconnectionTarget.Location = new System.Drawing.Point(994, 554);
+      this.buttonTestconnectionTarget.Location = new System.Drawing.Point(663, 360);
+      this.buttonTestconnectionTarget.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
       this.buttonTestconnectionTarget.Name = "buttonTestconnectionTarget";
-      this.buttonTestconnectionTarget.Size = new System.Drawing.Size(278, 38);
+      this.buttonTestconnectionTarget.Size = new System.Drawing.Size(185, 25);
       this.buttonTestconnectionTarget.TabIndex = 128;
       this.buttonTestconnectionTarget.Text = "Test connection";
       this.buttonTestconnectionTarget.UseVisualStyleBackColor = true;
@@ -573,9 +581,10 @@
       // 
       // buttonTestConnection
       // 
-      this.buttonTestConnection.Location = new System.Drawing.Point(222, 554);
+      this.buttonTestConnection.Location = new System.Drawing.Point(148, 360);
+      this.buttonTestConnection.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
       this.buttonTestConnection.Name = "buttonTestConnection";
-      this.buttonTestConnection.Size = new System.Drawing.Size(266, 38);
+      this.buttonTestConnection.Size = new System.Drawing.Size(177, 25);
       this.buttonTestConnection.TabIndex = 127;
       this.buttonTestConnection.Text = "Test connection";
       this.buttonTestConnection.UseVisualStyleBackColor = true;
@@ -583,45 +592,46 @@
       // 
       // textBoxTargetPort
       // 
-      this.textBoxTargetPort.Location = new System.Drawing.Point(994, 298);
-      this.textBoxTargetPort.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+      this.textBoxTargetPort.Location = new System.Drawing.Point(663, 194);
       this.textBoxTargetPort.Name = "textBoxTargetPort";
-      this.textBoxTargetPort.Size = new System.Drawing.Size(214, 35);
+      this.textBoxTargetPort.Size = new System.Drawing.Size(144, 26);
       this.textBoxTargetPort.TabIndex = 126;
       this.textBoxTargetPort.Text = "5432";
       // 
       // textBoxSourcePort
       // 
-      this.textBoxSourcePort.Location = new System.Drawing.Point(222, 300);
-      this.textBoxSourcePort.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+      this.textBoxSourcePort.Location = new System.Drawing.Point(148, 195);
       this.textBoxSourcePort.Name = "textBoxSourcePort";
-      this.textBoxSourcePort.Size = new System.Drawing.Size(214, 35);
+      this.textBoxSourcePort.Size = new System.Drawing.Size(144, 26);
       this.textBoxSourcePort.TabIndex = 125;
       this.textBoxSourcePort.Text = "1521";
       // 
       // labelTargetPort
       // 
       this.labelTargetPort.AutoSize = true;
-      this.labelTargetPort.Location = new System.Drawing.Point(784, 303);
+      this.labelTargetPort.Location = new System.Drawing.Point(523, 197);
+      this.labelTargetPort.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
       this.labelTargetPort.Name = "labelTargetPort";
-      this.labelTargetPort.Size = new System.Drawing.Size(63, 29);
+      this.labelTargetPort.Size = new System.Drawing.Size(42, 20);
       this.labelTargetPort.TabIndex = 124;
       this.labelTargetPort.Text = "Port:";
       // 
       // labelSourcePort
       // 
       this.labelSourcePort.AutoSize = true;
-      this.labelSourcePort.Location = new System.Drawing.Point(32, 303);
+      this.labelSourcePort.Location = new System.Drawing.Point(21, 197);
+      this.labelSourcePort.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
       this.labelSourcePort.Name = "labelSourcePort";
-      this.labelSourcePort.Size = new System.Drawing.Size(63, 29);
+      this.labelSourcePort.Size = new System.Drawing.Size(42, 20);
       this.labelSourcePort.TabIndex = 123;
       this.labelSourcePort.Text = "Port:";
       // 
       // buttonCopyServerName
       // 
-      this.buttonCopyServerName.Location = new System.Drawing.Point(680, 242);
+      this.buttonCopyServerName.Location = new System.Drawing.Point(453, 157);
+      this.buttonCopyServerName.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
       this.buttonCopyServerName.Name = "buttonCopyServerName";
-      this.buttonCopyServerName.Size = new System.Drawing.Size(70, 34);
+      this.buttonCopyServerName.Size = new System.Drawing.Size(47, 22);
       this.buttonCopyServerName.TabIndex = 122;
       this.buttonCopyServerName.Text = "-->";
       this.buttonCopyServerName.UseVisualStyleBackColor = true;
@@ -629,9 +639,10 @@
       // 
       // buttonCopyPassword
       // 
-      this.buttonCopyPassword.Location = new System.Drawing.Point(680, 394);
+      this.buttonCopyPassword.Location = new System.Drawing.Point(453, 256);
+      this.buttonCopyPassword.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
       this.buttonCopyPassword.Name = "buttonCopyPassword";
-      this.buttonCopyPassword.Size = new System.Drawing.Size(70, 34);
+      this.buttonCopyPassword.Size = new System.Drawing.Size(47, 22);
       this.buttonCopyPassword.TabIndex = 121;
       this.buttonCopyPassword.Text = "-->";
       this.buttonCopyPassword.UseVisualStyleBackColor = true;
@@ -642,9 +653,10 @@
       this.buttonCompareCompareNow.BackColor = System.Drawing.Color.RoyalBlue;
       this.buttonCompareCompareNow.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this.buttonCompareCompareNow.ForeColor = System.Drawing.Color.White;
-      this.buttonCompareCompareNow.Location = new System.Drawing.Point(646, 894);
+      this.buttonCompareCompareNow.Location = new System.Drawing.Point(431, 581);
+      this.buttonCompareCompareNow.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
       this.buttonCompareCompareNow.Name = "buttonCompareCompareNow";
-      this.buttonCompareCompareNow.Size = new System.Drawing.Size(165, 46);
+      this.buttonCompareCompareNow.Size = new System.Drawing.Size(110, 30);
       this.buttonCompareCompareNow.TabIndex = 120;
       this.buttonCompareCompareNow.Text = "Compare now";
       this.buttonCompareCompareNow.UseVisualStyleBackColor = false;
@@ -652,9 +664,10 @@
       // 
       // buttonTargetCreate
       // 
-      this.buttonTargetCreate.Location = new System.Drawing.Point(789, 709);
+      this.buttonTargetCreate.Location = new System.Drawing.Point(526, 461);
+      this.buttonTargetCreate.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
       this.buttonTargetCreate.Name = "buttonTargetCreate";
-      this.buttonTargetCreate.Size = new System.Drawing.Size(100, 38);
+      this.buttonTargetCreate.Size = new System.Drawing.Size(67, 25);
       this.buttonTargetCreate.TabIndex = 119;
       this.buttonTargetCreate.Text = "Create";
       this.buttonTargetCreate.UseVisualStyleBackColor = true;
@@ -662,9 +675,10 @@
       // 
       // buttonTargetRefresh
       // 
-      this.buttonTargetRefresh.Location = new System.Drawing.Point(1236, 646);
+      this.buttonTargetRefresh.Location = new System.Drawing.Point(824, 420);
+      this.buttonTargetRefresh.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
       this.buttonTargetRefresh.Name = "buttonTargetRefresh";
-      this.buttonTargetRefresh.Size = new System.Drawing.Size(112, 38);
+      this.buttonTargetRefresh.Size = new System.Drawing.Size(75, 25);
       this.buttonTargetRefresh.TabIndex = 118;
       this.buttonTargetRefresh.Text = "Refresh";
       this.buttonTargetRefresh.UseVisualStyleBackColor = true;
@@ -674,78 +688,87 @@
       // 
       this.labelTargetDatabase.AutoSize = true;
       this.labelTargetDatabase.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.labelTargetDatabase.Location = new System.Drawing.Point(789, 606);
+      this.labelTargetDatabase.Location = new System.Drawing.Point(526, 394);
+      this.labelTargetDatabase.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
       this.labelTargetDatabase.Name = "labelTargetDatabase";
-      this.labelTargetDatabase.Size = new System.Drawing.Size(123, 29);
+      this.labelTargetDatabase.Size = new System.Drawing.Size(87, 20);
       this.labelTargetDatabase.TabIndex = 117;
       this.labelTargetDatabase.Text = "Database";
       // 
       // comboBoxTargetDatabase
       // 
       this.comboBoxTargetDatabase.FormattingEnabled = true;
-      this.comboBoxTargetDatabase.Location = new System.Drawing.Point(792, 649);
+      this.comboBoxTargetDatabase.Location = new System.Drawing.Point(528, 422);
+      this.comboBoxTargetDatabase.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
       this.comboBoxTargetDatabase.Name = "comboBoxTargetDatabase";
-      this.comboBoxTargetDatabase.Size = new System.Drawing.Size(438, 37);
+      this.comboBoxTargetDatabase.Size = new System.Drawing.Size(293, 28);
       this.comboBoxTargetDatabase.TabIndex = 116;
       this.comboBoxTargetDatabase.Text = "Database name";
       // 
       // checkBoxTargetRememberCredentials
       // 
       this.checkBoxTargetRememberCredentials.AutoSize = true;
-      this.checkBoxTargetRememberCredentials.Location = new System.Drawing.Point(994, 505);
+      this.checkBoxTargetRememberCredentials.Location = new System.Drawing.Point(663, 328);
+      this.checkBoxTargetRememberCredentials.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
       this.checkBoxTargetRememberCredentials.Name = "checkBoxTargetRememberCredentials";
-      this.checkBoxTargetRememberCredentials.Size = new System.Drawing.Size(284, 33);
+      this.checkBoxTargetRememberCredentials.Size = new System.Drawing.Size(188, 24);
       this.checkBoxTargetRememberCredentials.TabIndex = 115;
       this.checkBoxTargetRememberCredentials.Text = "Remember credentials";
       this.checkBoxTargetRememberCredentials.UseVisualStyleBackColor = true;
       // 
       // textBoxTargetPassword
       // 
-      this.textBoxTargetPassword.Location = new System.Drawing.Point(994, 394);
+      this.textBoxTargetPassword.Location = new System.Drawing.Point(663, 256);
+      this.textBoxTargetPassword.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
       this.textBoxTargetPassword.Name = "textBoxTargetPassword";
       this.textBoxTargetPassword.PasswordChar = '*';
-      this.textBoxTargetPassword.Size = new System.Drawing.Size(425, 35);
+      this.textBoxTargetPassword.Size = new System.Drawing.Size(285, 26);
       this.textBoxTargetPassword.TabIndex = 114;
       // 
       // textBoxTargetName
       // 
-      this.textBoxTargetName.Location = new System.Drawing.Point(994, 345);
+      this.textBoxTargetName.Location = new System.Drawing.Point(663, 224);
+      this.textBoxTargetName.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
       this.textBoxTargetName.Name = "textBoxTargetName";
-      this.textBoxTargetName.Size = new System.Drawing.Size(425, 35);
+      this.textBoxTargetName.Size = new System.Drawing.Size(285, 26);
       this.textBoxTargetName.TabIndex = 113;
       // 
       // labelTargetPassword
       // 
       this.labelTargetPassword.AutoSize = true;
-      this.labelTargetPassword.Location = new System.Drawing.Point(784, 394);
+      this.labelTargetPassword.Location = new System.Drawing.Point(523, 256);
+      this.labelTargetPassword.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
       this.labelTargetPassword.Name = "labelTargetPassword";
-      this.labelTargetPassword.Size = new System.Drawing.Size(120, 29);
+      this.labelTargetPassword.Size = new System.Drawing.Size(78, 20);
       this.labelTargetPassword.TabIndex = 112;
       this.labelTargetPassword.Text = "Password";
       // 
       // labelTargetUserName
       // 
       this.labelTargetUserName.AutoSize = true;
-      this.labelTargetUserName.Location = new System.Drawing.Point(784, 345);
+      this.labelTargetUserName.Location = new System.Drawing.Point(523, 224);
+      this.labelTargetUserName.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
       this.labelTargetUserName.Name = "labelTargetUserName";
-      this.labelTargetUserName.Size = new System.Drawing.Size(135, 29);
+      this.labelTargetUserName.Size = new System.Drawing.Size(89, 20);
       this.labelTargetUserName.TabIndex = 111;
       this.labelTargetUserName.Text = "User Name";
       // 
       // comboBoxTargetSchema
       // 
       this.comboBoxTargetSchema.FormattingEnabled = true;
-      this.comboBoxTargetSchema.Location = new System.Drawing.Point(906, 775);
+      this.comboBoxTargetSchema.Location = new System.Drawing.Point(604, 504);
+      this.comboBoxTargetSchema.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
       this.comboBoxTargetSchema.Name = "comboBoxTargetSchema";
-      this.comboBoxTargetSchema.Size = new System.Drawing.Size(319, 37);
+      this.comboBoxTargetSchema.Size = new System.Drawing.Size(214, 28);
       this.comboBoxTargetSchema.TabIndex = 110;
       // 
       // labelTargetSchema
       // 
       this.labelTargetSchema.AutoSize = true;
-      this.labelTargetSchema.Location = new System.Drawing.Point(789, 782);
+      this.labelTargetSchema.Location = new System.Drawing.Point(526, 508);
+      this.labelTargetSchema.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
       this.labelTargetSchema.Name = "labelTargetSchema";
-      this.labelTargetSchema.Size = new System.Drawing.Size(101, 29);
+      this.labelTargetSchema.Size = new System.Drawing.Size(68, 20);
       this.labelTargetSchema.TabIndex = 109;
       this.labelTargetSchema.Text = "Schema";
       // 
@@ -753,9 +776,10 @@
       // 
       this.labelTargetServer.AutoSize = true;
       this.labelTargetServer.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.labelTargetServer.Location = new System.Drawing.Point(789, 197);
+      this.labelTargetServer.Location = new System.Drawing.Point(526, 128);
+      this.labelTargetServer.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
       this.labelTargetServer.Name = "labelTargetServer";
-      this.labelTargetServer.Size = new System.Drawing.Size(239, 29);
+      this.labelTargetServer.Size = new System.Drawing.Size(163, 20);
       this.labelTargetServer.TabIndex = 108;
       this.labelTargetServer.Text = "PostgreSQL Server";
       // 
@@ -763,17 +787,19 @@
       // 
       this.labelTargetOperation.AutoSize = true;
       this.labelTargetOperation.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.labelTargetOperation.Location = new System.Drawing.Point(783, 117);
+      this.labelTargetOperation.Location = new System.Drawing.Point(522, 76);
+      this.labelTargetOperation.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
       this.labelTargetOperation.Name = "labelTargetOperation";
-      this.labelTargetOperation.Size = new System.Drawing.Size(102, 32);
+      this.labelTargetOperation.Size = new System.Drawing.Size(70, 24);
       this.labelTargetOperation.TabIndex = 107;
       this.labelTargetOperation.Text = "Target";
       // 
       // buttonSourceCreate
       // 
-      this.buttonSourceCreate.Location = new System.Drawing.Point(33, 709);
+      this.buttonSourceCreate.Location = new System.Drawing.Point(22, 461);
+      this.buttonSourceCreate.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
       this.buttonSourceCreate.Name = "buttonSourceCreate";
-      this.buttonSourceCreate.Size = new System.Drawing.Size(99, 38);
+      this.buttonSourceCreate.Size = new System.Drawing.Size(66, 25);
       this.buttonSourceCreate.TabIndex = 106;
       this.buttonSourceCreate.Text = "Create";
       this.buttonSourceCreate.UseVisualStyleBackColor = true;
@@ -781,9 +807,10 @@
       // 
       // buttonSourceRefresh
       // 
-      this.buttonSourceRefresh.Location = new System.Drawing.Point(459, 649);
+      this.buttonSourceRefresh.Location = new System.Drawing.Point(306, 422);
+      this.buttonSourceRefresh.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
       this.buttonSourceRefresh.Name = "buttonSourceRefresh";
-      this.buttonSourceRefresh.Size = new System.Drawing.Size(118, 38);
+      this.buttonSourceRefresh.Size = new System.Drawing.Size(79, 25);
       this.buttonSourceRefresh.TabIndex = 105;
       this.buttonSourceRefresh.Text = "Refresh";
       this.buttonSourceRefresh.UseVisualStyleBackColor = true;
@@ -793,78 +820,87 @@
       // 
       this.labelSourceDatabase.AutoSize = true;
       this.labelSourceDatabase.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.labelSourceDatabase.Location = new System.Drawing.Point(32, 611);
+      this.labelSourceDatabase.Location = new System.Drawing.Point(21, 397);
+      this.labelSourceDatabase.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
       this.labelSourceDatabase.Name = "labelSourceDatabase";
-      this.labelSourceDatabase.Size = new System.Drawing.Size(123, 29);
+      this.labelSourceDatabase.Size = new System.Drawing.Size(87, 20);
       this.labelSourceDatabase.TabIndex = 104;
       this.labelSourceDatabase.Text = "Database";
       // 
       // comboBoxSourceDatabase
       // 
       this.comboBoxSourceDatabase.FormattingEnabled = true;
-      this.comboBoxSourceDatabase.Location = new System.Drawing.Point(34, 652);
+      this.comboBoxSourceDatabase.Location = new System.Drawing.Point(23, 424);
+      this.comboBoxSourceDatabase.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
       this.comboBoxSourceDatabase.Name = "comboBoxSourceDatabase";
-      this.comboBoxSourceDatabase.Size = new System.Drawing.Size(412, 37);
+      this.comboBoxSourceDatabase.Size = new System.Drawing.Size(276, 28);
       this.comboBoxSourceDatabase.TabIndex = 103;
       this.comboBoxSourceDatabase.Text = "Database name";
       // 
       // checkBoxSourceRememberCredentials
       // 
       this.checkBoxSourceRememberCredentials.AutoSize = true;
-      this.checkBoxSourceRememberCredentials.Location = new System.Drawing.Point(222, 502);
+      this.checkBoxSourceRememberCredentials.Location = new System.Drawing.Point(148, 326);
+      this.checkBoxSourceRememberCredentials.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
       this.checkBoxSourceRememberCredentials.Name = "checkBoxSourceRememberCredentials";
-      this.checkBoxSourceRememberCredentials.Size = new System.Drawing.Size(284, 33);
+      this.checkBoxSourceRememberCredentials.Size = new System.Drawing.Size(188, 24);
       this.checkBoxSourceRememberCredentials.TabIndex = 102;
       this.checkBoxSourceRememberCredentials.Text = "Remember credentials";
       this.checkBoxSourceRememberCredentials.UseVisualStyleBackColor = true;
       // 
       // textBoxSourcePassword
       // 
-      this.textBoxSourcePassword.Location = new System.Drawing.Point(222, 392);
+      this.textBoxSourcePassword.Location = new System.Drawing.Point(148, 255);
+      this.textBoxSourcePassword.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
       this.textBoxSourcePassword.Name = "textBoxSourcePassword";
       this.textBoxSourcePassword.PasswordChar = '*';
-      this.textBoxSourcePassword.Size = new System.Drawing.Size(426, 35);
+      this.textBoxSourcePassword.Size = new System.Drawing.Size(285, 26);
       this.textBoxSourcePassword.TabIndex = 101;
       // 
       // textBoxSourceName
       // 
-      this.textBoxSourceName.Location = new System.Drawing.Point(222, 345);
+      this.textBoxSourceName.Location = new System.Drawing.Point(148, 224);
+      this.textBoxSourceName.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
       this.textBoxSourceName.Name = "textBoxSourceName";
-      this.textBoxSourceName.Size = new System.Drawing.Size(426, 35);
+      this.textBoxSourceName.Size = new System.Drawing.Size(285, 26);
       this.textBoxSourceName.TabIndex = 100;
       // 
       // labelSourcePassword
       // 
       this.labelSourcePassword.AutoSize = true;
-      this.labelSourcePassword.Location = new System.Drawing.Point(32, 392);
+      this.labelSourcePassword.Location = new System.Drawing.Point(21, 255);
+      this.labelSourcePassword.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
       this.labelSourcePassword.Name = "labelSourcePassword";
-      this.labelSourcePassword.Size = new System.Drawing.Size(120, 29);
+      this.labelSourcePassword.Size = new System.Drawing.Size(78, 20);
       this.labelSourcePassword.TabIndex = 99;
       this.labelSourcePassword.Text = "Password";
       // 
       // labelSourceUserName
       // 
       this.labelSourceUserName.AutoSize = true;
-      this.labelSourceUserName.Location = new System.Drawing.Point(32, 345);
+      this.labelSourceUserName.Location = new System.Drawing.Point(21, 224);
+      this.labelSourceUserName.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
       this.labelSourceUserName.Name = "labelSourceUserName";
-      this.labelSourceUserName.Size = new System.Drawing.Size(135, 29);
+      this.labelSourceUserName.Size = new System.Drawing.Size(89, 20);
       this.labelSourceUserName.TabIndex = 98;
       this.labelSourceUserName.Text = "User Name";
       // 
       // comboBoxSourceSchema
       // 
       this.comboBoxSourceSchema.FormattingEnabled = true;
-      this.comboBoxSourceSchema.Location = new System.Drawing.Point(148, 778);
+      this.comboBoxSourceSchema.Location = new System.Drawing.Point(99, 506);
+      this.comboBoxSourceSchema.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
       this.comboBoxSourceSchema.Name = "comboBoxSourceSchema";
-      this.comboBoxSourceSchema.Size = new System.Drawing.Size(298, 37);
+      this.comboBoxSourceSchema.Size = new System.Drawing.Size(200, 28);
       this.comboBoxSourceSchema.TabIndex = 97;
       // 
       // labelSourceSchema
       // 
       this.labelSourceSchema.AutoSize = true;
-      this.labelSourceSchema.Location = new System.Drawing.Point(32, 778);
+      this.labelSourceSchema.Location = new System.Drawing.Point(21, 506);
+      this.labelSourceSchema.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
       this.labelSourceSchema.Name = "labelSourceSchema";
-      this.labelSourceSchema.Size = new System.Drawing.Size(101, 29);
+      this.labelSourceSchema.Size = new System.Drawing.Size(68, 20);
       this.labelSourceSchema.TabIndex = 96;
       this.labelSourceSchema.Text = "Schema";
       // 
@@ -872,9 +908,10 @@
       // 
       this.labelSourceServer.AutoSize = true;
       this.labelSourceServer.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.labelSourceServer.Location = new System.Drawing.Point(28, 197);
+      this.labelSourceServer.Location = new System.Drawing.Point(19, 128);
+      this.labelSourceServer.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
       this.labelSourceServer.Name = "labelSourceServer";
-      this.labelSourceServer.Size = new System.Drawing.Size(175, 29);
+      this.labelSourceServer.Size = new System.Drawing.Size(118, 20);
       this.labelSourceServer.TabIndex = 95;
       this.labelSourceServer.Text = "Oracle Server";
       // 
@@ -882,9 +919,10 @@
       // 
       this.labelSourceOperation.AutoSize = true;
       this.labelSourceOperation.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.labelSourceOperation.Location = new System.Drawing.Point(28, 117);
+      this.labelSourceOperation.Location = new System.Drawing.Point(19, 76);
+      this.labelSourceOperation.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
       this.labelSourceOperation.Name = "labelSourceOperation";
-      this.labelSourceOperation.Size = new System.Drawing.Size(110, 32);
+      this.labelSourceOperation.Size = new System.Drawing.Size(77, 24);
       this.labelSourceOperation.TabIndex = 94;
       this.labelSourceOperation.Text = "Source";
       // 
@@ -901,11 +939,10 @@
       this.tabPageTables.Controls.Add(this.labelTablesTarget);
       this.tabPageTables.Controls.Add(this.labelTablesSource);
       this.tabPageTables.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.tabPageTables.Location = new System.Drawing.Point(4, 29);
-      this.tabPageTables.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+      this.tabPageTables.Location = new System.Drawing.Point(4, 22);
       this.tabPageTables.Name = "tabPageTables";
-      this.tabPageTables.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
-      this.tabPageTables.Size = new System.Drawing.Size(1465, 885);
+      this.tabPageTables.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+      this.tabPageTables.Size = new System.Drawing.Size(974, 619);
       this.tabPageTables.TabIndex = 1;
       this.tabPageTables.Text = "Tables";
       this.tabPageTables.UseVisualStyleBackColor = true;
@@ -914,53 +951,59 @@
       // labelSchema
       // 
       this.labelSchema.AutoSize = true;
-      this.labelSchema.Location = new System.Drawing.Point(738, 96);
+      this.labelSchema.Location = new System.Drawing.Point(492, 62);
+      this.labelSchema.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
       this.labelSchema.Name = "labelSchema";
-      this.labelSchema.Size = new System.Drawing.Size(107, 29);
+      this.labelSchema.Size = new System.Drawing.Size(72, 20);
       this.labelSchema.TabIndex = 117;
       this.labelSchema.Text = "Schema:";
       // 
       // comboBoxPostgresqlSchema
       // 
       this.comboBoxPostgresqlSchema.FormattingEnabled = true;
-      this.comboBoxPostgresqlSchema.Location = new System.Drawing.Point(899, 93);
+      this.comboBoxPostgresqlSchema.Location = new System.Drawing.Point(599, 60);
+      this.comboBoxPostgresqlSchema.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
       this.comboBoxPostgresqlSchema.Name = "comboBoxPostgresqlSchema";
-      this.comboBoxPostgresqlSchema.Size = new System.Drawing.Size(400, 37);
+      this.comboBoxPostgresqlSchema.Size = new System.Drawing.Size(268, 28);
       this.comboBoxPostgresqlSchema.TabIndex = 116;
       // 
       // labelPostgresqlTable
       // 
       this.labelPostgresqlTable.AutoSize = true;
-      this.labelPostgresqlTable.Location = new System.Drawing.Point(738, 140);
+      this.labelPostgresqlTable.Location = new System.Drawing.Point(492, 91);
+      this.labelPostgresqlTable.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
       this.labelPostgresqlTable.Name = "labelPostgresqlTable";
-      this.labelPostgresqlTable.Size = new System.Drawing.Size(148, 29);
+      this.labelPostgresqlTable.Size = new System.Drawing.Size(96, 20);
       this.labelPostgresqlTable.TabIndex = 115;
       this.labelPostgresqlTable.Text = "Table name:";
       // 
       // comboBoxPostgresqlTable
       // 
       this.comboBoxPostgresqlTable.FormattingEnabled = true;
-      this.comboBoxPostgresqlTable.Location = new System.Drawing.Point(899, 137);
+      this.comboBoxPostgresqlTable.Location = new System.Drawing.Point(599, 89);
+      this.comboBoxPostgresqlTable.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
       this.comboBoxPostgresqlTable.Name = "comboBoxPostgresqlTable";
-      this.comboBoxPostgresqlTable.Size = new System.Drawing.Size(400, 37);
+      this.comboBoxPostgresqlTable.Size = new System.Drawing.Size(268, 28);
       this.comboBoxPostgresqlTable.TabIndex = 114;
       this.comboBoxPostgresqlTable.SelectedIndexChanged += new System.EventHandler(this.ComboBoxPostgresqlTable_SelectedIndexChanged);
       // 
       // labelOracleTable
       // 
       this.labelOracleTable.AutoSize = true;
-      this.labelOracleTable.Location = new System.Drawing.Point(50, 135);
+      this.labelOracleTable.Location = new System.Drawing.Point(33, 88);
+      this.labelOracleTable.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
       this.labelOracleTable.Name = "labelOracleTable";
-      this.labelOracleTable.Size = new System.Drawing.Size(148, 29);
+      this.labelOracleTable.Size = new System.Drawing.Size(96, 20);
       this.labelOracleTable.TabIndex = 113;
       this.labelOracleTable.Text = "Table name:";
       // 
       // comboBoxOracleTable
       // 
       this.comboBoxOracleTable.FormattingEnabled = true;
-      this.comboBoxOracleTable.Location = new System.Drawing.Point(211, 132);
+      this.comboBoxOracleTable.Location = new System.Drawing.Point(141, 86);
+      this.comboBoxOracleTable.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
       this.comboBoxOracleTable.Name = "comboBoxOracleTable";
-      this.comboBoxOracleTable.Size = new System.Drawing.Size(400, 37);
+      this.comboBoxOracleTable.Size = new System.Drawing.Size(268, 28);
       this.comboBoxOracleTable.TabIndex = 112;
       this.comboBoxOracleTable.SelectedIndexChanged += new System.EventHandler(this.ComboBoxOracleTable_SelectedIndexChanged);
       // 
@@ -971,12 +1014,13 @@
       this.dataGridViewPostgreSql.AllowUserToOrderColumns = true;
       this.dataGridViewPostgreSql.Anchor = System.Windows.Forms.AnchorStyles.None;
       this.dataGridViewPostgreSql.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-      this.dataGridViewPostgreSql.Location = new System.Drawing.Point(743, 200);
+      this.dataGridViewPostgreSql.Location = new System.Drawing.Point(495, 125);
+      this.dataGridViewPostgreSql.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
       this.dataGridViewPostgreSql.Name = "dataGridViewPostgreSql";
       this.dataGridViewPostgreSql.ReadOnly = true;
       this.dataGridViewPostgreSql.RowHeadersWidth = 62;
       this.dataGridViewPostgreSql.RowTemplate.Height = 28;
-      this.dataGridViewPostgreSql.Size = new System.Drawing.Size(557, 435);
+      this.dataGridViewPostgreSql.Size = new System.Drawing.Size(371, 283);
       this.dataGridViewPostgreSql.TabIndex = 111;
       // 
       // dataGridViewOracle
@@ -986,21 +1030,23 @@
       this.dataGridViewOracle.AllowUserToOrderColumns = true;
       this.dataGridViewOracle.Anchor = System.Windows.Forms.AnchorStyles.None;
       this.dataGridViewOracle.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-      this.dataGridViewOracle.Location = new System.Drawing.Point(54, 200);
+      this.dataGridViewOracle.Location = new System.Drawing.Point(36, 125);
+      this.dataGridViewOracle.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
       this.dataGridViewOracle.Name = "dataGridViewOracle";
       this.dataGridViewOracle.ReadOnly = true;
       this.dataGridViewOracle.RowHeadersWidth = 62;
       this.dataGridViewOracle.RowTemplate.Height = 28;
-      this.dataGridViewOracle.Size = new System.Drawing.Size(557, 435);
+      this.dataGridViewOracle.Size = new System.Drawing.Size(371, 283);
       this.dataGridViewOracle.TabIndex = 110;
       // 
       // labelTablesTarget
       // 
       this.labelTablesTarget.AutoSize = true;
       this.labelTablesTarget.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.labelTablesTarget.Location = new System.Drawing.Point(737, 47);
+      this.labelTablesTarget.Location = new System.Drawing.Point(491, 31);
+      this.labelTablesTarget.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
       this.labelTablesTarget.Name = "labelTablesTarget";
-      this.labelTablesTarget.Size = new System.Drawing.Size(269, 32);
+      this.labelTablesTarget.Size = new System.Drawing.Size(183, 24);
       this.labelTablesTarget.TabIndex = 109;
       this.labelTablesTarget.Text = "Target: PostgreSql";
       // 
@@ -1008,22 +1054,22 @@
       // 
       this.labelTablesSource.AutoSize = true;
       this.labelTablesSource.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.labelTablesSource.Location = new System.Drawing.Point(48, 47);
+      this.labelTablesSource.Location = new System.Drawing.Point(32, 31);
+      this.labelTablesSource.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
       this.labelTablesSource.Name = "labelTablesSource";
-      this.labelTablesSource.Size = new System.Drawing.Size(217, 32);
+      this.labelTablesSource.Size = new System.Drawing.Size(151, 24);
       this.labelTablesSource.TabIndex = 108;
       this.labelTablesSource.Text = "Source: Oracle";
       // 
       // FormMain
       // 
-      this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+      this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
       this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-      this.ClientSize = new System.Drawing.Size(1473, 1063);
+      this.ClientSize = new System.Drawing.Size(982, 691);
       this.Controls.Add(this.tabControlMain);
       this.Controls.Add(this.statusStrip1);
       this.Controls.Add(this.menuStrip1);
       this.MainMenuStrip = this.menuStrip1;
-      this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
       this.Name = "FormMain";
       this.Text = "Fred Oracle PostgreSQL Data Compare";
       this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FormMain_FormClosed);

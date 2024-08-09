@@ -1,6 +1,4 @@
-﻿//using System.Data.OracleClient;
-using FredOraclePostgreSQLDataCompare.Properties;
-using FredOraclePostgreSQLDataCompare.DAL;
+﻿using FredOraclePostgreSQLDataCompare.Properties;
 using FredOraclePostgreSQLDataCompare.DAL.PostgreSql;
 using log4net;
 using log4net.Config;
@@ -297,7 +295,21 @@ namespace FredOraclePostgreSQLDataCompare
 
     private void QuitToolStripMenuItem_Click(object sender, EventArgs e)
     {
+      SaveAuthentification();
       Application.Exit();
+    }
+
+    private void SaveAuthentification()
+    {
+      if (checkBoxTargetRememberCredentials.Checked)
+      {
+
+      }
+
+      if (checkBoxSourceRememberCredentials.Checked)
+      {
+
+      }
     }
 
     private void AboutToolStripMenuItem_Click(object sender, EventArgs e)
@@ -313,6 +325,8 @@ namespace FredOraclePostgreSQLDataCompare
       Settings.Default.WindowLeft = Left;
       Settings.Default.WindowTop = Top;
       Settings.Default.LastLanguageUsed = frenchToolStripMenuItem.Checked ? "French" : "English";
+      Settings.Default.CheckBoxSourceRememberCredentials = checkBoxSourceRememberCredentials.Checked;
+      Settings.Default.CheckBoxTargetRememberCredentials = checkBoxTargetRememberCredentials.Checked;
       Settings.Default.Save();
     }
 
@@ -323,6 +337,8 @@ namespace FredOraclePostgreSQLDataCompare
       Top = Settings.Default.WindowTop < 0 ? 0 : Settings.Default.WindowTop;
       Left = Settings.Default.WindowLeft < 0 ? 0 : Settings.Default.WindowLeft;
       SetLanguageMenu(Settings.Default.LastLanguageUsed);
+      checkBoxSourceRememberCredentials.Checked = Settings.Default.CheckBoxSourceRememberCredentials;
+      checkBoxTargetRememberCredentials.Checked = Settings.Default.CheckBoxTargetRememberCredentials;
     }
 
     private void SetLanguageMenu(string language)
@@ -546,7 +562,7 @@ namespace FredOraclePostgreSQLDataCompare
 
       if (string.IsNullOrEmpty(textBoxDatabaseNameSource.Text))
       {
-        MessageBox.Show("You have to choose a database to conenct to", "No database", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+        MessageBox.Show("You have to choose a database to connect to", "No database", MessageBoxButtons.OK, MessageBoxIcon.Stop);
         sourceAuthenticationIsOk = false;
         return;
       }
@@ -582,7 +598,64 @@ namespace FredOraclePostgreSQLDataCompare
 
     private void ButtonTestconnectionTarget_Click(object sender, EventArgs e)
     {
+      // test the connection and assign targetAuthenticationIsOk a value
+      if (string.IsNullOrEmpty(textBoxTargetServer.Text))
+      {
+        MessageBox.Show("You have to choose a target server", "No server selected", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+        targetAuthenticationIsOk = false;
+        return;
+      }
 
+      if (string.IsNullOrEmpty(textBoxTargetPort.Text))
+      {
+        MessageBox.Show("You have to choose a target port number", "No port number", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+        targetAuthenticationIsOk = false;
+        return;
+      }
+
+      if (string.IsNullOrEmpty(textBoxTargetName.Text))
+      {
+        MessageBox.Show("You have to choose a target username", "No username", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+        targetAuthenticationIsOk = false;
+        return;
+      }
+
+      if (string.IsNullOrEmpty(textBoxTargetPassword.Text))
+      {
+        MessageBox.Show("You have to choose a target password", "No password", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+        targetAuthenticationIsOk = false;
+        return;
+      }
+
+      if (string.IsNullOrEmpty(textBoxDatabaseNameTarget.Text))
+      {
+        MessageBox.Show("You have to choose a database to connect to", "No database", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+        targetAuthenticationIsOk = false;
+        return;
+      }
+
+      PostgreSqlDatabaseAuthentication dbConnexion = new PostgreSqlDatabaseAuthentication
+      {
+        UserName = textBoxTargetName.Text,
+        UserPassword = textBoxTargetPassword.Text,
+        ServerName = textBoxTargetServer.Text,
+        Port = int.Parse(textBoxTargetPort.Text),
+        DatabaseName = textBoxDatabaseNameTarget.Text
+      };
+
+      string sqlQuery = PostgreSqlConnectionSqlServer.TestRequest();
+      if (PostgreSqlDALHelper.TestConnection(dbConnexion.ToString()))
+      {
+        MessageBox.Show("Connection OK", "OK", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        targetAuthenticationIsOk = true;
+      }
+      else
+      {
+        MessageBox.Show($"Cannot connect to the database: {dbConnexion.DatabaseName} on the server: {dbConnexion.ServerName}", "Connection KO", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+        targetAuthenticationIsOk = false;
+      }
+
+      CheckBothAuthentication();
     }
 
     private void ButtonSourceRefresh_Click(object sender, EventArgs e)

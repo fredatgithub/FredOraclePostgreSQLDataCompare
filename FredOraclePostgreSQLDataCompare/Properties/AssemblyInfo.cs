@@ -9,7 +9,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyDescription("WinForm to compare data between Oracle and PostgreSQL databases")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("FredOraclePostgreSQLDataCompare")]
+[assembly: AssemblyProduct("Fred Oracle PostgreSQL Data Compare")]
 [assembly: AssemblyCopyright("Copyright ©  2023-2024 MIT Freddy Juhel")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]

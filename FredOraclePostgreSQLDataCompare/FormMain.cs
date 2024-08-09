@@ -269,7 +269,7 @@ namespace FredOraclePostgreSQLDataCompare
     {
       var assembly = Assembly.GetExecutingAssembly();
       var fvi = FileVersionInfo.GetVersionInfo(assembly.Location);
-      return $" V-{fvi.FileMajorPart}.{fvi.FileMinorPart}.{fvi.FileBuildPart}.{fvi.FilePrivatePart}";
+      return $" V{fvi.FileMajorPart}.{fvi.FileMinorPart}.{fvi.FileBuildPart}.{fvi.FilePrivatePart}";
     }
 
     private static string GetEnvironment64BitProcess()

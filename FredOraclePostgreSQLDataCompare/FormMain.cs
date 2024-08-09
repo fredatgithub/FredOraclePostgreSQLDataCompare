@@ -617,7 +617,43 @@ namespace FredOraclePostgreSQLDataCompare
 
     private void ButtonCompareCompareNow_Click(object sender, EventArgs e)
     {
+      // Checked connections before tab switching
 
+      tabControlMain.SelectedIndex = 1;
+    }
+
+    private void TabPageTables_Click(object sender, EventArgs e)
+    {
+
+
+    }
+
+    private void ComboBoxOracleTable_SelectedIndexChanged(object sender, EventArgs e)
+    {
+
+    }
+
+    private void ComboBoxPostgresqlTable_SelectedIndexChanged(object sender, EventArgs e)
+    {
+
+    }
+
+    private void TabPageConnection_Click(object sender, EventArgs e)
+    {
+      var test = 3;
+    }
+
+    private void TabControlMain_SelectedIndexChanged(object sender, EventArgs e)
+    {
+      if (tabControlMain.SelectedIndex == 1)
+      {
+        // loading controls
+        comboBoxOracleTable.Items.Clear();
+        comboBoxPostgresqlTable.Items.Clear();
+        comboBoxPostgresqlSchema.Items.Clear();
+        comboBoxPostgresqlSchema.Items.Add("public");
+        comboBoxPostgresqlSchema.SelectedIndex = 0;
+      }
     }
   }
 }

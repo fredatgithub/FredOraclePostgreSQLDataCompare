@@ -111,16 +111,27 @@
       this.labelSourceServer = new System.Windows.Forms.Label();
       this.labelSourceOperation = new System.Windows.Forms.Label();
       this.tabPageTables = new System.Windows.Forms.TabPage();
+      this.labelSchema = new System.Windows.Forms.Label();
+      this.comboBoxPostgresqlSchema = new System.Windows.Forms.ComboBox();
+      this.labelPostgresqlTable = new System.Windows.Forms.Label();
+      this.comboBoxPostgresqlTable = new System.Windows.Forms.ComboBox();
+      this.labelOracleTable = new System.Windows.Forms.Label();
+      this.comboBoxOracleTable = new System.Windows.Forms.ComboBox();
+      this.dataGridViewPostgreSql = new System.Windows.Forms.DataGridView();
+      this.dataGridViewOracle = new System.Windows.Forms.DataGridView();
       this.labelTablesTarget = new System.Windows.Forms.Label();
       this.labelTablesSource = new System.Windows.Forms.Label();
       this.menuStrip1.SuspendLayout();
       this.tabControlMain.SuspendLayout();
       this.tabPageConnection.SuspendLayout();
       this.tabPageTables.SuspendLayout();
+      ((System.ComponentModel.ISupportInitialize)(this.dataGridViewPostgreSql)).BeginInit();
+      ((System.ComponentModel.ISupportInitialize)(this.dataGridViewOracle)).BeginInit();
       this.SuspendLayout();
       // 
       // menuStrip1
       // 
+      this.menuStrip1.GripMargin = new System.Windows.Forms.Padding(2, 2, 0, 2);
       this.menuStrip1.ImageScalingSize = new System.Drawing.Size(24, 24);
       this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.fichierToolStripMenuItem,
@@ -130,8 +141,7 @@
             this.aideToolStripMenuItem});
       this.menuStrip1.Location = new System.Drawing.Point(0, 0);
       this.menuStrip1.Name = "menuStrip1";
-      this.menuStrip1.Padding = new System.Windows.Forms.Padding(9, 3, 0, 3);
-      this.menuStrip1.Size = new System.Drawing.Size(1499, 43);
+      this.menuStrip1.Size = new System.Drawing.Size(1473, 33);
       this.menuStrip1.TabIndex = 0;
       this.menuStrip1.Text = "menuStrip1";
       // 
@@ -149,7 +159,7 @@
             this.toolStripSeparator2,
             this.quitterToolStripMenuItem});
       this.fichierToolStripMenuItem.Name = "fichierToolStripMenuItem";
-      this.fichierToolStripMenuItem.Size = new System.Drawing.Size(78, 37);
+      this.fichierToolStripMenuItem.Size = new System.Drawing.Size(78, 29);
       this.fichierToolStripMenuItem.Text = "&Fichier";
       // 
       // nouveauToolStripMenuItem
@@ -236,7 +246,7 @@
             this.toolStripSeparator4,
             this.sélectionnertoutToolStripMenuItem});
       this.editionToolStripMenuItem.Name = "editionToolStripMenuItem";
-      this.editionToolStripMenuItem.Size = new System.Drawing.Size(83, 37);
+      this.editionToolStripMenuItem.Size = new System.Drawing.Size(83, 29);
       this.editionToolStripMenuItem.Text = "&Edition";
       // 
       // annulerToolStripMenuItem
@@ -302,7 +312,7 @@
             this.personnaliserToolStripMenuItem,
             this.optionsToolStripMenuItem});
       this.outilsToolStripMenuItem.Name = "outilsToolStripMenuItem";
-      this.outilsToolStripMenuItem.Size = new System.Drawing.Size(74, 37);
+      this.outilsToolStripMenuItem.Size = new System.Drawing.Size(74, 29);
       this.outilsToolStripMenuItem.Text = "&Outils";
       // 
       // personnaliserToolStripMenuItem
@@ -323,7 +333,7 @@
             this.frenchToolStripMenuItem,
             this.englishToolStripMenuItem});
       this.toolStripMenuItemLanguage.Name = "toolStripMenuItemLanguage";
-      this.toolStripMenuItemLanguage.Size = new System.Drawing.Size(105, 37);
+      this.toolStripMenuItemLanguage.Size = new System.Drawing.Size(105, 29);
       this.toolStripMenuItemLanguage.Text = "Language";
       // 
       // frenchToolStripMenuItem
@@ -351,7 +361,7 @@
             this.toolStripSeparator5,
             this.àproposdeToolStripMenuItem});
       this.aideToolStripMenuItem.Name = "aideToolStripMenuItem";
-      this.aideToolStripMenuItem.Size = new System.Drawing.Size(64, 37);
+      this.aideToolStripMenuItem.Size = new System.Drawing.Size(64, 29);
       this.aideToolStripMenuItem.Text = "&Aide";
       // 
       // sommaireToolStripMenuItem
@@ -387,10 +397,10 @@
       // statusStrip1
       // 
       this.statusStrip1.ImageScalingSize = new System.Drawing.Size(24, 24);
-      this.statusStrip1.Location = new System.Drawing.Point(0, 1141);
+      this.statusStrip1.Location = new System.Drawing.Point(0, 1041);
       this.statusStrip1.Name = "statusStrip1";
       this.statusStrip1.Padding = new System.Windows.Forms.Padding(2, 0, 21, 0);
-      this.statusStrip1.Size = new System.Drawing.Size(1499, 26);
+      this.statusStrip1.Size = new System.Drawing.Size(1473, 22);
       this.statusStrip1.TabIndex = 1;
       this.statusStrip1.Text = "statusStrip1";
       // 
@@ -399,12 +409,13 @@
       this.tabControlMain.Controls.Add(this.tabPageConnection);
       this.tabControlMain.Controls.Add(this.tabPageTables);
       this.tabControlMain.Dock = System.Windows.Forms.DockStyle.Fill;
-      this.tabControlMain.Location = new System.Drawing.Point(0, 52);
+      this.tabControlMain.Location = new System.Drawing.Point(0, 33);
       this.tabControlMain.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
       this.tabControlMain.Name = "tabControlMain";
       this.tabControlMain.SelectedIndex = 0;
-      this.tabControlMain.Size = new System.Drawing.Size(1499, 1085);
+      this.tabControlMain.Size = new System.Drawing.Size(1473, 1008);
       this.tabControlMain.TabIndex = 2;
+      this.tabControlMain.SelectedIndexChanged += new System.EventHandler(this.TabControlMain_SelectedIndexChanged);
       // 
       // tabPageConnection
       // 
@@ -458,10 +469,11 @@
       this.tabPageConnection.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
       this.tabPageConnection.Name = "tabPageConnection";
       this.tabPageConnection.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
-      this.tabPageConnection.Size = new System.Drawing.Size(1491, 1052);
+      this.tabPageConnection.Size = new System.Drawing.Size(1465, 975);
       this.tabPageConnection.TabIndex = 0;
       this.tabPageConnection.Text = "Connection";
       this.tabPageConnection.UseVisualStyleBackColor = true;
+      this.tabPageConnection.Click += new System.EventHandler(this.TabPageConnection_Click);
       // 
       // buttonRefreshTarget
       // 
@@ -878,42 +890,135 @@
       // 
       // tabPageTables
       // 
+      this.tabPageTables.Controls.Add(this.labelSchema);
+      this.tabPageTables.Controls.Add(this.comboBoxPostgresqlSchema);
+      this.tabPageTables.Controls.Add(this.labelPostgresqlTable);
+      this.tabPageTables.Controls.Add(this.comboBoxPostgresqlTable);
+      this.tabPageTables.Controls.Add(this.labelOracleTable);
+      this.tabPageTables.Controls.Add(this.comboBoxOracleTable);
+      this.tabPageTables.Controls.Add(this.dataGridViewPostgreSql);
+      this.tabPageTables.Controls.Add(this.dataGridViewOracle);
       this.tabPageTables.Controls.Add(this.labelTablesTarget);
       this.tabPageTables.Controls.Add(this.labelTablesSource);
+      this.tabPageTables.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this.tabPageTables.Location = new System.Drawing.Point(4, 29);
       this.tabPageTables.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
       this.tabPageTables.Name = "tabPageTables";
       this.tabPageTables.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
-      this.tabPageTables.Size = new System.Drawing.Size(1491, 1052);
+      this.tabPageTables.Size = new System.Drawing.Size(1465, 885);
       this.tabPageTables.TabIndex = 1;
       this.tabPageTables.Text = "Tables";
       this.tabPageTables.UseVisualStyleBackColor = true;
+      this.tabPageTables.Click += new System.EventHandler(this.TabPageTables_Click);
+      // 
+      // labelSchema
+      // 
+      this.labelSchema.AutoSize = true;
+      this.labelSchema.Location = new System.Drawing.Point(738, 96);
+      this.labelSchema.Name = "labelSchema";
+      this.labelSchema.Size = new System.Drawing.Size(107, 29);
+      this.labelSchema.TabIndex = 117;
+      this.labelSchema.Text = "Schema:";
+      // 
+      // comboBoxPostgresqlSchema
+      // 
+      this.comboBoxPostgresqlSchema.FormattingEnabled = true;
+      this.comboBoxPostgresqlSchema.Location = new System.Drawing.Point(899, 93);
+      this.comboBoxPostgresqlSchema.Name = "comboBoxPostgresqlSchema";
+      this.comboBoxPostgresqlSchema.Size = new System.Drawing.Size(400, 37);
+      this.comboBoxPostgresqlSchema.TabIndex = 116;
+      // 
+      // labelPostgresqlTable
+      // 
+      this.labelPostgresqlTable.AutoSize = true;
+      this.labelPostgresqlTable.Location = new System.Drawing.Point(738, 140);
+      this.labelPostgresqlTable.Name = "labelPostgresqlTable";
+      this.labelPostgresqlTable.Size = new System.Drawing.Size(148, 29);
+      this.labelPostgresqlTable.TabIndex = 115;
+      this.labelPostgresqlTable.Text = "Table name:";
+      // 
+      // comboBoxPostgresqlTable
+      // 
+      this.comboBoxPostgresqlTable.FormattingEnabled = true;
+      this.comboBoxPostgresqlTable.Location = new System.Drawing.Point(899, 137);
+      this.comboBoxPostgresqlTable.Name = "comboBoxPostgresqlTable";
+      this.comboBoxPostgresqlTable.Size = new System.Drawing.Size(400, 37);
+      this.comboBoxPostgresqlTable.TabIndex = 114;
+      this.comboBoxPostgresqlTable.SelectedIndexChanged += new System.EventHandler(this.ComboBoxPostgresqlTable_SelectedIndexChanged);
+      // 
+      // labelOracleTable
+      // 
+      this.labelOracleTable.AutoSize = true;
+      this.labelOracleTable.Location = new System.Drawing.Point(50, 135);
+      this.labelOracleTable.Name = "labelOracleTable";
+      this.labelOracleTable.Size = new System.Drawing.Size(148, 29);
+      this.labelOracleTable.TabIndex = 113;
+      this.labelOracleTable.Text = "Table name:";
+      // 
+      // comboBoxOracleTable
+      // 
+      this.comboBoxOracleTable.FormattingEnabled = true;
+      this.comboBoxOracleTable.Location = new System.Drawing.Point(211, 132);
+      this.comboBoxOracleTable.Name = "comboBoxOracleTable";
+      this.comboBoxOracleTable.Size = new System.Drawing.Size(400, 37);
+      this.comboBoxOracleTable.TabIndex = 112;
+      this.comboBoxOracleTable.SelectedIndexChanged += new System.EventHandler(this.ComboBoxOracleTable_SelectedIndexChanged);
+      // 
+      // dataGridViewPostgreSql
+      // 
+      this.dataGridViewPostgreSql.AllowUserToAddRows = false;
+      this.dataGridViewPostgreSql.AllowUserToDeleteRows = false;
+      this.dataGridViewPostgreSql.AllowUserToOrderColumns = true;
+      this.dataGridViewPostgreSql.Anchor = System.Windows.Forms.AnchorStyles.None;
+      this.dataGridViewPostgreSql.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+      this.dataGridViewPostgreSql.Location = new System.Drawing.Point(743, 200);
+      this.dataGridViewPostgreSql.Name = "dataGridViewPostgreSql";
+      this.dataGridViewPostgreSql.ReadOnly = true;
+      this.dataGridViewPostgreSql.RowHeadersWidth = 62;
+      this.dataGridViewPostgreSql.RowTemplate.Height = 28;
+      this.dataGridViewPostgreSql.Size = new System.Drawing.Size(557, 435);
+      this.dataGridViewPostgreSql.TabIndex = 111;
+      // 
+      // dataGridViewOracle
+      // 
+      this.dataGridViewOracle.AllowUserToAddRows = false;
+      this.dataGridViewOracle.AllowUserToDeleteRows = false;
+      this.dataGridViewOracle.AllowUserToOrderColumns = true;
+      this.dataGridViewOracle.Anchor = System.Windows.Forms.AnchorStyles.None;
+      this.dataGridViewOracle.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+      this.dataGridViewOracle.Location = new System.Drawing.Point(54, 200);
+      this.dataGridViewOracle.Name = "dataGridViewOracle";
+      this.dataGridViewOracle.ReadOnly = true;
+      this.dataGridViewOracle.RowHeadersWidth = 62;
+      this.dataGridViewOracle.RowTemplate.Height = 28;
+      this.dataGridViewOracle.Size = new System.Drawing.Size(557, 435);
+      this.dataGridViewOracle.TabIndex = 110;
       // 
       // labelTablesTarget
       // 
       this.labelTablesTarget.AutoSize = true;
       this.labelTablesTarget.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.labelTablesTarget.Location = new System.Drawing.Point(737, 64);
+      this.labelTablesTarget.Location = new System.Drawing.Point(737, 47);
       this.labelTablesTarget.Name = "labelTablesTarget";
-      this.labelTablesTarget.Size = new System.Drawing.Size(102, 32);
+      this.labelTablesTarget.Size = new System.Drawing.Size(269, 32);
       this.labelTablesTarget.TabIndex = 109;
-      this.labelTablesTarget.Text = "Target";
+      this.labelTablesTarget.Text = "Target: PostgreSql";
       // 
       // labelTablesSource
       // 
       this.labelTablesSource.AutoSize = true;
       this.labelTablesSource.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.labelTablesSource.Location = new System.Drawing.Point(48, 64);
+      this.labelTablesSource.Location = new System.Drawing.Point(48, 47);
       this.labelTablesSource.Name = "labelTablesSource";
-      this.labelTablesSource.Size = new System.Drawing.Size(110, 32);
+      this.labelTablesSource.Size = new System.Drawing.Size(217, 32);
       this.labelTablesSource.TabIndex = 108;
-      this.labelTablesSource.Text = "Source";
+      this.labelTablesSource.Text = "Source: Oracle";
       // 
       // FormMain
       // 
       this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
       this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-      this.ClientSize = new System.Drawing.Size(1249, 973);
+      this.ClientSize = new System.Drawing.Size(1473, 1063);
       this.Controls.Add(this.tabControlMain);
       this.Controls.Add(this.statusStrip1);
       this.Controls.Add(this.menuStrip1);
@@ -930,6 +1035,8 @@
       this.tabPageConnection.PerformLayout();
       this.tabPageTables.ResumeLayout(false);
       this.tabPageTables.PerformLayout();
+      ((System.ComponentModel.ISupportInitialize)(this.dataGridViewPostgreSql)).EndInit();
+      ((System.ComponentModel.ISupportInitialize)(this.dataGridViewOracle)).EndInit();
       this.ResumeLayout(false);
       this.PerformLayout();
 
@@ -1021,6 +1128,14 @@
     private System.Windows.Forms.Label labelSourceOperation;
     private System.Windows.Forms.Label labelTablesTarget;
     private System.Windows.Forms.Label labelTablesSource;
+    private System.Windows.Forms.DataGridView dataGridViewOracle;
+    private System.Windows.Forms.DataGridView dataGridViewPostgreSql;
+    private System.Windows.Forms.Label labelPostgresqlTable;
+    private System.Windows.Forms.ComboBox comboBoxPostgresqlTable;
+    private System.Windows.Forms.Label labelOracleTable;
+    private System.Windows.Forms.ComboBox comboBoxOracleTable;
+    private System.Windows.Forms.Label labelSchema;
+    private System.Windows.Forms.ComboBox comboBoxPostgresqlSchema;
   }
 }
 

@@ -634,7 +634,26 @@ namespace FredOraclePostgreSQLDataCompare
         return;
       }
 
-      PostgreSqlDatabaseAuthentication dbConnexion = new PostgreSqlDatabaseAuthentication
+      var dbTargetConnexion = GetTargetConnexion();
+
+      string sqlQuery = PostgreSqlConnectionSqlServer.TestRequest();
+      if (PostgreSqlDALHelper.TestConnection(dbTargetConnexion.ToString()))
+      {
+        MessageBox.Show("Connection OK", "OK", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        targetAuthenticationIsOk = true;
+      }
+      else
+      {
+        MessageBox.Show($"Cannot connect to the database: {dbTargetConnexion.DatabaseName} on the server: {dbTargetConnexion.ServerName}", "Connection KO", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+        targetAuthenticationIsOk = false;
+      }
+
+      CheckBothAuthentication();
+    }
+
+    private PostgreSqlDatabaseAuthentication GetTargetConnexion()
+    {
+      var dbConnexion = new PostgreSqlDatabaseAuthentication
       {
         UserName = textBoxTargetName.Text,
         UserPassword = textBoxTargetPassword.Text,
@@ -643,19 +662,7 @@ namespace FredOraclePostgreSQLDataCompare
         DatabaseName = textBoxDatabaseNameTarget.Text
       };
 
-      string sqlQuery = PostgreSqlConnectionSqlServer.TestRequest();
-      if (PostgreSqlDALHelper.TestConnection(dbConnexion.ToString()))
-      {
-        MessageBox.Show("Connection OK", "OK", MessageBoxButtons.OK, MessageBoxIcon.Information);
-        targetAuthenticationIsOk = true;
-      }
-      else
-      {
-        MessageBox.Show($"Cannot connect to the database: {dbConnexion.DatabaseName} on the server: {dbConnexion.ServerName}", "Connection KO", MessageBoxButtons.OK, MessageBoxIcon.Stop);
-        targetAuthenticationIsOk = false;
-      }
-
-      CheckBothAuthentication();
+      return dbConnexion;
     }
 
     private void ButtonSourceRefresh_Click(object sender, EventArgs e)
@@ -724,9 +731,19 @@ namespace FredOraclePostgreSQLDataCompare
         comboBoxOracleTable.Items.Clear();
         comboBoxPostgresqlTable.Items.Clear();
         comboBoxPostgresqlSchema.Items.Clear();
-        comboBoxPostgresqlSchema.Items.Add("public");
+        var items = new List<string>();
+        var dbTargetConnexion = GetTargetConnexion();
+        var query = "SELECT schema_name FROM information_schema.schemata where schema_name not in ('information_schema', 'pg_catalog') ORDER BY schema_name;";
+        items = PostgreSqlDALHelper.ExecuteSqlQueryToListOfStrings(dbTargetConnexion.ToString(), query);
+        LoadCombobox(comboBoxPostgresqlSchema, items);
         comboBoxPostgresqlSchema.SelectedIndex = 0;
       }
+    }
+
+    private void LoadCombobox(ComboBox comboBox, List<string> items)
+    {
+      comboBox.Items.Clear();
+      comboBox.Items.AddRange(items.ToArray());
     }
   }
 }

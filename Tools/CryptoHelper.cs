@@ -62,10 +62,12 @@ namespace Tools
         return "ko-key length not 16, 24 or 32 bits";
       }
 
+      byte[] Key = Encoding.UTF8.GetBytes(key);
+      byte[] InitializeVector = Encoding.UTF8.GetBytes(initializeVector);
       using (Aes aesAlg = Aes.Create())
       {
-        aesAlg.Key = key;
-        aesAlg.IV = initializeVector;
+        aesAlg.Key = Key;
+        aesAlg.IV = InitializeVector;
 
         ICryptoTransform decryptor = aesAlg.CreateDecryptor(aesAlg.Key, aesAlg.IV);
 

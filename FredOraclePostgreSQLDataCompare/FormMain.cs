@@ -37,8 +37,8 @@ namespace FredOraclePostgreSQLDataCompare
     /// <summary>
     /// Key to be used to encrypt source parameters.
     /// </summary>
-    private const string SourceKeyFilename = "SourceKey.pidb";
-    private const string SourceSaltFilename = "SourceSalt.pidb";
+    private const string SourceKeyFilename = "SourceOne.pidb";
+    private const string SourceSaltFilename = "SourceTwo.pidb";
 
     /// <summary>
     /// All the values encrypted for source parameters.
@@ -52,8 +52,8 @@ namespace FredOraclePostgreSQLDataCompare
     /// <summary>
     /// Key to be used to encrypt target parameters.
     /// </summary>
-    private const string TargetKeyFilename = "TargetKey.pidb";
-    private const string TargetSaltFilename = "TargetSalt.pidb";
+    private const string TargetKeyFilename = "TargetOne.pidb";
+    private const string TargetSaltFilename = "TargetTwo.pidb";
 
     /// <summary>
     /// All the values encrypted for source parameters.
@@ -206,7 +206,7 @@ namespace FredOraclePostgreSQLDataCompare
       }
 
       string valuesFinal = values[Helper.SecondElement];
-      var plainText = Helper.DecodeWithAES(valuesFinal, encryptionKey, encryptionSalt);
+      var plainText = Crypto.DecodeWithAES(valuesFinal, encryptionKey, encryptionSalt);
       textBox.Text = plainText;
     }
 
@@ -303,12 +303,57 @@ namespace FredOraclePostgreSQLDataCompare
     {
       if (checkBoxTargetRememberCredentials.Checked)
       {
-
+        SaveTargetCredentials();
       }
 
       if (checkBoxSourceRememberCredentials.Checked)
       {
+        SaveSourceCredentials();
+      }
+    }
 
+    private void SaveSourceCredentials()
+    {
+      throw new NotImplementedException();
+    }
+
+    private void SaveTargetCredentials()
+    {
+      if (!string.IsNullOrEmpty(textBoxTargetServer.Text))
+      {
+        EncryptAndSave(TargetValue1Filename, textBoxTargetServer.Text, TargetKeyFilename, TargetSaltFilename);
+
+      }
+    }
+
+    private void EncryptAndSave(string filename, string plainText, string keyFile, string keySalt)
+    {
+      if (!Helper.CreateFileIfNotExist(filename))
+      {
+        MessageBox.Show($"Cannot create file : {filename}");
+        return;
+      }
+
+      var key = string.Empty;
+      if (File.Exists(keyFile))
+      {
+        key = Helper.ReadFileOneLine(keyFile);
+      }
+      else
+      {
+        if (!Helper.CreateFileIfNotExist(keyFile))
+        {
+          MessageBox.Show($"Cannot create file : {keyFile}");
+          return;
+        }
+
+        // create an encryption key and salt
+        var randomKey = Crypto.Generate(32);
+        var randomSalt = Crypto.Generate(32);
+        if (Helper.WriteStringToFile(randomKey, keyFile, false)[Helper.FirstElement] == Helper.OK)
+        {
+
+        }
       }
     }
 
@@ -715,7 +760,7 @@ namespace FredOraclePostgreSQLDataCompare
 
     private void ComboBoxPostgresqlTable_SelectedIndexChanged(object sender, EventArgs e)
     {
-
+      var breakPoint = true;
     }
 
     private void TabPageConnection_Click(object sender, EventArgs e)
@@ -744,6 +789,43 @@ namespace FredOraclePostgreSQLDataCompare
     {
       comboBox.Items.Clear();
       comboBox.Items.AddRange(items.ToArray());
+    }
+
+    private void ComboBoxPostgresqlSchema_SelectedIndexChanged(object sender, EventArgs e)
+    {
+      // loading tables for the selected schema
+      // SELECT table_name FROM information_schema.tables WHERE table_schema = 'pp_inter_ref' AND table_type = 'BASE TABLE';
+      comboBoxPostgresqlTable.Items.Clear();
+      var items = new List<string>();
+      var dbTargetConnexion = GetTargetConnexion();
+      var query = "SELECT table_name FROM information_schema.tables WHERE table_schema = 'pp_inter_ref' AND table_type = 'BASE TABLE';";
+      items = PostgreSqlDALHelper.ExecuteSqlQueryToListOfStrings(dbTargetConnexion.ToString(), query);
+      LoadCombobox(comboBoxPostgresqlTable, items);
+      comboBoxPostgresqlTable.SelectedIndex = 0;
+
+    }
+
+    private void ButtonTablesCompare_Click(object sender, EventArgs e)
+    {
+      if (comboBoxPostgresqlSchema.SelectedIndex == -1)
+      {
+        MessageBox.Show("You have to choose a PostgreSql target schema");
+        return;
+      }
+
+      if (comboBoxPostgresqlTable.SelectedIndex == -1)
+      {
+        MessageBox.Show("You have to choose a PostgreSql target table");
+        return;
+      }
+
+      if (comboBoxOracleTable.SelectedIndex == -1)
+      {
+        MessageBox.Show("You have to choose an Oracle source table");
+        return;
+      }
+
+
     }
   }
 }

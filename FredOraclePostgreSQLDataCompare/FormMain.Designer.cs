@@ -111,6 +111,7 @@
       this.labelSourceServer = new System.Windows.Forms.Label();
       this.labelSourceOperation = new System.Windows.Forms.Label();
       this.tabPageTables = new System.Windows.Forms.TabPage();
+      this.buttonTablesCompare = new System.Windows.Forms.Button();
       this.labelSchema = new System.Windows.Forms.Label();
       this.comboBoxPostgresqlSchema = new System.Windows.Forms.ComboBox();
       this.labelPostgresqlTable = new System.Windows.Forms.Label();
@@ -141,7 +142,6 @@
             this.aideToolStripMenuItem});
       this.menuStrip1.Location = new System.Drawing.Point(0, 0);
       this.menuStrip1.Name = "menuStrip1";
-      this.menuStrip1.Padding = new System.Windows.Forms.Padding(6, 2, 0, 2);
       this.menuStrip1.Size = new System.Drawing.Size(1473, 33);
       this.menuStrip1.TabIndex = 0;
       this.menuStrip1.Text = "menuStrip1";
@@ -254,20 +254,20 @@
       // 
       this.annulerToolStripMenuItem.Name = "annulerToolStripMenuItem";
       this.annulerToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Z)));
-      this.annulerToolStripMenuItem.Size = new System.Drawing.Size(248, 34);
+      this.annulerToolStripMenuItem.Size = new System.Drawing.Size(270, 34);
       this.annulerToolStripMenuItem.Text = "&Annuler";
       // 
       // rétablirToolStripMenuItem
       // 
       this.rétablirToolStripMenuItem.Name = "rétablirToolStripMenuItem";
       this.rétablirToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Y)));
-      this.rétablirToolStripMenuItem.Size = new System.Drawing.Size(248, 34);
+      this.rétablirToolStripMenuItem.Size = new System.Drawing.Size(270, 34);
       this.rétablirToolStripMenuItem.Text = "&Rétablir";
       // 
       // toolStripSeparator3
       // 
       this.toolStripSeparator3.Name = "toolStripSeparator3";
-      this.toolStripSeparator3.Size = new System.Drawing.Size(245, 6);
+      this.toolStripSeparator3.Size = new System.Drawing.Size(267, 6);
       // 
       // couperToolStripMenuItem
       // 
@@ -275,7 +275,7 @@
       this.couperToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Magenta;
       this.couperToolStripMenuItem.Name = "couperToolStripMenuItem";
       this.couperToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.X)));
-      this.couperToolStripMenuItem.Size = new System.Drawing.Size(248, 34);
+      this.couperToolStripMenuItem.Size = new System.Drawing.Size(270, 34);
       this.couperToolStripMenuItem.Text = "&Couper";
       // 
       // copierToolStripMenuItem
@@ -284,7 +284,7 @@
       this.copierToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Magenta;
       this.copierToolStripMenuItem.Name = "copierToolStripMenuItem";
       this.copierToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.C)));
-      this.copierToolStripMenuItem.Size = new System.Drawing.Size(248, 34);
+      this.copierToolStripMenuItem.Size = new System.Drawing.Size(270, 34);
       this.copierToolStripMenuItem.Text = "Co&pier";
       // 
       // collerToolStripMenuItem
@@ -293,18 +293,18 @@
       this.collerToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Magenta;
       this.collerToolStripMenuItem.Name = "collerToolStripMenuItem";
       this.collerToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.V)));
-      this.collerToolStripMenuItem.Size = new System.Drawing.Size(248, 34);
+      this.collerToolStripMenuItem.Size = new System.Drawing.Size(270, 34);
       this.collerToolStripMenuItem.Text = "Co&ller";
       // 
       // toolStripSeparator4
       // 
       this.toolStripSeparator4.Name = "toolStripSeparator4";
-      this.toolStripSeparator4.Size = new System.Drawing.Size(245, 6);
+      this.toolStripSeparator4.Size = new System.Drawing.Size(267, 6);
       // 
       // sélectionnertoutToolStripMenuItem
       // 
       this.sélectionnertoutToolStripMenuItem.Name = "sélectionnertoutToolStripMenuItem";
-      this.sélectionnertoutToolStripMenuItem.Size = new System.Drawing.Size(248, 34);
+      this.sélectionnertoutToolStripMenuItem.Size = new System.Drawing.Size(270, 34);
       this.sélectionnertoutToolStripMenuItem.Text = "Sélectio&nner tout";
       // 
       // outilsToolStripMenuItem
@@ -891,6 +891,7 @@
       // 
       // tabPageTables
       // 
+      this.tabPageTables.Controls.Add(this.buttonTablesCompare);
       this.tabPageTables.Controls.Add(this.labelSchema);
       this.tabPageTables.Controls.Add(this.comboBoxPostgresqlSchema);
       this.tabPageTables.Controls.Add(this.labelPostgresqlTable);
@@ -912,10 +913,20 @@
       this.tabPageTables.UseVisualStyleBackColor = true;
       this.tabPageTables.Click += new System.EventHandler(this.TabPageTables_Click);
       // 
+      // buttonTablesCompare
+      // 
+      this.buttonTablesCompare.Location = new System.Drawing.Point(635, 200);
+      this.buttonTablesCompare.Name = "buttonTablesCompare";
+      this.buttonTablesCompare.Size = new System.Drawing.Size(129, 38);
+      this.buttonTablesCompare.TabIndex = 118;
+      this.buttonTablesCompare.Text = "Compare";
+      this.buttonTablesCompare.UseVisualStyleBackColor = true;
+      this.buttonTablesCompare.Click += new System.EventHandler(this.ButtonTablesCompare_Click);
+      // 
       // labelSchema
       // 
       this.labelSchema.AutoSize = true;
-      this.labelSchema.Location = new System.Drawing.Point(738, 95);
+      this.labelSchema.Location = new System.Drawing.Point(790, 95);
       this.labelSchema.Name = "labelSchema";
       this.labelSchema.Size = new System.Drawing.Size(107, 29);
       this.labelSchema.TabIndex = 117;
@@ -924,15 +935,16 @@
       // comboBoxPostgresqlSchema
       // 
       this.comboBoxPostgresqlSchema.FormattingEnabled = true;
-      this.comboBoxPostgresqlSchema.Location = new System.Drawing.Point(898, 92);
+      this.comboBoxPostgresqlSchema.Location = new System.Drawing.Point(950, 92);
       this.comboBoxPostgresqlSchema.Name = "comboBoxPostgresqlSchema";
       this.comboBoxPostgresqlSchema.Size = new System.Drawing.Size(400, 37);
       this.comboBoxPostgresqlSchema.TabIndex = 116;
+      this.comboBoxPostgresqlSchema.SelectedIndexChanged += new System.EventHandler(this.ComboBoxPostgresqlSchema_SelectedIndexChanged);
       // 
       // labelPostgresqlTable
       // 
       this.labelPostgresqlTable.AutoSize = true;
-      this.labelPostgresqlTable.Location = new System.Drawing.Point(738, 140);
+      this.labelPostgresqlTable.Location = new System.Drawing.Point(790, 140);
       this.labelPostgresqlTable.Name = "labelPostgresqlTable";
       this.labelPostgresqlTable.Size = new System.Drawing.Size(148, 29);
       this.labelPostgresqlTable.TabIndex = 115;
@@ -941,7 +953,7 @@
       // comboBoxPostgresqlTable
       // 
       this.comboBoxPostgresqlTable.FormattingEnabled = true;
-      this.comboBoxPostgresqlTable.Location = new System.Drawing.Point(898, 137);
+      this.comboBoxPostgresqlTable.Location = new System.Drawing.Point(950, 137);
       this.comboBoxPostgresqlTable.Name = "comboBoxPostgresqlTable";
       this.comboBoxPostgresqlTable.Size = new System.Drawing.Size(400, 37);
       this.comboBoxPostgresqlTable.TabIndex = 114;
@@ -972,7 +984,7 @@
       this.dataGridViewPostgreSql.AllowUserToOrderColumns = true;
       this.dataGridViewPostgreSql.Anchor = System.Windows.Forms.AnchorStyles.None;
       this.dataGridViewPostgreSql.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-      this.dataGridViewPostgreSql.Location = new System.Drawing.Point(742, 200);
+      this.dataGridViewPostgreSql.Location = new System.Drawing.Point(794, 200);
       this.dataGridViewPostgreSql.Name = "dataGridViewPostgreSql";
       this.dataGridViewPostgreSql.ReadOnly = true;
       this.dataGridViewPostgreSql.RowHeadersWidth = 62;
@@ -999,7 +1011,7 @@
       // 
       this.labelTablesTarget.AutoSize = true;
       this.labelTablesTarget.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.labelTablesTarget.Location = new System.Drawing.Point(736, 48);
+      this.labelTablesTarget.Location = new System.Drawing.Point(788, 48);
       this.labelTablesTarget.Name = "labelTablesTarget";
       this.labelTablesTarget.Size = new System.Drawing.Size(269, 32);
       this.labelTablesTarget.TabIndex = 109;
@@ -1137,6 +1149,7 @@
     private System.Windows.Forms.ComboBox comboBoxOracleTable;
     private System.Windows.Forms.Label labelSchema;
     private System.Windows.Forms.ComboBox comboBoxPostgresqlSchema;
+    private System.Windows.Forms.Button buttonTablesCompare;
   }
 }
 

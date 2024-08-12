@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Security.Cryptography;
 using System.Text;
+using System.Xml.XPath;
 
 namespace Tools
 {
@@ -50,7 +51,7 @@ namespace Tools
     /// <param name="filename">the name of the file.</param>
     /// <param name="append">Do we append the line? the default value is true.</param>
     /// <returns>An array of string, the first item is ok or ko and the second item is the error message.</returns>
-    public static string[] WriteStringToFile(string line, string filename, bool append = true)
+    public static string[] WriteStringToFile(string filename, string line, bool append = true)
     {
       var result = new[] { "ok", string.Empty };
       try
@@ -202,6 +203,26 @@ namespace Tools
         {
           File.WriteAllText(filename, string.Empty, UTF8Encoding.UTF8);
         }
+      }
+      catch (Exception)
+      {
+        result = false;
+      }
+
+      return result;
+    }
+
+    /// <summary>
+    /// Delete a file.
+    /// </summary>
+    /// <param name="filename">The name of the file to be deleted.</param>
+    /// <returns>True if the file was successfully deleted otherwise false.</returns>
+    public static bool DeleteFile(string filename)
+    {
+      var result = true;
+      try
+      {
+        File.Delete(filename);
       }
       catch (Exception)
       {

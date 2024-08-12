@@ -18,7 +18,7 @@ using Tools;
 
 namespace FredOraclePostgreSQLDataCompare
 {
-  public partial class FormMain : Form
+  public partial class FormMain: Form
   {
     public FormMain()
     {
@@ -29,7 +29,7 @@ namespace FredOraclePostgreSQLDataCompare
     private readonly Dictionary<string, string> languageDicoFr = new Dictionary<string, string>();
     internal ILog logger = LogManager.GetLogger(typeof(FormMain));
     // don't forget to set always copy in properties of the file
-    private string Log4NetConfigFilePath = "log4net.config.xml";
+    private readonly string Log4NetConfigFilePath = "log4net.config.xml";
     private bool bothAuthenticationAreOk = false;
     private bool sourceAuthenticationIsOk = false;
     private bool targetAuthenticationIsOk = false;
@@ -326,15 +326,16 @@ namespace FredOraclePostgreSQLDataCompare
       }
     }
 
-    private void EncryptAndSave(string filename, string plainText, string keyFile, string keySalt)
+    private void EncryptAndSave(string filename, string plainText, string keyFile, string saltFile)
     {
       if (!Helper.CreateFileIfNotExist(filename))
       {
-        MessageBox.Show($"Cannot create file : {filename}");
+        DisplayAndLogErrorMessage($"Cannot create file : {filename}");
         return;
       }
 
       var key = string.Empty;
+      
       if (File.Exists(keyFile))
       {
         key = Helper.ReadFileOneLine(keyFile);
@@ -343,18 +344,75 @@ namespace FredOraclePostgreSQLDataCompare
       {
         if (!Helper.CreateFileIfNotExist(keyFile))
         {
-          MessageBox.Show($"Cannot create file : {keyFile}");
+          DisplayAndLogErrorMessage($"Cannot create file : {keyFile}");
           return;
         }
 
-        // create an encryption key and salt
+        // create an encryption key
         var randomKey = Crypto.Generate(32);
-        var randomSalt = Crypto.Generate(32);
-        if (Helper.WriteStringToFile(randomKey, keyFile, false)[Helper.FirstElement] == Helper.OK)
+        if (Helper.WriteStringToFile(keyFile, randomKey, false)[Helper.FirstElement] == Helper.OK)
         {
-
+          key = randomKey;
+        }
+        else
+        {
+          DisplayAndLogErrorMessage($"Cannot write file: {keyFile}");
+          return;
         }
       }
+
+      //salt
+      var salt = string.Empty;
+      
+      if (File.Exists(saltFile))
+      {
+        salt = Helper.ReadFileOneLine(saltFile);
+        if (string.IsNullOrEmpty(salt))
+        {
+          DisplayAndLogErrorMessage($"The file: {saltFile} is empty. Try again");
+          if(!Helper.DeleteFile(saltFile))
+          {
+            DisplayAndLogErrorMessage($"The file {saltFile} could not be deleted");
+          }
+
+          return;
+        }
+      }
+      else
+      {
+        if (!Helper.CreateFileIfNotExist(saltFile))
+        {
+          DisplayAndLogErrorMessage($"Cannot write file: {saltFile}");
+          return;
+        }
+
+        // create an encryption salt
+        var randomSalt = Crypto.Generate(16);
+        if (Helper.WriteStringToFile(saltFile, randomSalt, false)[Helper.FirstElement] == Helper.OK)
+        {
+          salt = randomSalt;
+        }
+        else
+        {
+          DisplayAndLogErrorMessage($"Cannot write file: {saltFile}");
+          return;
+        }
+      }
+
+      // encryption
+      var cryptedText = Crypto.AesEncrypt(plainText, key, salt);
+      //var testDecryption = Crypto.AesDecrypt(cryptedText, key, salt);
+      if (Helper.WriteStringToFile(filename, cryptedText, false)[Helper.FirstElement] != Helper.OK)
+      {
+        DisplayAndLogErrorMessage($"Cannot write file: {filename}");
+        return;
+      }
+    }
+
+    private void DisplayAndLogErrorMessage(string message)
+    {
+      logger.Error(message);
+      MessageBox.Show(message);
     }
 
     private void AboutToolStripMenuItem_Click(object sender, EventArgs e)

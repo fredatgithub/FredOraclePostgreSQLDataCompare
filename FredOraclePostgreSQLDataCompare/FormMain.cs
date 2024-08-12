@@ -686,24 +686,17 @@ namespace FredOraclePostgreSQLDataCompare
         return;
       }
 
-      PostgreSqlDatabaseAuthentication dbConnexion = new PostgreSqlDatabaseAuthentication
-      {
-        UserName = textBoxSourceName.Text,
-        UserPassword = textBoxSourcePassword.Text,
-        ServerName = textBoxSourceServer.Text,
-        Port = int.Parse(textBoxSourcePort.Text),
-        DatabaseName = textBoxDatabaseNameSource.Text
-      };
-
-      string sqlQuery = PostgreSqlConnectionSqlServer.TestRequest();
-      if (PostgreSqlDALHelper.TestConnection(dbConnexion.ToString()))
+      var dbSourceConnexion = GetSourceConnexion();
+      
+      string sqlQuery = PostgreSqlConnection.TestRequest();
+      if (PostgreSqlDALHelper.TestConnection(dbSourceConnexion.ToString()))
       {
         MessageBox.Show("Connection OK", "OK", MessageBoxButtons.OK, MessageBoxIcon.Information);
         sourceAuthenticationIsOk = true;
       }
       else
       {
-        MessageBox.Show($"Cannot connect to the database: {dbConnexion.DatabaseName} on the server: {dbConnexion.ServerName}", "Connection KO", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+        MessageBox.Show($"Cannot connect to the database: {dbSourceConnexion.DatabaseName} on the server: {dbSourceConnexion.ServerName}", "Connection KO", MessageBoxButtons.OK, MessageBoxIcon.Stop);
         sourceAuthenticationIsOk = false;
       }
 
@@ -753,9 +746,9 @@ namespace FredOraclePostgreSQLDataCompare
         return;
       }
 
-      var dbTargetConnexion = GetTargetConnexion();
+      var dbTargetConnexion = GetSourceConnexion();
 
-      string sqlQuery = PostgreSqlConnectionSqlServer.TestRequest();
+      string sqlQuery = PostgreSqlConnection.TestRequest();
       if (PostgreSqlDALHelper.TestConnection(dbTargetConnexion.ToString()))
       {
         MessageBox.Show("Connection OK", "OK", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -770,7 +763,7 @@ namespace FredOraclePostgreSQLDataCompare
       CheckBothAuthentication();
     }
 
-    private PostgreSqlDatabaseAuthentication GetTargetConnexion()
+    private PostgreSqlDatabaseAuthentication GetSourceConnexion()
     {
       var dbConnexion = new PostgreSqlDatabaseAuthentication
       {
@@ -851,7 +844,7 @@ namespace FredOraclePostgreSQLDataCompare
         comboBoxPostgresqlTable.Items.Clear();
         comboBoxPostgresqlSchema.Items.Clear();
         var items = new List<string>();
-        var dbTargetConnexion = GetTargetConnexion();
+        var dbTargetConnexion = GetSourceConnexion();
         var query = "SELECT schema_name FROM information_schema.schemata where schema_name not in ('information_schema', 'pg_catalog') ORDER BY schema_name;";
         items = PostgreSqlDALHelper.ExecuteSqlQueryToListOfStrings(dbTargetConnexion.ToString(), query);
         LoadCombobox(comboBoxPostgresqlSchema, items);
@@ -871,7 +864,7 @@ namespace FredOraclePostgreSQLDataCompare
       // SELECT table_name FROM information_schema.tables WHERE table_schema = 'pp_inter_ref' AND table_type = 'BASE TABLE';
       comboBoxPostgresqlTable.Items.Clear();
       var items = new List<string>();
-      var dbTargetConnexion = GetTargetConnexion();
+      var dbTargetConnexion = GetSourceConnexion();
       var query = "SELECT table_name FROM information_schema.tables WHERE table_schema = 'pp_inter_ref' AND table_type = 'BASE TABLE';";
       items = PostgreSqlDALHelper.ExecuteSqlQueryToListOfStrings(dbTargetConnexion.ToString(), query);
       LoadCombobox(comboBoxPostgresqlTable, items);

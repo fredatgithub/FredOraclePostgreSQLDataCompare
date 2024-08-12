@@ -1,6 +1,6 @@
 ﻿namespace FredOraclePostgreSQLDataCompare
 {
-  public static class PostgreSqlConnectionSqlServer
+  public static class PostgreSqlConnection
   {
     public static string GetGeneralConnexionString()
     {

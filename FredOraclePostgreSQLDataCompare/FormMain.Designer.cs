@@ -76,7 +76,7 @@
       this.textBoxDatabaseNameSource = new System.Windows.Forms.TextBox();
       this.labelDatabaseNameSource = new System.Windows.Forms.Label();
       this.buttonTestconnectionTarget = new System.Windows.Forms.Button();
-      this.buttonTestConnection = new System.Windows.Forms.Button();
+      this.buttonTestConnectionSource = new System.Windows.Forms.Button();
       this.textBoxTargetPort = new System.Windows.Forms.TextBox();
       this.textBoxSourcePort = new System.Windows.Forms.TextBox();
       this.labelTargetPort = new System.Windows.Forms.Label();
@@ -254,20 +254,20 @@
       // 
       this.annulerToolStripMenuItem.Name = "annulerToolStripMenuItem";
       this.annulerToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Z)));
-      this.annulerToolStripMenuItem.Size = new System.Drawing.Size(270, 34);
+      this.annulerToolStripMenuItem.Size = new System.Drawing.Size(248, 34);
       this.annulerToolStripMenuItem.Text = "&Annuler";
       // 
       // rétablirToolStripMenuItem
       // 
       this.rétablirToolStripMenuItem.Name = "rétablirToolStripMenuItem";
       this.rétablirToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Y)));
-      this.rétablirToolStripMenuItem.Size = new System.Drawing.Size(270, 34);
+      this.rétablirToolStripMenuItem.Size = new System.Drawing.Size(248, 34);
       this.rétablirToolStripMenuItem.Text = "&Rétablir";
       // 
       // toolStripSeparator3
       // 
       this.toolStripSeparator3.Name = "toolStripSeparator3";
-      this.toolStripSeparator3.Size = new System.Drawing.Size(267, 6);
+      this.toolStripSeparator3.Size = new System.Drawing.Size(245, 6);
       // 
       // couperToolStripMenuItem
       // 
@@ -275,7 +275,7 @@
       this.couperToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Magenta;
       this.couperToolStripMenuItem.Name = "couperToolStripMenuItem";
       this.couperToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.X)));
-      this.couperToolStripMenuItem.Size = new System.Drawing.Size(270, 34);
+      this.couperToolStripMenuItem.Size = new System.Drawing.Size(248, 34);
       this.couperToolStripMenuItem.Text = "&Couper";
       // 
       // copierToolStripMenuItem
@@ -284,7 +284,7 @@
       this.copierToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Magenta;
       this.copierToolStripMenuItem.Name = "copierToolStripMenuItem";
       this.copierToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.C)));
-      this.copierToolStripMenuItem.Size = new System.Drawing.Size(270, 34);
+      this.copierToolStripMenuItem.Size = new System.Drawing.Size(248, 34);
       this.copierToolStripMenuItem.Text = "Co&pier";
       // 
       // collerToolStripMenuItem
@@ -293,18 +293,18 @@
       this.collerToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Magenta;
       this.collerToolStripMenuItem.Name = "collerToolStripMenuItem";
       this.collerToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.V)));
-      this.collerToolStripMenuItem.Size = new System.Drawing.Size(270, 34);
+      this.collerToolStripMenuItem.Size = new System.Drawing.Size(248, 34);
       this.collerToolStripMenuItem.Text = "Co&ller";
       // 
       // toolStripSeparator4
       // 
       this.toolStripSeparator4.Name = "toolStripSeparator4";
-      this.toolStripSeparator4.Size = new System.Drawing.Size(267, 6);
+      this.toolStripSeparator4.Size = new System.Drawing.Size(245, 6);
       // 
       // sélectionnertoutToolStripMenuItem
       // 
       this.sélectionnertoutToolStripMenuItem.Name = "sélectionnertoutToolStripMenuItem";
-      this.sélectionnertoutToolStripMenuItem.Size = new System.Drawing.Size(270, 34);
+      this.sélectionnertoutToolStripMenuItem.Size = new System.Drawing.Size(248, 34);
       this.sélectionnertoutToolStripMenuItem.Text = "Sélectio&nner tout";
       // 
       // outilsToolStripMenuItem
@@ -431,7 +431,7 @@
       this.tabPageConnection.Controls.Add(this.textBoxDatabaseNameSource);
       this.tabPageConnection.Controls.Add(this.labelDatabaseNameSource);
       this.tabPageConnection.Controls.Add(this.buttonTestconnectionTarget);
-      this.tabPageConnection.Controls.Add(this.buttonTestConnection);
+      this.tabPageConnection.Controls.Add(this.buttonTestConnectionSource);
       this.tabPageConnection.Controls.Add(this.textBoxTargetPort);
       this.tabPageConnection.Controls.Add(this.textBoxSourcePort);
       this.tabPageConnection.Controls.Add(this.labelTargetPort);
@@ -572,15 +572,15 @@
       this.buttonTestconnectionTarget.UseVisualStyleBackColor = true;
       this.buttonTestconnectionTarget.Click += new System.EventHandler(this.ButtonTestconnectionTarget_Click);
       // 
-      // buttonTestConnection
+      // buttonTestConnectionSource
       // 
-      this.buttonTestConnection.Location = new System.Drawing.Point(222, 554);
-      this.buttonTestConnection.Name = "buttonTestConnection";
-      this.buttonTestConnection.Size = new System.Drawing.Size(266, 38);
-      this.buttonTestConnection.TabIndex = 127;
-      this.buttonTestConnection.Text = "Test connection";
-      this.buttonTestConnection.UseVisualStyleBackColor = true;
-      this.buttonTestConnection.Click += new System.EventHandler(this.ButtonTestConnection_Click);
+      this.buttonTestConnectionSource.Location = new System.Drawing.Point(222, 554);
+      this.buttonTestConnectionSource.Name = "buttonTestConnectionSource";
+      this.buttonTestConnectionSource.Size = new System.Drawing.Size(266, 38);
+      this.buttonTestConnectionSource.TabIndex = 127;
+      this.buttonTestConnectionSource.Text = "Test connection";
+      this.buttonTestConnectionSource.UseVisualStyleBackColor = true;
+      this.buttonTestConnectionSource.Click += new System.EventHandler(this.ButtonTestConnection_Click);
       // 
       // textBoxTargetPort
       // 
@@ -1105,7 +1105,7 @@
     private System.Windows.Forms.TextBox textBoxDatabaseNameSource;
     private System.Windows.Forms.Label labelDatabaseNameSource;
     private System.Windows.Forms.Button buttonTestconnectionTarget;
-    private System.Windows.Forms.Button buttonTestConnection;
+    private System.Windows.Forms.Button buttonTestConnectionSource;
     private System.Windows.Forms.TextBox textBoxTargetPort;
     private System.Windows.Forms.TextBox textBoxSourcePort;
     private System.Windows.Forms.Label labelTargetPort;

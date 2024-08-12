@@ -43,11 +43,11 @@ namespace FredOraclePostgreSQLDataCompare
     /// <summary>
     /// All the values encrypted for source parameters.
     /// </summary>
-    private const string SourceValue1Filename = "SourceValue1.pidb";
-    private const string SourceValue2Filename = "SourceValue2.pidb";
-    private const string SourceValue3Filename = "SourceValue3.pidb";
-    private const string SourceValue4Filename = "SourceValue4.pidb";
-    private const string SourceValue5Filename = "SourceValue5.pidb";
+    private const string SourceValue1Filename = "SourceV1.pidb";
+    private const string SourceValue2Filename = "SourceV2.pidb";
+    private const string SourceValue3Filename = "SourceV3.pidb";
+    private const string SourceValue4Filename = "SourceV4.pidb";
+    private const string SourceValue5Filename = "SourceV5.pidb";
 
     /// <summary>
     /// Key to be used to encrypt target parameters.
@@ -58,11 +58,11 @@ namespace FredOraclePostgreSQLDataCompare
     /// <summary>
     /// All the values encrypted for source parameters.
     /// </summary>
-    private const string TargetValue1Filename = "TargetValue1.pidb";
-    private const string TargetValue2Filename = "TargetValue2.pidb";
-    private const string TargetValue3Filename = "TargetValue3.pidb";
-    private const string TargetValue4Filename = "TargetValue4.pidb";
-    private const string TargetValue5Filename = "TargetValue5.pidb";
+    private const string TargetValue1Filename = "TargetV1.pidb";
+    private const string TargetValue2Filename = "TargetV2.pidb";
+    private const string TargetValue3Filename = "TargetV3.pidb";
+    private const string TargetValue4Filename = "TargetV4.pidb";
+    private const string TargetValue5Filename = "TargetV5.pidb";
 
     private void FormMain_Load(object sender, EventArgs e)
     {
@@ -153,7 +153,7 @@ namespace FredOraclePostgreSQLDataCompare
       }
 
       // target parameters
-      if (checkBoxSourceRememberCredentials.Checked)
+      if (checkBoxTargetRememberCredentials.Checked)
       {
         if (AllFilesExist(false))
         {
@@ -176,10 +176,10 @@ namespace FredOraclePostgreSQLDataCompare
           string encryptionSaltFinal = encryptionSalt[Helper.SecondElement];
 
           ReadAndDecode(TargetValue1Filename, encryptionKeyFinal, encryptionSaltFinal, textBoxTargetServer);
-          ReadAndDecode(TargetValue2Filename, encryptionKeyFinal, encryptionSaltFinal, textBoxTargetPort);
-          ReadAndDecode(TargetValue3Filename, encryptionKeyFinal, encryptionSaltFinal, textBoxTargetName);
-          ReadAndDecode(TargetValue4Filename, encryptionKeyFinal, encryptionSaltFinal, textBoxTargetPassword);
-          ReadAndDecode(TargetValue5Filename, encryptionKeyFinal, encryptionSaltFinal, textBoxDatabaseNameTarget);
+          ReadAndDecode(TargetValue5Filename, encryptionKeyFinal, encryptionSaltFinal, textBoxTargetPort);
+          ReadAndDecode(TargetValue2Filename, encryptionKeyFinal, encryptionSaltFinal, textBoxTargetName);
+          ReadAndDecode(TargetValue3Filename, encryptionKeyFinal, encryptionSaltFinal, textBoxTargetPassword);
+          ReadAndDecode(TargetValue4Filename, encryptionKeyFinal, encryptionSaltFinal, textBoxDatabaseNameTarget);
         }
       }
     }
@@ -319,15 +319,20 @@ namespace FredOraclePostgreSQLDataCompare
 
     private void SaveTargetCredentials()
     {
-      if (!string.IsNullOrEmpty(textBoxTargetServer.Text))
-      {
-        EncryptAndSave(TargetValue1Filename, textBoxTargetServer.Text, TargetKeyFilename, TargetSaltFilename);
-
-      }
+      EncryptAndSave(TargetValue1Filename, textBoxTargetServer.Text, TargetKeyFilename, TargetSaltFilename);
+      EncryptAndSave(TargetValue2Filename, textBoxTargetName.Text, TargetKeyFilename, TargetSaltFilename);
+      EncryptAndSave(TargetValue3Filename, textBoxTargetPassword.Text, TargetKeyFilename, TargetSaltFilename);
+      EncryptAndSave(TargetValue4Filename, textBoxDatabaseNameTarget.Text, TargetKeyFilename, TargetSaltFilename);
+      EncryptAndSave(TargetValue5Filename, textBoxTargetPort.Text, TargetKeyFilename, TargetSaltFilename);
     }
 
     private void EncryptAndSave(string filename, string plainText, string keyFile, string saltFile)
     {
+      if (string.IsNullOrEmpty(plainText))
+      {
+        return;
+      }
+
       if (!Helper.CreateFileIfNotExist(filename))
       {
         DisplayAndLogErrorMessage($"Cannot create file : {filename}");
@@ -335,10 +340,20 @@ namespace FredOraclePostgreSQLDataCompare
       }
 
       var key = string.Empty;
-      
+
       if (File.Exists(keyFile))
       {
         key = Helper.ReadFileOneLine(keyFile);
+        if (string.IsNullOrEmpty(key))
+        {
+          DisplayAndLogErrorMessage($"The file: {keyFile} is empty. Try again");
+          if (!Helper.DeleteFile(keyFile))
+          {
+            DisplayAndLogErrorMessage($"The file {keyFile} could not be deleted");
+          }
+
+          return;
+        }
       }
       else
       {
@@ -363,14 +378,14 @@ namespace FredOraclePostgreSQLDataCompare
 
       //salt
       var salt = string.Empty;
-      
+
       if (File.Exists(saltFile))
       {
         salt = Helper.ReadFileOneLine(saltFile);
         if (string.IsNullOrEmpty(salt))
         {
           DisplayAndLogErrorMessage($"The file: {saltFile} is empty. Try again");
-          if(!Helper.DeleteFile(saltFile))
+          if (!Helper.DeleteFile(saltFile))
           {
             DisplayAndLogErrorMessage($"The file {saltFile} could not be deleted");
           }
@@ -461,6 +476,7 @@ namespace FredOraclePostgreSQLDataCompare
     private void FormMain_FormClosed(object sender, FormClosedEventArgs e)
     {
       logger.Info("Fermeture de l'application");
+      SaveAuthentification();
       SaveWindowValue();
     }
 

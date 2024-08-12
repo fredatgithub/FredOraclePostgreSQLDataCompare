@@ -145,10 +145,10 @@ namespace FredOraclePostgreSQLDataCompare
           string encryptionSaltFinal = encryptionSalt[Helper.SecondElement];
 
           ReadAndDecode(SourceValue1Filename, encryptionKeyFinal, encryptionSaltFinal, textBoxSourceServer);
-          ReadAndDecode(SourceValue2Filename, encryptionKeyFinal, encryptionSaltFinal, textBoxSourcePort);
-          ReadAndDecode(SourceValue3Filename, encryptionKeyFinal, encryptionSaltFinal, textBoxSourceName);
-          ReadAndDecode(SourceValue4Filename, encryptionKeyFinal, encryptionSaltFinal, textBoxSourcePassword);
-          ReadAndDecode(SourceValue5Filename, encryptionKeyFinal, encryptionSaltFinal, textBoxDatabaseNameSource);
+          ReadAndDecode(SourceValue5Filename, encryptionKeyFinal, encryptionSaltFinal, textBoxSourcePort);
+          ReadAndDecode(SourceValue2Filename, encryptionKeyFinal, encryptionSaltFinal, textBoxSourceName);
+          ReadAndDecode(SourceValue3Filename, encryptionKeyFinal, encryptionSaltFinal, textBoxSourcePassword);
+          ReadAndDecode(SourceValue4Filename, encryptionKeyFinal, encryptionSaltFinal, textBoxDatabaseNameSource);
         }
       }
 
@@ -314,7 +314,11 @@ namespace FredOraclePostgreSQLDataCompare
 
     private void SaveSourceCredentials()
     {
-      throw new NotImplementedException();
+      EncryptAndSave(TargetValue1Filename, textBoxSourceServer.Text, SourceKeyFilename, SourceSaltFilename);
+      EncryptAndSave(TargetValue2Filename, textBoxSourceName.Text, SourceKeyFilename, SourceSaltFilename);
+      EncryptAndSave(TargetValue3Filename, textBoxSourcePassword.Text, SourceKeyFilename, SourceSaltFilename);
+      EncryptAndSave(TargetValue4Filename, textBoxDatabaseNameSource.Text, SourceKeyFilename, SourceSaltFilename);
+      EncryptAndSave(TargetValue5Filename, textBoxSourcePort.Text, SourceKeyFilename, SourceSaltFilename);
     }
 
     private void SaveTargetCredentials()

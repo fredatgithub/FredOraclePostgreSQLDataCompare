@@ -1,4 +1,6 @@
-﻿namespace FredOraclePostgreSQLDataCompare
+﻿using System;
+
+namespace FredOraclePostgreSQLDataCompare
 {
   public static class PostgreSqlConnection
   {
@@ -96,6 +98,11 @@
     public static string GetcurrentUserRequest()
     {
       return "SELECT current_user;";
+    }
+
+    public static string CountNumberOfRecordsRequest(string tableName)
+    {
+      return $"SELECT COUNT(*) FROM {tableName};";
     }
   }
 }

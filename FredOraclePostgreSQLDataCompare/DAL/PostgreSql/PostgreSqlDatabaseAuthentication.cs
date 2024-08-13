@@ -31,7 +31,7 @@
 
     public override string ToString()
     {
-      return $"host={ServerName};Port={Port};Database={DatabaseName};User Id={UserName};Password={UserPassword};CommandTimeout=0";
+      return $"host={ServerName};Port={Port};Database={DatabaseName};Username={UserName};Password={UserPassword};CommandTimeout=0";
     }
   }
 }

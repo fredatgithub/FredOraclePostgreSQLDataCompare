@@ -122,6 +122,8 @@
       this.dataGridViewOracle = new System.Windows.Forms.DataGridView();
       this.labelTablesTarget = new System.Windows.Forms.Label();
       this.labelTablesSource = new System.Windows.Forms.Label();
+      this.labelTablesSourceNumberOfLines = new System.Windows.Forms.Label();
+      this.labelTablesTargetNumberOfLines = new System.Windows.Forms.Label();
       this.menuStrip1.SuspendLayout();
       this.tabControlMain.SuspendLayout();
       this.tabPageConnection.SuspendLayout();
@@ -160,7 +162,7 @@
             this.toolStripSeparator2,
             this.quitterToolStripMenuItem});
       this.fichierToolStripMenuItem.Name = "fichierToolStripMenuItem";
-      this.fichierToolStripMenuItem.Size = new System.Drawing.Size(78, 29);
+      this.fichierToolStripMenuItem.Size = new System.Drawing.Size(78, 30);
       this.fichierToolStripMenuItem.Text = "&Fichier";
       // 
       // nouveauToolStripMenuItem
@@ -247,7 +249,7 @@
             this.toolStripSeparator4,
             this.sélectionnertoutToolStripMenuItem});
       this.editionToolStripMenuItem.Name = "editionToolStripMenuItem";
-      this.editionToolStripMenuItem.Size = new System.Drawing.Size(83, 29);
+      this.editionToolStripMenuItem.Size = new System.Drawing.Size(83, 30);
       this.editionToolStripMenuItem.Text = "&Edition";
       // 
       // annulerToolStripMenuItem
@@ -313,7 +315,7 @@
             this.personnaliserToolStripMenuItem,
             this.optionsToolStripMenuItem});
       this.outilsToolStripMenuItem.Name = "outilsToolStripMenuItem";
-      this.outilsToolStripMenuItem.Size = new System.Drawing.Size(74, 29);
+      this.outilsToolStripMenuItem.Size = new System.Drawing.Size(74, 30);
       this.outilsToolStripMenuItem.Text = "&Outils";
       // 
       // personnaliserToolStripMenuItem
@@ -334,7 +336,7 @@
             this.frenchToolStripMenuItem,
             this.englishToolStripMenuItem});
       this.toolStripMenuItemLanguage.Name = "toolStripMenuItemLanguage";
-      this.toolStripMenuItemLanguage.Size = new System.Drawing.Size(105, 29);
+      this.toolStripMenuItemLanguage.Size = new System.Drawing.Size(105, 30);
       this.toolStripMenuItemLanguage.Text = "Language";
       // 
       // frenchToolStripMenuItem
@@ -362,7 +364,7 @@
             this.toolStripSeparator5,
             this.àproposdeToolStripMenuItem});
       this.aideToolStripMenuItem.Name = "aideToolStripMenuItem";
-      this.aideToolStripMenuItem.Size = new System.Drawing.Size(64, 29);
+      this.aideToolStripMenuItem.Size = new System.Drawing.Size(64, 30);
       this.aideToolStripMenuItem.Text = "&Aide";
       // 
       // sommaireToolStripMenuItem
@@ -891,6 +893,8 @@
       // 
       // tabPageTables
       // 
+      this.tabPageTables.Controls.Add(this.labelTablesTargetNumberOfLines);
+      this.tabPageTables.Controls.Add(this.labelTablesSourceNumberOfLines);
       this.tabPageTables.Controls.Add(this.buttonTablesCompare);
       this.tabPageTables.Controls.Add(this.labelSchema);
       this.tabPageTables.Controls.Add(this.comboBoxPostgresqlSchema);
@@ -915,7 +919,7 @@
       // 
       // buttonTablesCompare
       // 
-      this.buttonTablesCompare.Location = new System.Drawing.Point(648, 200);
+      this.buttonTablesCompare.Location = new System.Drawing.Point(648, 245);
       this.buttonTablesCompare.Name = "buttonTablesCompare";
       this.buttonTablesCompare.Size = new System.Drawing.Size(129, 38);
       this.buttonTablesCompare.TabIndex = 118;
@@ -984,7 +988,7 @@
       this.dataGridViewPostgreSql.AllowUserToOrderColumns = true;
       this.dataGridViewPostgreSql.Anchor = System.Windows.Forms.AnchorStyles.None;
       this.dataGridViewPostgreSql.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-      this.dataGridViewPostgreSql.Location = new System.Drawing.Point(794, 199);
+      this.dataGridViewPostgreSql.Location = new System.Drawing.Point(794, 244);
       this.dataGridViewPostgreSql.Name = "dataGridViewPostgreSql";
       this.dataGridViewPostgreSql.ReadOnly = true;
       this.dataGridViewPostgreSql.RowHeadersWidth = 62;
@@ -999,7 +1003,7 @@
       this.dataGridViewOracle.AllowUserToOrderColumns = true;
       this.dataGridViewOracle.Anchor = System.Windows.Forms.AnchorStyles.None;
       this.dataGridViewOracle.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-      this.dataGridViewOracle.Location = new System.Drawing.Point(54, 199);
+      this.dataGridViewOracle.Location = new System.Drawing.Point(54, 244);
       this.dataGridViewOracle.Name = "dataGridViewOracle";
       this.dataGridViewOracle.ReadOnly = true;
       this.dataGridViewOracle.RowHeadersWidth = 62;
@@ -1026,6 +1030,24 @@
       this.labelTablesSource.Size = new System.Drawing.Size(217, 32);
       this.labelTablesSource.TabIndex = 108;
       this.labelTablesSource.Text = "Source: Oracle";
+      // 
+      // labelTablesSourceNumberOfLines
+      // 
+      this.labelTablesSourceNumberOfLines.AutoSize = true;
+      this.labelTablesSourceNumberOfLines.Location = new System.Drawing.Point(50, 193);
+      this.labelTablesSourceNumberOfLines.Name = "labelTablesSourceNumberOfLines";
+      this.labelTablesSourceNumberOfLines.Size = new System.Drawing.Size(250, 35);
+      this.labelTablesSourceNumberOfLines.TabIndex = 119;
+      this.labelTablesSourceNumberOfLines.Text = "Number of lines: 0";
+      // 
+      // labelTablesTargetNumberOfLines
+      // 
+      this.labelTablesTargetNumberOfLines.AutoSize = true;
+      this.labelTablesTargetNumberOfLines.Location = new System.Drawing.Point(790, 193);
+      this.labelTablesTargetNumberOfLines.Name = "labelTablesTargetNumberOfLines";
+      this.labelTablesTargetNumberOfLines.Size = new System.Drawing.Size(250, 35);
+      this.labelTablesTargetNumberOfLines.TabIndex = 120;
+      this.labelTablesTargetNumberOfLines.Text = "Number of lines: 0";
       // 
       // FormMain
       // 
@@ -1150,6 +1172,8 @@
     private System.Windows.Forms.Label labelSchema;
     private System.Windows.Forms.ComboBox comboBoxPostgresqlSchema;
     private System.Windows.Forms.Button buttonTablesCompare;
+    private System.Windows.Forms.Label labelTablesTargetNumberOfLines;
+    private System.Windows.Forms.Label labelTablesSourceNumberOfLines;
   }
 }
 

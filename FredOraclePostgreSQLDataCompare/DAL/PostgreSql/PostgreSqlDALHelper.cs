@@ -254,33 +254,6 @@ namespace FredOraclePostgreSQLDataCompare.DAL.PostgreSql
       }
     }
 
-    public static long ExecuteQueryToLong(string connexionString, string sqlRequest)
-    {
-      long result = -10;
-      var connexion = new NpgsqlConnection(connexionString);
-      try
-      {
-        connexion.Open();
-        var command = new NpgsqlCommand(sqlRequest, connexion);
-        NpgsqlDataReader reader = command.ExecuteReader();
-
-        while (reader.Read())
-        {
-          result = reader.GetInt64(0);
-        }
-      }
-      catch (Exception)
-      {
-        result = -10;
-      }
-      finally
-      {
-        connexion.Close();
-      }
-
-      return result;
-    }
-
     public static int ExecuteNonQuery(string connexionString, string sqlRequest)
     {
       var result = -10;
@@ -398,8 +371,6 @@ namespace FredOraclePostgreSQLDataCompare.DAL.PostgreSql
         var command = new NpgsqlCommand(sqlRequest, connexion);
         command.CommandType = CommandType.StoredProcedure;
         command.CommandText = sqlRequest;
-        // command.CommandTimeout = int.MaxValue; //1247483646;
-        // timeout in connection string and not in command
         int returnRows = command.ExecuteNonQuery();
         result = returnRows;
       }
@@ -466,6 +437,57 @@ namespace FredOraclePostgreSQLDataCompare.DAL.PostgreSql
 
       result = connection.State == ConnectionState.Open;
       connection.Close();
+      return result;
+    }
+
+    public static int ExecuteQueryToInteger(string connectionString, string query)
+    {
+      var result = 0;
+      try
+      {
+        using (var connexion = new NpgsqlConnection(connectionString))
+        {
+          connexion.Open();
+
+          using (var cmd = new NpgsqlCommand(query, connexion))
+          {
+            var count = (int)(long)cmd.ExecuteScalar();
+            result = count;
+          }
+        }
+      }
+      catch (Exception)
+      {
+        result = -10;
+      }
+
+      return result;
+    }
+
+    public static long ExecuteQueryToLong(string connexionString, string sqlRequest)
+    {
+      long result = -10;
+      var connexion = new NpgsqlConnection(connexionString);
+      try
+      {
+        connexion.Open();
+        var command = new NpgsqlCommand(sqlRequest, connexion);
+        NpgsqlDataReader reader = command.ExecuteReader();
+
+        while (reader.Read())
+        {
+          result = reader.GetInt64(0);
+        }
+      }
+      catch (Exception)
+      {
+        result = -10;
+      }
+      finally
+      {
+        connexion.Close();
+      }
+
       return result;
     }
   }

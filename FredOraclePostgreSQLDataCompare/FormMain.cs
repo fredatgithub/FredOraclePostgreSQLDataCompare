@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Diagnostics;
+using System.Drawing;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Reflection;
@@ -686,7 +688,7 @@ namespace FredOraclePostgreSQLDataCompare
       }
 
       var dbSourceConnexion = GetSourceConnexion();
-      
+
       string sqlQuery = OracleDALHelper.TestRequest();
       if (OracleDALHelper.TestOracleDbConnection(dbSourceConnexion.ToString()))
       {
@@ -925,7 +927,57 @@ namespace FredOraclePostgreSQLDataCompare
         return;
       }
 
+      // vérification if source table name is equal to target table name
+      var oracleTableName = comboBoxOracleTable.SelectedItem.ToString().ToLower();
+      var postgresqlTableName = comboBoxPostgresqlTable.SelectedItem.ToString().ToLower();
+      if (oracleTableName != postgresqlTableName)
+      {
+        DialogResult result = MessageBox.Show("Are you sure you want to compare two different tables?", "Question", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
+        if (result == DialogResult.No)
+        {
+          return;
+        }
+      }
+
+      // get original names for requests
+      oracleTableName = comboBoxOracleTable.SelectedItem.ToString();
+      postgresqlTableName = comboBoxPostgresqlTable.SelectedItem.ToString();
+
+      // comparison of number of lines
+      var numberTarget = 0;
+      var dbTargetConnexion = GetTargetConnexion();
+      var query = PostgreSqlConnection.CountNumberOfRecordsRequest(postgresqlTableName);
+      numberTarget = PostgreSqlDALHelper.ExecuteQueryToInteger(dbTargetConnexion.ToString(), query);
+      string formattedNumber = numberTarget.ToString("N0", new CultureInfo("fr-FR"));
+      formattedNumber = formattedNumber.Replace(",", " ").Replace(".", " ");
+      labelTablesTargetNumberOfLines.Text = $"Number of lines: {formattedNumber}";
+      //source
+      var dbSourceConnexion = GetSourceConnexion();
+      query = OracleDALHelper.CountNumberOfRecordsRequest(oracleTableName);
+      var numberSource = OracleDALHelper.ExecuteQueryToInteger(dbSourceConnexion.ToString(), query);
+      formattedNumber = numberSource.ToString("N0", new CultureInfo("fr-FR"));
+      formattedNumber = formattedNumber.Replace(",", " ").Replace(".", " ");
+      labelTablesSourceNumberOfLines.ForeColor = GetColorForEquality(numberSource, numberTarget);
+      labelTablesTargetNumberOfLines.ForeColor = GetColorForEquality(numberSource, numberTarget);
+      labelTablesSourceNumberOfLines.Text = $"Number of lines: {formattedNumber}";
+
+      // comparison of number of columns: necessary? maybe on column types
+
+      // creation of datagridviews
+      var datagridSource = new DataGridView();
+      var datagridTarget = new DataGridView();
+      // get original names for requests
+      oracleTableName = comboBoxOracleTable.SelectedItem.ToString();
+      postgresqlTableName = comboBoxPostgresqlTable.SelectedItem.ToString();
+      var sourceColumnsList = new List<string>();
+      var targetColumnsList = new List<string>();
+
+    }
+
+    private Color GetColorForEquality(int numberSource, int numberTarget)
+    {
+      return numberSource != numberTarget ? Color.Red : Color.Green;
     }
   }
 }

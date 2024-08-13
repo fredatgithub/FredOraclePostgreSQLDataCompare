@@ -84,5 +84,43 @@ namespace FredOraclePostgreSQLDataCompare.DAL.Oracle
 
       return result;
     }
+
+    public static int ExecuteQueryToInteger(string connectionString, string query)
+    {
+      int result = 0;
+      using (OracleConnection connection = new OracleConnection(connectionString))
+      {
+        try
+        {
+          connection.Open();
+
+          using (OracleCommand command = new OracleCommand(query, connection))
+          {
+            object queryResult = command.ExecuteScalar();
+
+            if (queryResult != null && int.TryParse(queryResult.ToString(), out int parsedResult))
+            {
+              result = parsedResult;
+            }
+            else
+            {
+              result = -10;
+            }
+          }
+        }
+        catch (Exception)
+        {
+          result = -10;
+          connection.Close();
+        }
+      }
+
+      return result;
+    }
+
+    public static string CountNumberOfRecordsRequest(string tableName)
+    {
+      return $"SELECT COUNT(*) FROM {tableName}";
+    }
   }
 }

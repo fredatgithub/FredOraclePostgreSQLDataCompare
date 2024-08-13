@@ -1,9 +1,4 @@
-﻿using FredOraclePostgreSQLDataCompare.Properties;
-using FredOraclePostgreSQLDataCompare.DAL.PostgreSql;
-using log4net;
-using log4net.Config;
-using NamespaceYouAreUsing;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Diagnostics;
@@ -11,8 +6,13 @@ using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Runtime.Versioning;
+using System.Runtime.InteropServices;
 using System.Windows.Forms;
 using System.Xml.Linq;
+using FredOraclePostgreSQLDataCompare.DAL.PostgreSql;
+using FredOraclePostgreSQLDataCompare.Properties;
+using log4net;
+using log4net.Config;
 using Tools;
 
 
@@ -47,7 +47,7 @@ namespace FredOraclePostgreSQLDataCompare
     private const string SourceValue2Filename = "SourceV2.pidb";
     private const string SourceValue3Filename = "SourceV3.pidb";
     private const string SourceValue4Filename = "SourceV4.pidb";
-    private const string SourceValue5Filename = "SourceV5.pidb";
+    //private const string SourceValue5Filename = "SourceV5.pidb";
 
     /// <summary>
     /// Key to be used to encrypt target parameters.
@@ -62,7 +62,7 @@ namespace FredOraclePostgreSQLDataCompare
     private const string TargetValue2Filename = "TargetV2.pidb";
     private const string TargetValue3Filename = "TargetV3.pidb";
     private const string TargetValue4Filename = "TargetV4.pidb";
-    private const string TargetValue5Filename = "TargetV5.pidb";
+    //private const string TargetValue5Filename = "TargetV5.pidb";
 
     private void FormMain_Load(object sender, EventArgs e)
     {
@@ -145,7 +145,6 @@ namespace FredOraclePostgreSQLDataCompare
           string encryptionSaltFinal = encryptionSalt[Helper.SecondElement];
 
           ReadAndDecode(SourceValue1Filename, encryptionKeyFinal, encryptionSaltFinal, textBoxSourceServer);
-          ReadAndDecode(SourceValue5Filename, encryptionKeyFinal, encryptionSaltFinal, textBoxSourcePort);
           ReadAndDecode(SourceValue2Filename, encryptionKeyFinal, encryptionSaltFinal, textBoxSourceName);
           ReadAndDecode(SourceValue3Filename, encryptionKeyFinal, encryptionSaltFinal, textBoxSourcePassword);
           ReadAndDecode(SourceValue4Filename, encryptionKeyFinal, encryptionSaltFinal, textBoxDatabaseNameSource);
@@ -176,7 +175,6 @@ namespace FredOraclePostgreSQLDataCompare
           string encryptionSaltFinal = encryptionSalt[Helper.SecondElement];
 
           ReadAndDecode(TargetValue1Filename, encryptionKeyFinal, encryptionSaltFinal, textBoxTargetServer);
-          ReadAndDecode(TargetValue5Filename, encryptionKeyFinal, encryptionSaltFinal, textBoxTargetPort);
           ReadAndDecode(TargetValue2Filename, encryptionKeyFinal, encryptionSaltFinal, textBoxTargetName);
           ReadAndDecode(TargetValue3Filename, encryptionKeyFinal, encryptionSaltFinal, textBoxTargetPassword);
           ReadAndDecode(TargetValue4Filename, encryptionKeyFinal, encryptionSaltFinal, textBoxDatabaseNameTarget);
@@ -188,11 +186,11 @@ namespace FredOraclePostgreSQLDataCompare
     {
       if (source)
       {
-        return File.Exists(SourceKeyFilename) && File.Exists(SourceSaltFilename) && File.Exists(SourceValue1Filename) && File.Exists(SourceValue2Filename) && File.Exists(SourceValue3Filename) && File.Exists(SourceValue4Filename) && File.Exists(SourceValue5Filename);
+        return File.Exists(SourceKeyFilename) && File.Exists(SourceSaltFilename) && File.Exists(SourceValue1Filename) && File.Exists(SourceValue2Filename) && File.Exists(SourceValue3Filename) && File.Exists(SourceValue4Filename);
       }
       else
       {
-        return File.Exists(TargetKeyFilename) && File.Exists(TargetSaltFilename) && File.Exists(TargetValue1Filename) && File.Exists(TargetValue2Filename) && File.Exists(TargetValue3Filename) && File.Exists(TargetValue4Filename) && File.Exists(TargetValue5Filename);
+        return File.Exists(TargetKeyFilename) && File.Exists(TargetSaltFilename) && File.Exists(TargetValue1Filename) && File.Exists(TargetValue2Filename) && File.Exists(TargetValue3Filename) && File.Exists(TargetValue4Filename);
       }
     }
 
@@ -277,7 +275,7 @@ namespace FredOraclePostgreSQLDataCompare
 
     public static string GetFrameworkVersion()
     {
-      var version = System.Runtime.InteropServices.RuntimeInformation.FrameworkDescription;
+      var version = RuntimeInformation.FrameworkDescription;
       return version;
     }
 
@@ -314,11 +312,10 @@ namespace FredOraclePostgreSQLDataCompare
 
     private void SaveSourceCredentials()
     {
-      EncryptAndSave(TargetValue1Filename, textBoxSourceServer.Text, SourceKeyFilename, SourceSaltFilename);
-      EncryptAndSave(TargetValue2Filename, textBoxSourceName.Text, SourceKeyFilename, SourceSaltFilename);
-      EncryptAndSave(TargetValue3Filename, textBoxSourcePassword.Text, SourceKeyFilename, SourceSaltFilename);
-      EncryptAndSave(TargetValue4Filename, textBoxDatabaseNameSource.Text, SourceKeyFilename, SourceSaltFilename);
-      EncryptAndSave(TargetValue5Filename, textBoxSourcePort.Text, SourceKeyFilename, SourceSaltFilename);
+      EncryptAndSave(SourceValue1Filename, textBoxSourceServer.Text, SourceKeyFilename, SourceSaltFilename);
+      EncryptAndSave(SourceValue2Filename, textBoxSourceName.Text, SourceKeyFilename, SourceSaltFilename);
+      EncryptAndSave(SourceValue3Filename, textBoxSourcePassword.Text, SourceKeyFilename, SourceSaltFilename);
+      EncryptAndSave(SourceValue4Filename, textBoxDatabaseNameSource.Text, SourceKeyFilename, SourceSaltFilename);
     }
 
     private void SaveTargetCredentials()
@@ -327,7 +324,6 @@ namespace FredOraclePostgreSQLDataCompare
       EncryptAndSave(TargetValue2Filename, textBoxTargetName.Text, TargetKeyFilename, TargetSaltFilename);
       EncryptAndSave(TargetValue3Filename, textBoxTargetPassword.Text, TargetKeyFilename, TargetSaltFilename);
       EncryptAndSave(TargetValue4Filename, textBoxDatabaseNameTarget.Text, TargetKeyFilename, TargetSaltFilename);
-      EncryptAndSave(TargetValue5Filename, textBoxTargetPort.Text, TargetKeyFilename, TargetSaltFilename);
     }
 
     private void EncryptAndSave(string filename, string plainText, string keyFile, string saltFile)
@@ -449,6 +445,7 @@ namespace FredOraclePostgreSQLDataCompare
       Settings.Default.LastLanguageUsed = frenchToolStripMenuItem.Checked ? "French" : "English";
       Settings.Default.CheckBoxSourceRememberCredentials = checkBoxSourceRememberCredentials.Checked;
       Settings.Default.CheckBoxTargetRememberCredentials = checkBoxTargetRememberCredentials.Checked;
+      Settings.Default.TextBoxSourcePort = int.Parse(textBoxSourcePort.Text);
       Settings.Default.Save();
     }
 
@@ -461,6 +458,7 @@ namespace FredOraclePostgreSQLDataCompare
       SetLanguageMenu(Settings.Default.LastLanguageUsed);
       checkBoxSourceRememberCredentials.Checked = Settings.Default.CheckBoxSourceRememberCredentials;
       checkBoxTargetRememberCredentials.Checked = Settings.Default.CheckBoxTargetRememberCredentials;
+      textBoxSourcePort.Text = Settings.Default.TextBoxSourcePort.ToString();
     }
 
     private void SetLanguageMenu(string language)

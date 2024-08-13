@@ -19,7 +19,7 @@ SOFTWARE.
 */
 using System;
 
-namespace NamespaceYouAreUsing
+namespace FredOraclePostgreSQLDataCompare
 {
   public static class Punctuation
   {

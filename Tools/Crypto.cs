@@ -124,9 +124,12 @@ namespace Tools
           {
             if (lastLeftGroupsOrderIdx != nextLeftGroupsOrderIdx)
             {
-              int temp = leftGroupsOrder[lastLeftGroupsOrderIdx];
-              leftGroupsOrder[lastLeftGroupsOrderIdx] = leftGroupsOrder[nextLeftGroupsOrderIdx];
-              leftGroupsOrder[nextLeftGroupsOrderIdx] = temp;
+              // use tuple to exchange values like this:
+              //(numbers[1], numbers[0]) = (numbers[0], numbers[1]);
+              (leftGroupsOrder[nextLeftGroupsOrderIdx], leftGroupsOrder[lastLeftGroupsOrderIdx]) = (leftGroupsOrder[lastLeftGroupsOrderIdx], leftGroupsOrder[nextLeftGroupsOrderIdx]);
+              //int temp = leftGroupsOrder[lastLeftGroupsOrderIdx];
+              //leftGroupsOrder[lastLeftGroupsOrderIdx] = leftGroupsOrder[nextLeftGroupsOrderIdx];
+              //leftGroupsOrder[nextLeftGroupsOrderIdx] = temp;
             }
 
             lastLeftGroupsOrderIdx--;
@@ -174,19 +177,27 @@ namespace Tools
         return "ko- initial vector cannot be empty";
       }
 
+      //Key : Cette clé doit être de 16 octets pour AES-128, 24 octets pour AES-192, ou 32 octets pour AES-256.
       if (key.Length != 16 && key.Length != 24 && key.Length != 32)
       {
         return "ko-key length not 16, 24 or 32 bits";
       }
 
+      //Initialize vector must be : Cette clé doit être de 16 octets pour AES-128, AES-192, AES-256.
+      if (initializeVector.Length != 16)
+      {
+        return "ko-initializeVector length not 16 bits";
+      }
+
       byte[] Key = Encoding.UTF8.GetBytes(key);
       byte[] InitializeVector = Encoding.UTF8.GetBytes(initializeVector);
-      using (Aes aesAlg = Aes.Create())
+      using (Aes aesAlgo = Aes.Create())
       {
-        aesAlg.Key = Key;
-        aesAlg.IV = InitializeVector;
+        aesAlgo.Key = Key;
+        aesAlgo.IV = InitializeVector;
+        //aesAlgo.Padding = PaddingMode.Zeros;
 
-        ICryptoTransform encryptor = aesAlg.CreateEncryptor(aesAlg.Key, aesAlg.IV);
+        ICryptoTransform encryptor = aesAlgo.CreateEncryptor(aesAlgo.Key, aesAlgo.IV);
 
         using (MemoryStream msEncrypt = new MemoryStream())
         {
@@ -235,20 +246,27 @@ namespace Tools
         return "ko- initial vector cannot be empty";
       }
 
-      //Key : Cette clé doit être de 16 octets pour AES-128, 24 octets pour AES-192, ou 32 octets pour AES-256. Dans cet exemple, j'ai utilisé une clé de 16 octets pour AES-128.
+      //Key : Cette clé doit être de 16 octets pour AES-128, 24 octets pour AES-192, ou 32 octets pour AES-256.
       if (key.Length != 16 && key.Length != 24 && key.Length != 32)
       {
         return "ko-key length not 16, 24 or 32 bits";
       }
 
+      //Initialize vector must be : Cette clé doit être de 16 octets pour AES-128, AES-192, AES-256.
+      if (initializeVector.Length != 16)
+      {
+        return "ko-initializeVector length not 16 bits";
+      }
+
       byte[] Key = Encoding.UTF8.GetBytes(key);
       byte[] InitializeVector = Encoding.UTF8.GetBytes(initializeVector);
-      using (Aes aesAlg = Aes.Create())
+      using (Aes aesAlgo = Aes.Create())
       {
-        aesAlg.Key = Key;
-        aesAlg.IV = InitializeVector;
+        aesAlgo.Key = Key;
+        aesAlgo.IV = InitializeVector;
+        //aesAlgo.Padding = PaddingMode.Zeros;
 
-        ICryptoTransform decryptor = aesAlg.CreateDecryptor(aesAlg.Key, aesAlg.IV);
+        ICryptoTransform decryptor = aesAlgo.CreateDecryptor(aesAlgo.Key, aesAlgo.IV);
 
         using (MemoryStream msDecrypt = new MemoryStream(Convert.FromBase64String(cipherText)))
         {
@@ -291,7 +309,6 @@ namespace Tools
 
     public static byte[] EncryptStringToBytesWithAes(string plainText, byte[] key, byte[] salt)
     {
-      // Check arguments.
       if (plainText == null || plainText.Length <= 0)
       {
         throw new ArgumentNullException("plainText");
@@ -309,24 +326,20 @@ namespace Tools
 
       byte[] encrypted;
 
-      // Create an AesCryptoServiceProvider object
-      // with the specified key and IV.
       using (AesCryptoServiceProvider aesAlgo = new AesCryptoServiceProvider())
       {
         aesAlgo.Key = key;
         aesAlgo.IV = salt;
+        //aesAlgo.Padding = PaddingMode.Zeros;
 
-        // Create an encryptor to perform the stream transform.
         ICryptoTransform encryptor = aesAlgo.CreateEncryptor(aesAlgo.Key, aesAlgo.IV);
 
-        // Create the streams used for encryption.
         using (MemoryStream msEncrypt = new MemoryStream())
         {
           using (CryptoStream csEncrypt = new CryptoStream(msEncrypt, encryptor, CryptoStreamMode.Write))
           {
             using (StreamWriter swEncrypt = new StreamWriter(csEncrypt))
             {
-              //Write all data to the stream.
               swEncrypt.Write(plainText);
             }
 
@@ -335,7 +348,6 @@ namespace Tools
         }
       }
 
-      // Return the encrypted bytes from the memory stream.
       return encrypted;
     }
 
@@ -363,7 +375,6 @@ namespace Tools
 
     public static string DecodeFromBytes_Aes(byte[] cipherText, byte[] key, byte[] salt)
     {
-      // Check arguments.
       if (cipherText == null || cipherText.Length <= 0)
       {
         throw new ArgumentNullException("cipherText");
@@ -379,27 +390,21 @@ namespace Tools
         throw new ArgumentNullException("IV = vecteur d'initialisation");
       }
 
-      // Declare the string used to hold the decrypted text.
       string plaintext = null;
 
-      // Create an AesCryptoServiceProvider object with the specified key and IV.
       using (AesCryptoServiceProvider aesAlgo = new AesCryptoServiceProvider())
       {
         aesAlgo.Key = key;
         aesAlgo.IV = salt;
 
-        // Create a decryptor to perform the stream transform.
         ICryptoTransform decryptor = aesAlgo.CreateDecryptor(aesAlgo.Key, aesAlgo.IV);
 
-        // Create the streams used for decryption.
         using (MemoryStream msDecrypt = new MemoryStream(cipherText))
         {
           using (CryptoStream csDecrypt = new CryptoStream(msDecrypt, decryptor, CryptoStreamMode.Read))
           {
             using (StreamReader srDecrypt = new StreamReader(csDecrypt))
             {
-
-              // Read the decrypted bytes from the decrypting stream and place them in a string.
               plaintext = srDecrypt.ReadToEnd();
             }
           }
@@ -428,12 +433,6 @@ namespace Tools
       byte[][] result = new byte[2][];
       using (Aes aesAlgorithm = Aes.Create())
       {
-        //Console.WriteLine($"Aes Cipher Mode : {aesAlgorithm.Mode}");
-        //Console.WriteLine($"Aes Padding Mode: {aesAlgorithm.Padding}");
-        //Console.WriteLine($"Aes Key Size : {aesAlgorithm.KeySize}");
-        //Console.WriteLine($"Aes Block Size : {aesAlgorithm.BlockSize}");
-        //var keyBase64 = Convert.ToBase64String(aesAlgorithm.Key);
-        //var vectorBase64 = Convert.ToBase64String(aesAlgorithm.IV);
         var key = aesAlgorithm.Key;
         var vector = aesAlgorithm.IV;
         result[0] = key;
@@ -449,6 +448,7 @@ namespace Tools
       {
         aesAlgo.Key = Encoding.UTF8.GetBytes(key);
         aesAlgo.IV = Encoding.UTF8.GetBytes(vector);
+        //aesAlgo.Padding = PaddingMode.PKCS7;
 
         ICryptoTransform decryptor = aesAlgo.CreateDecryptor(aesAlgo.Key, aesAlgo.IV);
 
@@ -471,6 +471,7 @@ namespace Tools
       {
         aesAlgo.Key = Encoding.UTF8.GetBytes(key);
         aesAlgo.IV = Encoding.UTF8.GetBytes(vector);
+        //aesAlgo.Padding = PaddingMode.Zeros;
 
         ICryptoTransform encryptor = aesAlgo.CreateEncryptor(aesAlgo.Key, aesAlgo.IV);
 

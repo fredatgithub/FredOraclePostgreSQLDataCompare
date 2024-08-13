@@ -875,9 +875,9 @@
       this.labelSourceServer.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this.labelSourceServer.Location = new System.Drawing.Point(28, 197);
       this.labelSourceServer.Name = "labelSourceServer";
-      this.labelSourceServer.Size = new System.Drawing.Size(175, 29);
+      this.labelSourceServer.Size = new System.Drawing.Size(412, 35);
       this.labelSourceServer.TabIndex = 95;
-      this.labelSourceServer.Text = "Oracle Server";
+      this.labelSourceServer.Text = "Oracle Server: network alias";
       // 
       // labelSourceOperation
       // 

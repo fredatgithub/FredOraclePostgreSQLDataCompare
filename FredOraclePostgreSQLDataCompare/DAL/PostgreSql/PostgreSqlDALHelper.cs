@@ -453,10 +453,10 @@ namespace FredOraclePostgreSQLDataCompare.DAL.PostgreSql
     public static bool TestConnection(string connexionString)
     {
       bool result = false;
-      NpgsqlConnection conn = new NpgsqlConnection(connexionString);
+      NpgsqlConnection connection = new NpgsqlConnection(connexionString);
       try
       {
-        conn.Open();
+        connection.Open();
         result = true;
       }
       catch (Exception)
@@ -464,8 +464,8 @@ namespace FredOraclePostgreSQLDataCompare.DAL.PostgreSql
         result = false;
       }
 
-      result = conn.State == ConnectionState.Open;
-      conn.Close();
+      result = connection.State == ConnectionState.Open;
+      connection.Close();
       return result;
     }
   }

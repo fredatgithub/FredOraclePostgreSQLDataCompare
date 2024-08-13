@@ -79,14 +79,23 @@
 
     public static string GetAllSchemasRequest()
     {
-      //return "SELECT schema_name FROM information_schema.schemata where schema_name not in ('pg_catalog', 'information_schema', 'public');";
-      return "SELECT schema_name FROM information_schema.schemata;";
+      return "SELECT schema_name FROM information_schema.schemata where schema_name not in ('information_schema', 'pg_catalog') ORDER BY schema_name;";
     }
 
     public static string GetAllOwnerUsers()
     {
       //return "SELECT nspname FROM pg_catalog.pg_namespace;";
       return "select distinct schema_owner FROM information_schema.schemata;";
+    }
+
+    public static string GetAllPostgreSqlTables(string user)
+    {
+      return $"SELECT table_name FROM information_schema.tables WHERE table_schema = '{user}' AND table_type = 'BASE TABLE' ORDER BY 1;";
+    }
+
+    public static string GetcurrentUserRequest()
+    {
+      return "SELECT current_user;";
     }
   }
 }

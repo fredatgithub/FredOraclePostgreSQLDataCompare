@@ -1,5 +1,8 @@
 ﻿using System;
+using Npgsql;
+using System.Data;
 using Oracle.ManagedDataAccess.Client;
+using System.Collections.Generic;
 
 namespace FredOraclePostgreSQLDataCompare.DAL.Oracle
 {
@@ -41,6 +44,41 @@ namespace FredOraclePostgreSQLDataCompare.DAL.Oracle
         catch (Exception)
         {
           result = false;
+        }
+      }
+
+      return result;
+    }
+
+    public static string GetAllOracleTablesRequest()
+    {
+      return "SELECT table_name FROM all_tables WHERE owner = (SELECT user from dual) ORDER BY table_name";
+    }
+
+    internal static List<string> ExecuteQueryToListOfStrings(string connectionString, string query)
+    {
+      var result = new List<string>();
+      using (OracleConnection connection = new OracleConnection(connectionString))
+      {
+        try
+        {
+          connection.Open();
+
+          using (OracleCommand command = new OracleCommand(query, connection))
+          {
+            using (OracleDataReader reader = command.ExecuteReader())
+            {
+              while (reader.Read())
+              {
+                result.Add(reader.GetString(0));
+              }
+            }
+          }
+        }
+        catch (Exception)
+        {
+          result = new List<string>();
+          connection.Close();
         }
       }
 

@@ -142,7 +142,7 @@
             this.aideToolStripMenuItem});
       this.menuStrip1.Location = new System.Drawing.Point(0, 0);
       this.menuStrip1.Name = "menuStrip1";
-      this.menuStrip1.Size = new System.Drawing.Size(1473, 33);
+      this.menuStrip1.Size = new System.Drawing.Size(1473, 36);
       this.menuStrip1.TabIndex = 0;
       this.menuStrip1.Text = "menuStrip1";
       // 
@@ -410,11 +410,11 @@
       this.tabControlMain.Controls.Add(this.tabPageConnection);
       this.tabControlMain.Controls.Add(this.tabPageTables);
       this.tabControlMain.Dock = System.Windows.Forms.DockStyle.Fill;
-      this.tabControlMain.Location = new System.Drawing.Point(0, 33);
+      this.tabControlMain.Location = new System.Drawing.Point(0, 36);
       this.tabControlMain.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
       this.tabControlMain.Name = "tabControlMain";
       this.tabControlMain.SelectedIndex = 0;
-      this.tabControlMain.Size = new System.Drawing.Size(1473, 1008);
+      this.tabControlMain.Size = new System.Drawing.Size(1473, 1005);
       this.tabControlMain.TabIndex = 2;
       this.tabControlMain.SelectedIndexChanged += new System.EventHandler(this.TabControlMain_SelectedIndexChanged);
       // 
@@ -907,7 +907,7 @@
       this.tabPageTables.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
       this.tabPageTables.Name = "tabPageTables";
       this.tabPageTables.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
-      this.tabPageTables.Size = new System.Drawing.Size(1465, 975);
+      this.tabPageTables.Size = new System.Drawing.Size(1465, 972);
       this.tabPageTables.TabIndex = 1;
       this.tabPageTables.Text = "Tables";
       this.tabPageTables.UseVisualStyleBackColor = true;
@@ -915,7 +915,7 @@
       // 
       // buttonTablesCompare
       // 
-      this.buttonTablesCompare.Location = new System.Drawing.Point(635, 200);
+      this.buttonTablesCompare.Location = new System.Drawing.Point(648, 200);
       this.buttonTablesCompare.Name = "buttonTablesCompare";
       this.buttonTablesCompare.Size = new System.Drawing.Size(129, 38);
       this.buttonTablesCompare.TabIndex = 118;
@@ -984,7 +984,7 @@
       this.dataGridViewPostgreSql.AllowUserToOrderColumns = true;
       this.dataGridViewPostgreSql.Anchor = System.Windows.Forms.AnchorStyles.None;
       this.dataGridViewPostgreSql.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-      this.dataGridViewPostgreSql.Location = new System.Drawing.Point(794, 200);
+      this.dataGridViewPostgreSql.Location = new System.Drawing.Point(794, 199);
       this.dataGridViewPostgreSql.Name = "dataGridViewPostgreSql";
       this.dataGridViewPostgreSql.ReadOnly = true;
       this.dataGridViewPostgreSql.RowHeadersWidth = 62;
@@ -999,7 +999,7 @@
       this.dataGridViewOracle.AllowUserToOrderColumns = true;
       this.dataGridViewOracle.Anchor = System.Windows.Forms.AnchorStyles.None;
       this.dataGridViewOracle.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-      this.dataGridViewOracle.Location = new System.Drawing.Point(54, 200);
+      this.dataGridViewOracle.Location = new System.Drawing.Point(54, 199);
       this.dataGridViewOracle.Name = "dataGridViewOracle";
       this.dataGridViewOracle.ReadOnly = true;
       this.dataGridViewOracle.RowHeadersWidth = 62;

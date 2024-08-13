@@ -5,10 +5,11 @@ using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Reflection;
-using System.Runtime.Versioning;
 using System.Runtime.InteropServices;
+using System.Runtime.Versioning;
 using System.Windows.Forms;
 using System.Xml.Linq;
+using FredOraclePostgreSQLDataCompare.DAL.Oracle;
 using FredOraclePostgreSQLDataCompare.DAL.PostgreSql;
 using FredOraclePostgreSQLDataCompare.Properties;
 using log4net;
@@ -47,7 +48,6 @@ namespace FredOraclePostgreSQLDataCompare
     private const string SourceValue2Filename = "SourceV2.pidb";
     private const string SourceValue3Filename = "SourceV3.pidb";
     private const string SourceValue4Filename = "SourceV4.pidb";
-    //private const string SourceValue5Filename = "SourceV5.pidb";
 
     /// <summary>
     /// Key to be used to encrypt target parameters.
@@ -62,7 +62,6 @@ namespace FredOraclePostgreSQLDataCompare
     private const string TargetValue2Filename = "TargetV2.pidb";
     private const string TargetValue3Filename = "TargetV3.pidb";
     private const string TargetValue4Filename = "TargetV4.pidb";
-    //private const string TargetValue5Filename = "TargetV5.pidb";
 
     private void FormMain_Load(object sender, EventArgs e)
     {
@@ -496,8 +495,6 @@ namespace FredOraclePostgreSQLDataCompare
       englishToolStripMenuItem.Checked = true;
     }
 
-    // copy the following methods if you don't have them yet (you shouldn't)
-
     private void SetLanguage(string myLanguage)
     {
       switch (myLanguage)
@@ -690,15 +687,15 @@ namespace FredOraclePostgreSQLDataCompare
 
       var dbSourceConnexion = GetSourceConnexion();
       
-      string sqlQuery = PostgreSqlConnection.TestRequest();
-      if (PostgreSqlDALHelper.TestConnection(dbSourceConnexion.ToString()))
+      string sqlQuery = OracleDALHelper.TestRequest();
+      if (OracleDALHelper.TestOracleDbConnection(dbSourceConnexion.ToString()))
       {
         MessageBox.Show("Connection OK", "OK", MessageBoxButtons.OK, MessageBoxIcon.Information);
         sourceAuthenticationIsOk = true;
       }
       else
       {
-        MessageBox.Show($"Cannot connect to the database: {dbSourceConnexion.DatabaseName} on the server: {dbSourceConnexion.ServerName}", "Connection KO", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+        MessageBox.Show($"Cannot connect to the database: {dbSourceConnexion.DataSource} on the server: {dbSourceConnexion.DataSource}", "Connection KO", MessageBoxButtons.OK, MessageBoxIcon.Stop);
         sourceAuthenticationIsOk = false;
       }
 
@@ -748,7 +745,7 @@ namespace FredOraclePostgreSQLDataCompare
         return;
       }
 
-      var dbTargetConnexion = GetSourceConnexion();
+      var dbTargetConnexion = GetTargetConnexion();
 
       string sqlQuery = PostgreSqlConnection.TestRequest();
       if (PostgreSqlDALHelper.TestConnection(dbTargetConnexion.ToString()))
@@ -765,7 +762,7 @@ namespace FredOraclePostgreSQLDataCompare
       CheckBothAuthentication();
     }
 
-    private PostgreSqlDatabaseAuthentication GetSourceConnexion()
+    private PostgreSqlDatabaseAuthentication GetTargetConnexion()
     {
       var dbConnexion = new PostgreSqlDatabaseAuthentication
       {
@@ -776,6 +773,20 @@ namespace FredOraclePostgreSQLDataCompare
         DatabaseName = textBoxDatabaseNameTarget.Text
       };
 
+      return dbConnexion;
+    }
+
+    private OracleDatabaseAuthentication GetSourceConnexion()
+    {
+      var dbConnexion = new OracleDatabaseAuthentication
+      {
+        UserName = textBoxSourceName.Text,
+        UserPassword = textBoxSourcePassword.Text,
+        Port = int.Parse(textBoxSourcePort.Text),
+        DataSource = textBoxDatabaseNameSource.Text
+      };
+
+      dbConnexion.CheckTnsNameFile();
       return dbConnexion;
     }
 
@@ -841,16 +852,34 @@ namespace FredOraclePostgreSQLDataCompare
     {
       if (tabControlMain.SelectedIndex == 1)
       {
-        // loading controls
-        comboBoxOracleTable.Items.Clear();
+        // loading target controls
         comboBoxPostgresqlTable.Items.Clear();
         comboBoxPostgresqlSchema.Items.Clear();
         var items = new List<string>();
-        var dbTargetConnexion = GetSourceConnexion();
-        var query = "SELECT schema_name FROM information_schema.schemata where schema_name not in ('information_schema', 'pg_catalog') ORDER BY schema_name;";
+        var dbTargetConnexion = GetTargetConnexion();
+        var query = PostgreSqlConnection.GetAllSchemasRequest();
         items = PostgreSqlDALHelper.ExecuteSqlQueryToListOfStrings(dbTargetConnexion.ToString(), query);
         LoadCombobox(comboBoxPostgresqlSchema, items);
-        comboBoxPostgresqlSchema.SelectedIndex = 0;
+        if (comboBoxPostgresqlSchema.Items.Count > 0)
+        {
+          comboBoxPostgresqlSchema.SelectedIndex = 0;
+        }
+
+        // loading source controls
+        comboBoxOracleTable.Items.Clear();
+        items = new List<string>();
+        var dbSourceConnexion = GetSourceConnexion();
+        query = OracleDALHelper.GetAllOracleTablesRequest();
+        items = OracleDALHelper.ExecuteQueryToListOfStrings(dbSourceConnexion.ToString(), query);
+        LoadCombobox(comboBoxOracleTable, items);
+        if (comboBoxOracleTable.Items.Count > 0)
+        {
+          comboBoxOracleTable.SelectedIndex = 0;
+        }
+        else
+        {
+          comboBoxOracleTable.SelectedIndex = -1;
+        }
       }
     }
 
@@ -863,15 +892,17 @@ namespace FredOraclePostgreSQLDataCompare
     private void ComboBoxPostgresqlSchema_SelectedIndexChanged(object sender, EventArgs e)
     {
       // loading tables for the selected schema
-      // SELECT table_name FROM information_schema.tables WHERE table_schema = 'pp_inter_ref' AND table_type = 'BASE TABLE';
       comboBoxPostgresqlTable.Items.Clear();
       var items = new List<string>();
-      var dbTargetConnexion = GetSourceConnexion();
-      var query = "SELECT table_name FROM information_schema.tables WHERE table_schema = 'pp_inter_ref' AND table_type = 'BASE TABLE';";
+      var user = comboBoxPostgresqlSchema.SelectedItem as string;
+      var dbTargetConnexion = GetTargetConnexion();
+      var query = PostgreSqlConnection.GetAllPostgreSqlTables(user);
       items = PostgreSqlDALHelper.ExecuteSqlQueryToListOfStrings(dbTargetConnexion.ToString(), query);
       LoadCombobox(comboBoxPostgresqlTable, items);
-      comboBoxPostgresqlTable.SelectedIndex = 0;
-
+      if (comboBoxPostgresqlTable.Items.Count > 0)
+      {
+        comboBoxPostgresqlTable.SelectedIndex = 0;
+      }
     }
 
     private void ButtonTablesCompare_Click(object sender, EventArgs e)

@@ -3,6 +3,7 @@ using Npgsql;
 using System.Data;
 using Oracle.ManagedDataAccess.Client;
 using System.Collections.Generic;
+using System.Windows.Forms;
 
 namespace FredOraclePostgreSQLDataCompare.DAL.Oracle
 {
@@ -121,6 +122,37 @@ namespace FredOraclePostgreSQLDataCompare.DAL.Oracle
     public static string CountNumberOfRecordsRequest(string tableName)
     {
       return $"SELECT COUNT(*) FROM {tableName}";
+    }
+
+    public static string GetAllColumnsRequest(string tableName)
+    {
+      return $"SELECT column_name FROM user_tab_columns WHERE table_name = '{tableName}' ORDER BY 1";
+    }
+
+    internal static void LoadTableIntoDGV(string connectionString, string query, DataGridView dataGridView)
+    {
+      using (OracleConnection connection = new OracleConnection(connectionString))
+      {
+        try
+        {
+          connection.Open();
+          using (OracleDataAdapter adapter = new OracleDataAdapter(query, connection))
+          {
+            DataTable dataTable = new DataTable();
+            adapter.Fill(dataTable);
+            dataGridView.DataSource = dataTable;
+          }
+        }
+        catch (Exception)
+        {
+          
+        }
+      }
+    }
+
+    internal static string SelectAllFromTableRequest(string tableName)
+    {
+      return $"SELECT * FROM {tableName}";
     }
   }
 }

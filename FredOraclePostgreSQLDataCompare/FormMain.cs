@@ -972,7 +972,29 @@ namespace FredOraclePostgreSQLDataCompare
       postgresqlTableName = comboBoxPostgresqlTable.SelectedItem.ToString();
       var sourceColumnsList = new List<string>();
       var targetColumnsList = new List<string>();
+      //oracle
+      query = OracleDALHelper.GetAllColumnsRequest(oracleTableName);
+      sourceColumnsList = OracleDALHelper.ExecuteQueryToListOfStrings(dbSourceConnexion.ToString(), query);
+      //target
+      query = PostgreSqlConnection.GetAllColumnFromATableRequest(postgresqlTableName);
+      targetColumnsList = PostgreSqlDALHelper.ExecuteSqlQueryToListOfStrings(dbTargetConnexion.ToString(), query);
+      // datagridview oracle
+      query = OracleDALHelper.SelectAllFromTableRequest(oracleTableName);
+      OracleDALHelper.LoadTableIntoDGV(dbSourceConnexion.ToString(), query, dataGridViewOracle);
+      // datagridview postgresql
+      query = PostgreSqlConnection.SelectAllFromTableRequest(postgresqlTableName);
+      PostgreSqlDALHelper.LoadTableIntoDGV(dbTargetConnexion.ToString(), query, dataGridViewPostgreSql);
+      AutosizeAllColumns(dataGridViewPostgreSql);
+      AutosizeAllColumns(dataGridViewOracle);
+      
+    }
 
+    private void AutosizeAllColumns(DataGridView dataGridView)
+    {
+      for (int i = 0; i < dataGridView.ColumnCount; i++)
+      {
+        dataGridView.AutoResizeColumn(i, DataGridViewAutoSizeColumnMode.AllCells);
+      }
     }
 
     private Color GetColorForEquality(int numberSource, int numberTarget)

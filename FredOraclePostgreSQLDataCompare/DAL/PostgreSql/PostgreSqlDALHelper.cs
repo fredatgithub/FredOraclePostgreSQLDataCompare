@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Data;
 using System.Reflection;
+using System.Windows.Forms;
 
 namespace FredOraclePostgreSQLDataCompare.DAL.PostgreSql
 {
@@ -489,6 +490,26 @@ namespace FredOraclePostgreSQLDataCompare.DAL.PostgreSql
       }
 
       return result;
+    }
+
+    internal static void LoadTableIntoDGV(string connectionString, string query, DataGridView dataGridViewPostgreSql)
+    {
+      using (NpgsqlConnection connection = new NpgsqlConnection(connectionString))
+      {
+        try
+        {
+          connection.Open();
+          using (NpgsqlDataAdapter adapter = new NpgsqlDataAdapter(query, connection))
+          {
+            DataTable dataTable = new DataTable();
+            adapter.Fill(dataTable);
+            dataGridViewPostgreSql.DataSource = dataTable;
+          }
+        }
+        catch (Exception ex)
+        {
+        }
+      }
     }
   }
 }

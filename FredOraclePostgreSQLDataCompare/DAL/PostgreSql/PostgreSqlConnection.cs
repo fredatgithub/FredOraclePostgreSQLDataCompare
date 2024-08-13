@@ -73,10 +73,10 @@ namespace FredOraclePostgreSQLDataCompare
       return "SELECT sobjects.name FROM sysobjects sobjects WHERE sobjects.xtype = 'V'";
     }
 
-    public static string GetAllColumnFromATableRequest(string tableName)
+    public static string GetAllColumnFromATableRequest(string tableName, string schema = "")
     {
-      //SELECT table_catalog, table_schema, table_name, column_name, data_type FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = N'facture'
-      return $"SELECT column_name FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = N'{tableName}'";
+      //SELECT table_catalog, table_schema, table_name, column_name, data_type FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = 'facture'
+      return $"SELECT column_name FROM INFORMATION_SCHEMA.COLUMNS WHERE table_name = '{tableName}' AND table_schema = (SELECT current_user) ORDER BY 1;";
     }
 
     public static string GetAllSchemasRequest()
@@ -103,6 +103,11 @@ namespace FredOraclePostgreSQLDataCompare
     public static string CountNumberOfRecordsRequest(string tableName)
     {
       return $"SELECT COUNT(*) FROM {tableName};";
+    }
+
+    public static string SelectAllFromTableRequest(string tableName)
+    {
+      return $"SELECT * FROM {tableName};";
     }
   }
 }

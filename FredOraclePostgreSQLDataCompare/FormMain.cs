@@ -99,6 +99,10 @@ namespace FredOraclePostgreSQLDataCompare
         {
           logger.Error("The file tnsnames.ora is not present in the directory of the application");
         }
+        else
+        {
+          logger.Info("The file tnsnames.ora is present in the directory of the application");
+        }
       }
       catch (Exception exception)
       {

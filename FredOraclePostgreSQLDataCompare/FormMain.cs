@@ -1006,7 +1006,50 @@ namespace FredOraclePostgreSQLDataCompare
       PostgreSqlDALHelper.LoadTableIntoDGV(dbTargetConnexion.ToString(), query, dataGridViewPostgreSql);
       AutosizeAllColumns(dataGridViewPostgreSql);
       AutosizeAllColumns(dataGridViewOracle);
-      
+
+      // comparaison of all rows
+      HighlightDifferences(dataGridViewOracle, dataGridViewPostgreSql);
+      var numberOfLinesInOracleButNotInPostgreSql = 0;
+      var numberOfLinesInPostgreSqlButNotInOracle = 0;
+
+    }
+
+    private void HighlightDifferences(DataGridView dgv1, DataGridView dgv2)
+    {
+      if (dgv1.Rows.Count != dgv2.Rows.Count)
+      {
+        MessageBox.Show("Les DataGridViews n'ont pas le même nombre de lignes.");
+        return;
+      }
+
+      for (int i = 0; i < dgv1.Rows.Count; i++)
+      {
+        bool rowsAreEqual = true;
+
+        if (dgv1.Columns.Count != dgv2.Columns.Count)
+        {
+          MessageBox.Show("Les DataGridViews n'ont pas le même nombre de colonnes.");
+          return;
+        }
+
+        for (int j = 0; j < dgv1.Columns.Count; j++)
+        {
+          var value1 = dgv1.Rows[i].Cells[j].Value?.ToString();
+          var value2 = dgv2.Rows[i].Cells[j].Value?.ToString();
+
+          if (value1 != value2)
+          {
+            rowsAreEqual = false;
+            break;
+          }
+        }
+
+        if (!rowsAreEqual)
+        {
+          dgv1.Rows[i].DefaultCellStyle.BackColor = Color.Red;
+          dgv2.Rows[i].DefaultCellStyle.BackColor = Color.Red;
+        }
+      }
     }
 
     private void AutosizeAllColumns(DataGridView dataGridView)

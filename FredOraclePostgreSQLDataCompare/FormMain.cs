@@ -1013,7 +1013,8 @@ namespace FredOraclePostgreSQLDataCompare
       var numberOfLinesInPostgreSqlButNotInOracle = 0;
       var comparer = new DataGridViewComparer();
       (numberOfLinesInOracleButNotInPostgreSql, numberOfLinesInPostgreSqlButNotInOracle) = comparer.GetDifferenceCounts(dataGridViewOracle, dataGridViewPostgreSql);
-
+      labelNumberOfLinesInOracleButNotInPostgreSql.Text = $"Number of lines in Oracle but not in PostgreSql: {numberOfLinesInOracleButNotInPostgreSql}";
+      labelNumberOfLinesInPostgreSqlButNotInOracle.Text = $"Number of lines in PostgreSql but not in Oracle: {numberOfLinesInPostgreSqlButNotInOracle}";
     }
 
     private void HighlightDifferences(DataGridView dgv1, DataGridView dgv2)

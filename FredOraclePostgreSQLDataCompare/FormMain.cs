@@ -88,6 +88,22 @@ namespace FredOraclePostgreSQLDataCompare
       GetWindowValue();
       DisplayTitle();
       DisableNotImplementedMenuItems();
+      CheckTnsNamesOraFile();
+    }
+
+    private void CheckTnsNamesOraFile()
+    {
+      try
+      {
+        if (!File.Exists("tnsnames.ora"))
+        {
+          logger.Error("The file tnsnames.ora is not present in the directory of the application");
+        }
+      }
+      catch (Exception exception)
+      {
+        logger.Error($"There was an exception while checking if the file tnsnames.ora was present in the directory of the application. The exception is: {exception.Message}");
+      }
     }
 
     private void DisableNotImplementedMenuItems()

@@ -127,6 +127,7 @@
     <Compile Include="DAL\PostgreSql\PostgreSqlDatabaseAuthentication.cs" />
     <Compile Include="DAL\PostgreSql\PostgreSqlDALHelper.cs" />
     <Compile Include="DAL\PostgreSql\PostgreSqlConnection.cs" />
+    <Compile Include="DataGridViewComparer.cs" />
     <Compile Include="FormMain.cs">
       <SubType>Form</SubType>
     </Compile>

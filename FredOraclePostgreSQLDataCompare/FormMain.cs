@@ -874,24 +874,9 @@ namespace FredOraclePostgreSQLDataCompare
     {
       if (tabControlMain.SelectedIndex == 1)
       {
-        // loading target controls
         LoadTargetComboboxes(comboBoxPostgresqlSchema, PostgreSqlConnection.GetAllSchemasRequest());
 
-        // loading source controls
-        comboBoxOracleTable.Items.Clear();
-        var items = new List<string>();
-        var dbSourceConnexion = GetSourceConnexion();
-        var query = OracleDALHelper.GetAllOracleTablesRequest();
-        items = OracleDALHelper.ExecuteQueryToListOfStrings(dbSourceConnexion.ToString(), query);
-        LoadCombobox(comboBoxOracleTable, items);
-        if (comboBoxOracleTable.Items.Count > 0)
-        {
-          comboBoxOracleTable.SelectedIndex = 0;
-        }
-        else
-        {
-          comboBoxOracleTable.SelectedIndex = -1;
-        }
+        LoadSourceCombox(comboBoxOracleTable, OracleDALHelper.GetAllOracleTablesRequest());
       }
 
       if (tabControlMain.SelectedIndex == 2)
@@ -902,6 +887,25 @@ namespace FredOraclePostgreSQLDataCompare
         {
           LoadTargetComboboxes(comboBoxInsertTableNameTarget, PostgreSqlConnection.GetAllTableNamesForASpecificSchemaRequest(schema));
         }
+
+        LoadSourceCombox(comboBoxInsertTableSource, OracleDALHelper.GetAllOracleTablesRequest());
+      }
+    }
+
+    private void LoadSourceCombox(ComboBox comboBox, string query)
+    {
+      comboBox.Items.Clear();
+      var items = new List<string>();
+      var dbSourceConnexion = GetSourceConnexion();
+      items = OracleDALHelper.ExecuteQueryToListOfStrings(dbSourceConnexion.ToString(), query);
+      LoadCombobox(comboBox, items);
+      if (comboBox.Items.Count > 0)
+      {
+        comboBox.SelectedIndex = 0;
+      }
+      else
+      {
+        comboBox.SelectedIndex = -1;
       }
     }
 
@@ -915,6 +919,10 @@ namespace FredOraclePostgreSQLDataCompare
       if (comboBox.Items.Count > 0)
       {
         comboBox.SelectedIndex = 0;
+      }
+      else
+      {
+        comboBox.SelectedIndex = -1;
       }
     }
 

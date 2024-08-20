@@ -1114,6 +1114,36 @@ namespace FredOraclePostgreSQLDataCompare
 
     private void ButtonInsertLoad_Click(object sender, EventArgs e)
     {
+      if (comboBoxInsertSchemaTarget.SelectedIndex == -1)
+      {
+        MessageBox.Show("You have to select a target SQL schema");
+        return;
+      }
+
+      if (comboBoxInsertTableNameTarget.SelectedIndex == -1)
+      {
+        MessageBox.Show("You have to select a target table");
+        return;
+      }
+
+      if (comboBoxInsertTableSource.SelectedIndex == -1)
+      {
+        MessageBox.Show("You have to select a source table");
+        return;
+      }
+
+      if (comboBoxInsertTableNameTarget.SelectedItem.ToString().ToLower() != comboBoxInsertTableSource.SelectedItem.ToString().ToLower())
+      {
+        MessageBox.Show("You have to select the same table from source as the target table");
+        return;
+      }
+
+
+    }
+
+    private void ButtonInsert_Click(object sender, EventArgs e)
+    {
+      // check if there is anything to insert from
 
     }
   }

@@ -139,6 +139,9 @@
       this.comboBoxInsertTableNameTarget = new System.Windows.Forms.ComboBox();
       this.labelInsertTarget = new System.Windows.Forms.Label();
       this.labelInsertSource = new System.Windows.Forms.Label();
+      this.labelInsertNumberOfLinesSource = new System.Windows.Forms.Label();
+      this.labelInsertNumberOfLinesTarget = new System.Windows.Forms.Label();
+      this.buttonInsert = new System.Windows.Forms.Button();
       this.menuStrip1.SuspendLayout();
       this.tabControlMain.SuspendLayout();
       this.tabPageConnection.SuspendLayout();
@@ -919,7 +922,7 @@
       this.tabPageTables.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
       this.tabPageTables.Name = "tabPageTables";
       this.tabPageTables.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
-      this.tabPageTables.Size = new System.Drawing.Size(2469, 1091);
+      this.tabPageTables.Size = new System.Drawing.Size(2469, 1094);
       this.tabPageTables.TabIndex = 1;
       this.tabPageTables.Text = "Tables";
       this.tabPageTables.UseVisualStyleBackColor = true;
@@ -1129,6 +1132,9 @@
       // 
       // tabPageInsert
       // 
+      this.tabPageInsert.Controls.Add(this.buttonInsert);
+      this.tabPageInsert.Controls.Add(this.labelInsertNumberOfLinesTarget);
+      this.tabPageInsert.Controls.Add(this.labelInsertNumberOfLinesSource);
       this.tabPageInsert.Controls.Add(this.buttonInsertLoad);
       this.tabPageInsert.Controls.Add(this.dataGridViewInsertTarget);
       this.tabPageInsert.Controls.Add(this.dataGridViewInsertSource);
@@ -1172,7 +1178,7 @@
       this.dataGridViewInsertTarget.ReadOnly = true;
       this.dataGridViewInsertTarget.RowHeadersWidth = 62;
       this.dataGridViewInsertTarget.RowTemplate.Height = 28;
-      this.dataGridViewInsertTarget.Size = new System.Drawing.Size(1311, 798);
+      this.dataGridViewInsertTarget.Size = new System.Drawing.Size(1311, 795);
       this.dataGridViewInsertTarget.TabIndex = 123;
       // 
       // dataGridViewInsertSource
@@ -1188,7 +1194,7 @@
       this.dataGridViewInsertSource.ReadOnly = true;
       this.dataGridViewInsertSource.RowHeadersWidth = 62;
       this.dataGridViewInsertSource.RowTemplate.Height = 28;
-      this.dataGridViewInsertSource.Size = new System.Drawing.Size(940, 798);
+      this.dataGridViewInsertSource.Size = new System.Drawing.Size(940, 795);
       this.dataGridViewInsertSource.TabIndex = 122;
       // 
       // comboBoxInsertSchemaTarget
@@ -1263,6 +1269,34 @@
       this.labelInsertSource.Size = new System.Drawing.Size(217, 32);
       this.labelInsertSource.TabIndex = 109;
       this.labelInsertSource.Text = "Source: Oracle";
+      // 
+      // labelInsertNumberOfLinesSource
+      // 
+      this.labelInsertNumberOfLinesSource.AutoSize = true;
+      this.labelInsertNumberOfLinesSource.Location = new System.Drawing.Point(43, 187);
+      this.labelInsertNumberOfLinesSource.Name = "labelInsertNumberOfLinesSource";
+      this.labelInsertNumberOfLinesSource.Size = new System.Drawing.Size(445, 35);
+      this.labelInsertNumberOfLinesSource.TabIndex = 125;
+      this.labelInsertNumberOfLinesSource.Text = "Number of lines in source table: 0";
+      // 
+      // labelInsertNumberOfLinesTarget
+      // 
+      this.labelInsertNumberOfLinesTarget.AutoSize = true;
+      this.labelInsertNumberOfLinesTarget.Location = new System.Drawing.Point(1117, 187);
+      this.labelInsertNumberOfLinesTarget.Name = "labelInsertNumberOfLinesTarget";
+      this.labelInsertNumberOfLinesTarget.Size = new System.Drawing.Size(431, 35);
+      this.labelInsertNumberOfLinesTarget.TabIndex = 126;
+      this.labelInsertNumberOfLinesTarget.Text = "Number of lines in target table: 0";
+      // 
+      // buttonInsert
+      // 
+      this.buttonInsert.Location = new System.Drawing.Point(993, 347);
+      this.buttonInsert.Name = "buttonInsert";
+      this.buttonInsert.Size = new System.Drawing.Size(120, 48);
+      this.buttonInsert.TabIndex = 127;
+      this.buttonInsert.Text = "INSERT";
+      this.buttonInsert.UseVisualStyleBackColor = true;
+      this.buttonInsert.Click += new System.EventHandler(this.ButtonInsert_Click);
       // 
       // FormMain
       // 
@@ -1409,6 +1443,9 @@
     private System.Windows.Forms.DataGridView dataGridViewInsertTarget;
     private System.Windows.Forms.DataGridView dataGridViewInsertSource;
     private System.Windows.Forms.Button buttonInsertLoad;
+    private System.Windows.Forms.Label labelInsertNumberOfLinesTarget;
+    private System.Windows.Forms.Label labelInsertNumberOfLinesSource;
+    private System.Windows.Forms.Button buttonInsert;
   }
 }
 

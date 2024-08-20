@@ -158,7 +158,7 @@
             this.aideToolStripMenuItem});
       this.menuStrip1.Location = new System.Drawing.Point(0, 0);
       this.menuStrip1.Name = "menuStrip1";
-      this.menuStrip1.Size = new System.Drawing.Size(2477, 33);
+      this.menuStrip1.Size = new System.Drawing.Size(2477, 36);
       this.menuStrip1.TabIndex = 0;
       this.menuStrip1.Text = "menuStrip1";
       // 
@@ -176,7 +176,7 @@
             this.toolStripSeparator2,
             this.quitterToolStripMenuItem});
       this.fichierToolStripMenuItem.Name = "fichierToolStripMenuItem";
-      this.fichierToolStripMenuItem.Size = new System.Drawing.Size(78, 29);
+      this.fichierToolStripMenuItem.Size = new System.Drawing.Size(78, 30);
       this.fichierToolStripMenuItem.Text = "&Fichier";
       // 
       // nouveauToolStripMenuItem
@@ -263,7 +263,7 @@
             this.toolStripSeparator4,
             this.sélectionnertoutToolStripMenuItem});
       this.editionToolStripMenuItem.Name = "editionToolStripMenuItem";
-      this.editionToolStripMenuItem.Size = new System.Drawing.Size(83, 29);
+      this.editionToolStripMenuItem.Size = new System.Drawing.Size(83, 30);
       this.editionToolStripMenuItem.Text = "&Edition";
       // 
       // annulerToolStripMenuItem
@@ -329,7 +329,7 @@
             this.personnaliserToolStripMenuItem,
             this.optionsToolStripMenuItem});
       this.outilsToolStripMenuItem.Name = "outilsToolStripMenuItem";
-      this.outilsToolStripMenuItem.Size = new System.Drawing.Size(74, 29);
+      this.outilsToolStripMenuItem.Size = new System.Drawing.Size(74, 30);
       this.outilsToolStripMenuItem.Text = "&Outils";
       // 
       // personnaliserToolStripMenuItem
@@ -350,7 +350,7 @@
             this.frenchToolStripMenuItem,
             this.englishToolStripMenuItem});
       this.toolStripMenuItemLanguage.Name = "toolStripMenuItemLanguage";
-      this.toolStripMenuItemLanguage.Size = new System.Drawing.Size(105, 29);
+      this.toolStripMenuItemLanguage.Size = new System.Drawing.Size(105, 30);
       this.toolStripMenuItemLanguage.Text = "Language";
       // 
       // frenchToolStripMenuItem
@@ -378,7 +378,7 @@
             this.toolStripSeparator5,
             this.àproposdeToolStripMenuItem});
       this.aideToolStripMenuItem.Name = "aideToolStripMenuItem";
-      this.aideToolStripMenuItem.Size = new System.Drawing.Size(64, 29);
+      this.aideToolStripMenuItem.Size = new System.Drawing.Size(64, 30);
       this.aideToolStripMenuItem.Text = "&Aide";
       // 
       // sommaireToolStripMenuItem
@@ -427,11 +427,11 @@
       this.tabControlMain.Controls.Add(this.tabPageTables);
       this.tabControlMain.Controls.Add(this.tabPageInsert);
       this.tabControlMain.Dock = System.Windows.Forms.DockStyle.Fill;
-      this.tabControlMain.Location = new System.Drawing.Point(0, 33);
+      this.tabControlMain.Location = new System.Drawing.Point(0, 36);
       this.tabControlMain.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
       this.tabControlMain.Name = "tabControlMain";
       this.tabControlMain.SelectedIndex = 0;
-      this.tabControlMain.Size = new System.Drawing.Size(2477, 1127);
+      this.tabControlMain.Size = new System.Drawing.Size(2477, 1124);
       this.tabControlMain.TabIndex = 2;
       this.tabControlMain.SelectedIndexChanged += new System.EventHandler(this.TabControlMain_SelectedIndexChanged);
       // 
@@ -487,7 +487,7 @@
       this.tabPageConnection.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
       this.tabPageConnection.Name = "tabPageConnection";
       this.tabPageConnection.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
-      this.tabPageConnection.Size = new System.Drawing.Size(2394, 1094);
+      this.tabPageConnection.Size = new System.Drawing.Size(2469, 1094);
       this.tabPageConnection.TabIndex = 0;
       this.tabPageConnection.Text = "Connection";
       this.tabPageConnection.UseVisualStyleBackColor = true;
@@ -1135,7 +1135,7 @@
       this.tabPageInsert.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this.tabPageInsert.Location = new System.Drawing.Point(4, 29);
       this.tabPageInsert.Name = "tabPageInsert";
-      this.tabPageInsert.Size = new System.Drawing.Size(2469, 1094);
+      this.tabPageInsert.Size = new System.Drawing.Size(2469, 1091);
       this.tabPageInsert.TabIndex = 2;
       this.tabPageInsert.Text = "Insert";
       this.tabPageInsert.UseVisualStyleBackColor = true;

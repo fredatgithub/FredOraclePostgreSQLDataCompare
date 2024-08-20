@@ -845,8 +845,13 @@ namespace FredOraclePostgreSQLDataCompare
     private void ButtonCompareCompareNow_Click(object sender, EventArgs e)
     {
       // Checked connections before tab switching
-
+      int backupPositionX = Location.X;
+      int backupPositionY = Location.Y + Size.Height / 2;
+      var pleaseWait = new PleaseWaitForm(backupPositionX, backupPositionY);
+      pleaseWait.Show();
+      Application.DoEvents();
       tabControlMain.SelectedIndex = 1;
+      pleaseWait.Close();
     }
 
     private void TabPageTables_Click(object sender, EventArgs e)
@@ -875,8 +880,8 @@ namespace FredOraclePostgreSQLDataCompare
       if (tabControlMain.SelectedIndex == 1)
       {
         LoadTargetComboboxes(comboBoxPostgresqlSchema, PostgreSqlConnection.GetAllSchemasRequest());
-
         LoadSourceCombox(comboBoxOracleTable, OracleDALHelper.GetAllOracleTablesRequest());
+        
       }
 
       if (tabControlMain.SelectedIndex == 2)
@@ -981,6 +986,12 @@ namespace FredOraclePostgreSQLDataCompare
         }
       }
 
+      int backupPositionX = Location.X;
+      int backupPositionY = Location.Y + Size.Height / 2;
+      var pleaseWait = new PleaseWaitForm(backupPositionX, backupPositionY);
+      pleaseWait.Show();
+      Application.DoEvents();
+
       // get original names for requests
       oracleTableName = comboBoxOracleTable.SelectedItem.ToString();
       postgresqlTableName = comboBoxPostgresqlTable.SelectedItem.ToString();
@@ -1036,6 +1047,7 @@ namespace FredOraclePostgreSQLDataCompare
       (numberOfLinesInOracleButNotInPostgreSql, numberOfLinesInPostgreSqlButNotInOracle) = comparer.GetDifferenceCounts(dataGridViewOracle, dataGridViewPostgreSql);
       labelNumberOfLinesInOracleButNotInPostgreSql.Text = $"Number of lines in Oracle but not in PostgreSql: {numberOfLinesInOracleButNotInPostgreSql}";
       labelNumberOfLinesInPostgreSqlButNotInOracle.Text = $"Number of lines in PostgreSql but not in Oracle: {numberOfLinesInPostgreSqlButNotInOracle}";
+      pleaseWait.Close();
     }
 
     private void HighlightDifferences(DataGridView dgv1, DataGridView dgv2)

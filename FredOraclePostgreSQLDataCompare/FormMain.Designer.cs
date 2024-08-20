@@ -128,6 +128,9 @@
       this.labelNumberOfLinesInOracleButNotInPostgreSql = new System.Windows.Forms.Label();
       this.labelNumberOfLinesInPostgreSqlButNotInOracle = new System.Windows.Forms.Label();
       this.tabPageInsert = new System.Windows.Forms.TabPage();
+      this.buttonInsertLoad = new System.Windows.Forms.Button();
+      this.dataGridViewInsertTarget = new System.Windows.Forms.DataGridView();
+      this.dataGridViewInsertSource = new System.Windows.Forms.DataGridView();
       this.comboBoxInsertSchemaTarget = new System.Windows.Forms.ComboBox();
       this.labelInsertSchemaTarget = new System.Windows.Forms.Label();
       this.comboBoxInsertTableSource = new System.Windows.Forms.ComboBox();
@@ -144,6 +147,8 @@
       ((System.ComponentModel.ISupportInitialize)(this.dataGridViewPostgreSql)).BeginInit();
       ((System.ComponentModel.ISupportInitialize)(this.dataGridViewOracle)).BeginInit();
       this.tabPageInsert.SuspendLayout();
+      ((System.ComponentModel.ISupportInitialize)(this.dataGridViewInsertTarget)).BeginInit();
+      ((System.ComponentModel.ISupportInitialize)(this.dataGridViewInsertSource)).BeginInit();
       this.SuspendLayout();
       // 
       // menuStrip1
@@ -158,7 +163,7 @@
             this.aideToolStripMenuItem});
       this.menuStrip1.Location = new System.Drawing.Point(0, 0);
       this.menuStrip1.Name = "menuStrip1";
-      this.menuStrip1.Size = new System.Drawing.Size(2477, 36);
+      this.menuStrip1.Size = new System.Drawing.Size(2477, 33);
       this.menuStrip1.TabIndex = 0;
       this.menuStrip1.Text = "menuStrip1";
       // 
@@ -176,7 +181,7 @@
             this.toolStripSeparator2,
             this.quitterToolStripMenuItem});
       this.fichierToolStripMenuItem.Name = "fichierToolStripMenuItem";
-      this.fichierToolStripMenuItem.Size = new System.Drawing.Size(78, 30);
+      this.fichierToolStripMenuItem.Size = new System.Drawing.Size(78, 29);
       this.fichierToolStripMenuItem.Text = "&Fichier";
       // 
       // nouveauToolStripMenuItem
@@ -263,7 +268,7 @@
             this.toolStripSeparator4,
             this.sélectionnertoutToolStripMenuItem});
       this.editionToolStripMenuItem.Name = "editionToolStripMenuItem";
-      this.editionToolStripMenuItem.Size = new System.Drawing.Size(83, 30);
+      this.editionToolStripMenuItem.Size = new System.Drawing.Size(83, 29);
       this.editionToolStripMenuItem.Text = "&Edition";
       // 
       // annulerToolStripMenuItem
@@ -329,7 +334,7 @@
             this.personnaliserToolStripMenuItem,
             this.optionsToolStripMenuItem});
       this.outilsToolStripMenuItem.Name = "outilsToolStripMenuItem";
-      this.outilsToolStripMenuItem.Size = new System.Drawing.Size(74, 30);
+      this.outilsToolStripMenuItem.Size = new System.Drawing.Size(74, 29);
       this.outilsToolStripMenuItem.Text = "&Outils";
       // 
       // personnaliserToolStripMenuItem
@@ -350,7 +355,7 @@
             this.frenchToolStripMenuItem,
             this.englishToolStripMenuItem});
       this.toolStripMenuItemLanguage.Name = "toolStripMenuItemLanguage";
-      this.toolStripMenuItemLanguage.Size = new System.Drawing.Size(105, 30);
+      this.toolStripMenuItemLanguage.Size = new System.Drawing.Size(105, 29);
       this.toolStripMenuItemLanguage.Text = "Language";
       // 
       // frenchToolStripMenuItem
@@ -378,7 +383,7 @@
             this.toolStripSeparator5,
             this.àproposdeToolStripMenuItem});
       this.aideToolStripMenuItem.Name = "aideToolStripMenuItem";
-      this.aideToolStripMenuItem.Size = new System.Drawing.Size(64, 30);
+      this.aideToolStripMenuItem.Size = new System.Drawing.Size(64, 29);
       this.aideToolStripMenuItem.Text = "&Aide";
       // 
       // sommaireToolStripMenuItem
@@ -427,11 +432,11 @@
       this.tabControlMain.Controls.Add(this.tabPageTables);
       this.tabControlMain.Controls.Add(this.tabPageInsert);
       this.tabControlMain.Dock = System.Windows.Forms.DockStyle.Fill;
-      this.tabControlMain.Location = new System.Drawing.Point(0, 36);
+      this.tabControlMain.Location = new System.Drawing.Point(0, 33);
       this.tabControlMain.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
       this.tabControlMain.Name = "tabControlMain";
       this.tabControlMain.SelectedIndex = 0;
-      this.tabControlMain.Size = new System.Drawing.Size(2477, 1124);
+      this.tabControlMain.Size = new System.Drawing.Size(2477, 1127);
       this.tabControlMain.TabIndex = 2;
       this.tabControlMain.SelectedIndexChanged += new System.EventHandler(this.TabControlMain_SelectedIndexChanged);
       // 
@@ -914,7 +919,7 @@
       this.tabPageTables.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
       this.tabPageTables.Name = "tabPageTables";
       this.tabPageTables.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
-      this.tabPageTables.Size = new System.Drawing.Size(2469, 1094);
+      this.tabPageTables.Size = new System.Drawing.Size(2469, 1091);
       this.tabPageTables.TabIndex = 1;
       this.tabPageTables.Text = "Tables";
       this.tabPageTables.UseVisualStyleBackColor = true;
@@ -1124,6 +1129,9 @@
       // 
       // tabPageInsert
       // 
+      this.tabPageInsert.Controls.Add(this.buttonInsertLoad);
+      this.tabPageInsert.Controls.Add(this.dataGridViewInsertTarget);
+      this.tabPageInsert.Controls.Add(this.dataGridViewInsertSource);
       this.tabPageInsert.Controls.Add(this.comboBoxInsertSchemaTarget);
       this.tabPageInsert.Controls.Add(this.labelInsertSchemaTarget);
       this.tabPageInsert.Controls.Add(this.comboBoxInsertTableSource);
@@ -1135,10 +1143,53 @@
       this.tabPageInsert.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this.tabPageInsert.Location = new System.Drawing.Point(4, 29);
       this.tabPageInsert.Name = "tabPageInsert";
-      this.tabPageInsert.Size = new System.Drawing.Size(2469, 1091);
+      this.tabPageInsert.Size = new System.Drawing.Size(2469, 1094);
       this.tabPageInsert.TabIndex = 2;
       this.tabPageInsert.Text = "Insert";
       this.tabPageInsert.UseVisualStyleBackColor = true;
+      // 
+      // buttonInsertLoad
+      // 
+      this.buttonInsertLoad.Location = new System.Drawing.Point(993, 266);
+      this.buttonInsertLoad.Name = "buttonInsertLoad";
+      this.buttonInsertLoad.Size = new System.Drawing.Size(120, 48);
+      this.buttonInsertLoad.TabIndex = 124;
+      this.buttonInsertLoad.Text = "LOAD";
+      this.buttonInsertLoad.UseVisualStyleBackColor = true;
+      this.buttonInsertLoad.Click += new System.EventHandler(this.ButtonInsertLoad_Click);
+      // 
+      // dataGridViewInsertTarget
+      // 
+      this.dataGridViewInsertTarget.AllowUserToAddRows = false;
+      this.dataGridViewInsertTarget.AllowUserToDeleteRows = false;
+      this.dataGridViewInsertTarget.AllowUserToOrderColumns = true;
+      this.dataGridViewInsertTarget.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+      this.dataGridViewInsertTarget.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+      this.dataGridViewInsertTarget.Location = new System.Drawing.Point(1122, 266);
+      this.dataGridViewInsertTarget.Name = "dataGridViewInsertTarget";
+      this.dataGridViewInsertTarget.ReadOnly = true;
+      this.dataGridViewInsertTarget.RowHeadersWidth = 62;
+      this.dataGridViewInsertTarget.RowTemplate.Height = 28;
+      this.dataGridViewInsertTarget.Size = new System.Drawing.Size(1311, 798);
+      this.dataGridViewInsertTarget.TabIndex = 123;
+      // 
+      // dataGridViewInsertSource
+      // 
+      this.dataGridViewInsertSource.AllowUserToAddRows = false;
+      this.dataGridViewInsertSource.AllowUserToDeleteRows = false;
+      this.dataGridViewInsertSource.AllowUserToOrderColumns = true;
+      this.dataGridViewInsertSource.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+      this.dataGridViewInsertSource.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+      this.dataGridViewInsertSource.Location = new System.Drawing.Point(47, 266);
+      this.dataGridViewInsertSource.Name = "dataGridViewInsertSource";
+      this.dataGridViewInsertSource.ReadOnly = true;
+      this.dataGridViewInsertSource.RowHeadersWidth = 62;
+      this.dataGridViewInsertSource.RowTemplate.Height = 28;
+      this.dataGridViewInsertSource.Size = new System.Drawing.Size(940, 798);
+      this.dataGridViewInsertSource.TabIndex = 122;
       // 
       // comboBoxInsertSchemaTarget
       // 
@@ -1239,6 +1290,8 @@
       ((System.ComponentModel.ISupportInitialize)(this.dataGridViewOracle)).EndInit();
       this.tabPageInsert.ResumeLayout(false);
       this.tabPageInsert.PerformLayout();
+      ((System.ComponentModel.ISupportInitialize)(this.dataGridViewInsertTarget)).EndInit();
+      ((System.ComponentModel.ISupportInitialize)(this.dataGridViewInsertSource)).EndInit();
       this.ResumeLayout(false);
       this.PerformLayout();
 
@@ -1353,6 +1406,9 @@
     private System.Windows.Forms.ComboBox comboBoxInsertTableNameTarget;
     private System.Windows.Forms.ComboBox comboBoxInsertSchemaTarget;
     private System.Windows.Forms.Label labelInsertSchemaTarget;
+    private System.Windows.Forms.DataGridView dataGridViewInsertTarget;
+    private System.Windows.Forms.DataGridView dataGridViewInsertSource;
+    private System.Windows.Forms.Button buttonInsertLoad;
   }
 }
 

@@ -47,7 +47,7 @@
       this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
       this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
       this.BackColor = System.Drawing.SystemColors.ActiveCaption;
-      this.ClientSize = new System.Drawing.Size(1069, 155);
+      this.ClientSize = new System.Drawing.Size(1115, 155);
       this.Controls.Add(this.labelPleaseWait);
       this.ForeColor = System.Drawing.SystemColors.ControlText;
       this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;

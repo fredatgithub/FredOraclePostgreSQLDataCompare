@@ -31,7 +31,6 @@ namespace FredOraclePostgreSQLDataCompare
     private readonly Dictionary<string, string> languageDicoEn = new Dictionary<string, string>();
     private readonly Dictionary<string, string> languageDicoFr = new Dictionary<string, string>();
     internal ILog logger = LogManager.GetLogger(typeof(FormMain));
-    // don't forget to set always copy in properties of the file
     private readonly string Log4NetConfigFilePath = "log4net.config.xml";
     private bool bothAuthenticationAreOk = false;
     private bool sourceAuthenticationIsOk = false;
@@ -65,6 +64,8 @@ namespace FredOraclePostgreSQLDataCompare
     private const string TargetValue3Filename = "TargetV3.pidb";
     private const string TargetValue4Filename = "TargetV4.pidb";
 
+    private bool[] tabLoaded;
+
     private void FormMain_Load(object sender, EventArgs e)
     {
       XmlConfigurator.ConfigureAndWatch(new FileInfo(Log4NetConfigFilePath));
@@ -79,7 +80,7 @@ namespace FredOraclePostgreSQLDataCompare
       logger.Info($"Application compilée pour architecture : {GetEnvironment64BitProcess()}");
       logger.Info($"Framework installé sur le serveur en version : {GetFrameworkVersion()}");
       Text += GetApplicationVersion();
-
+      tabLoaded = new bool[tabControlMain.TabCount];
       GetWindowValue();
       LoadLanguages();
       SetLanguage(Settings.Default.LastLanguageUsed);
@@ -877,14 +878,14 @@ namespace FredOraclePostgreSQLDataCompare
 
     private void TabControlMain_SelectedIndexChanged(object sender, EventArgs e)
     {
-      if (tabControlMain.SelectedIndex == 1)
+      if (tabControlMain.SelectedIndex == 1 && tabLoaded[1] == false)
       {
         LoadTargetComboboxes(comboBoxPostgresqlSchema, PostgreSqlConnection.GetAllSchemasRequest());
         LoadSourceCombox(comboBoxOracleTable, OracleDALHelper.GetAllOracleTablesRequest());
-        
+        tabLoaded[1] = true;
       }
 
-      if (tabControlMain.SelectedIndex == 2)
+      if (tabControlMain.SelectedIndex == 2 && tabLoaded[2] == false)
       {
         LoadTargetComboboxes(comboBoxInsertSchemaTarget, PostgreSqlConnection.GetAllSchemasRequest());
         var schema = comboBoxInsertSchemaTarget.SelectedItem.ToString();
@@ -894,6 +895,7 @@ namespace FredOraclePostgreSQLDataCompare
         }
 
         LoadSourceCombox(comboBoxInsertTableSource, OracleDALHelper.GetAllOracleTablesRequest());
+        tabLoaded[2] = true;
       }
     }
 
@@ -1108,6 +1110,11 @@ namespace FredOraclePostgreSQLDataCompare
       {
         LoadTargetComboboxes(comboBoxInsertTableNameTarget, PostgreSqlConnection.GetAllTableNamesForASpecificSchemaRequest(schema));
       }
+    }
+
+    private void ButtonInsertLoad_Click(object sender, EventArgs e)
+    {
+
     }
   }
 }

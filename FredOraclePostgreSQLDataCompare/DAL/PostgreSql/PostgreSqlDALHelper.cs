@@ -506,7 +506,7 @@ namespace FredOraclePostgreSQLDataCompare.DAL.PostgreSql
             dataGridViewPostgreSql.DataSource = dataTable;
           }
         }
-        catch (Exception ex)
+        catch (Exception)
         {
         }
       }

@@ -1138,7 +1138,20 @@ namespace FredOraclePostgreSQLDataCompare
         return;
       }
 
+      AddSelectColumnToDGV(dataGridViewInsertSource);
+      AddSelectColumnToDGV(dataGridViewInsertTarget);
+    }
 
+    private void AddSelectColumnToDGV(DataGridView dataGidView)
+    {
+      var selectColumn = new DataGridViewCheckBoxColumn
+      {
+        HeaderText = "Select",
+        Name = "selectColumn",
+        Width = 50
+      };
+
+      dataGidView.Columns.Add(selectColumn);
     }
 
     private void ButtonInsert_Click(object sender, EventArgs e)

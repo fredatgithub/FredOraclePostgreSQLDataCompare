@@ -127,6 +127,15 @@
       this.buttonTablesCompare = new System.Windows.Forms.Button();
       this.labelNumberOfLinesInOracleButNotInPostgreSql = new System.Windows.Forms.Label();
       this.labelNumberOfLinesInPostgreSqlButNotInOracle = new System.Windows.Forms.Label();
+      this.tabPageInsert = new System.Windows.Forms.TabPage();
+      this.comboBoxInsertSchemaTarget = new System.Windows.Forms.ComboBox();
+      this.labelInsertSchemaTarget = new System.Windows.Forms.Label();
+      this.comboBoxInsertTableSource = new System.Windows.Forms.ComboBox();
+      this.labelInsertTableNameTarget = new System.Windows.Forms.Label();
+      this.labelInsertTableNameSource = new System.Windows.Forms.Label();
+      this.comboBoxInsertTableNameTarget = new System.Windows.Forms.ComboBox();
+      this.labelInsertTarget = new System.Windows.Forms.Label();
+      this.labelInsertSource = new System.Windows.Forms.Label();
       this.menuStrip1.SuspendLayout();
       this.tabControlMain.SuspendLayout();
       this.tabPageConnection.SuspendLayout();
@@ -134,6 +143,7 @@
       this.tableLayoutPanelTables.SuspendLayout();
       ((System.ComponentModel.ISupportInitialize)(this.dataGridViewPostgreSql)).BeginInit();
       ((System.ComponentModel.ISupportInitialize)(this.dataGridViewOracle)).BeginInit();
+      this.tabPageInsert.SuspendLayout();
       this.SuspendLayout();
       // 
       // menuStrip1
@@ -148,8 +158,7 @@
             this.aideToolStripMenuItem});
       this.menuStrip1.Location = new System.Drawing.Point(0, 0);
       this.menuStrip1.Name = "menuStrip1";
-      this.menuStrip1.Padding = new System.Windows.Forms.Padding(6, 2, 0, 2);
-      this.menuStrip1.Size = new System.Drawing.Size(2402, 33);
+      this.menuStrip1.Size = new System.Drawing.Size(2477, 33);
       this.menuStrip1.TabIndex = 0;
       this.menuStrip1.Text = "menuStrip1";
       // 
@@ -408,7 +417,7 @@
       this.statusStrip1.Location = new System.Drawing.Point(0, 1160);
       this.statusStrip1.Name = "statusStrip1";
       this.statusStrip1.Padding = new System.Windows.Forms.Padding(2, 0, 21, 0);
-      this.statusStrip1.Size = new System.Drawing.Size(2402, 22);
+      this.statusStrip1.Size = new System.Drawing.Size(2477, 22);
       this.statusStrip1.TabIndex = 1;
       this.statusStrip1.Text = "statusStrip1";
       // 
@@ -416,12 +425,13 @@
       // 
       this.tabControlMain.Controls.Add(this.tabPageConnection);
       this.tabControlMain.Controls.Add(this.tabPageTables);
+      this.tabControlMain.Controls.Add(this.tabPageInsert);
       this.tabControlMain.Dock = System.Windows.Forms.DockStyle.Fill;
       this.tabControlMain.Location = new System.Drawing.Point(0, 33);
       this.tabControlMain.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
       this.tabControlMain.Name = "tabControlMain";
       this.tabControlMain.SelectedIndex = 0;
-      this.tabControlMain.Size = new System.Drawing.Size(2402, 1127);
+      this.tabControlMain.Size = new System.Drawing.Size(2477, 1127);
       this.tabControlMain.TabIndex = 2;
       this.tabControlMain.SelectedIndexChanged += new System.EventHandler(this.TabControlMain_SelectedIndexChanged);
       // 
@@ -477,7 +487,7 @@
       this.tabPageConnection.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
       this.tabPageConnection.Name = "tabPageConnection";
       this.tabPageConnection.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
-      this.tabPageConnection.Size = new System.Drawing.Size(2118, 1094);
+      this.tabPageConnection.Size = new System.Drawing.Size(2394, 1094);
       this.tabPageConnection.TabIndex = 0;
       this.tabPageConnection.Text = "Connection";
       this.tabPageConnection.UseVisualStyleBackColor = true;
@@ -904,7 +914,7 @@
       this.tabPageTables.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
       this.tabPageTables.Name = "tabPageTables";
       this.tabPageTables.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
-      this.tabPageTables.Size = new System.Drawing.Size(2394, 1094);
+      this.tabPageTables.Size = new System.Drawing.Size(2469, 1094);
       this.tabPageTables.TabIndex = 1;
       this.tabPageTables.Text = "Tables";
       this.tabPageTables.UseVisualStyleBackColor = true;
@@ -944,7 +954,7 @@
       this.tableLayoutPanelTables.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
       this.tableLayoutPanelTables.RowStyles.Add(new System.Windows.Forms.RowStyle());
       this.tableLayoutPanelTables.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 12F));
-      this.tableLayoutPanelTables.Size = new System.Drawing.Size(2330, 1165);
+      this.tableLayoutPanelTables.Size = new System.Drawing.Size(2453, 1165);
       this.tableLayoutPanelTables.TabIndex = 121;
       // 
       // labelTablesSource
@@ -1012,11 +1022,11 @@
       // 
       // comboBoxPostgresqlTable
       // 
-      this.comboBoxPostgresqlTable.Dock = System.Windows.Forms.DockStyle.Fill;
+      this.comboBoxPostgresqlTable.Dock = System.Windows.Forms.DockStyle.Left;
       this.comboBoxPostgresqlTable.FormattingEnabled = true;
       this.comboBoxPostgresqlTable.Location = new System.Drawing.Point(1683, 78);
       this.comboBoxPostgresqlTable.Name = "comboBoxPostgresqlTable";
-      this.comboBoxPostgresqlTable.Size = new System.Drawing.Size(868, 37);
+      this.comboBoxPostgresqlTable.Size = new System.Drawing.Size(600, 37);
       this.comboBoxPostgresqlTable.TabIndex = 114;
       this.comboBoxPostgresqlTable.SelectedIndexChanged += new System.EventHandler(this.ComboBoxPostgresqlTable_SelectedIndexChanged);
       // 
@@ -1031,11 +1041,11 @@
       // 
       // comboBoxPostgresqlSchema
       // 
-      this.comboBoxPostgresqlSchema.Dock = System.Windows.Forms.DockStyle.Fill;
+      this.comboBoxPostgresqlSchema.Dock = System.Windows.Forms.DockStyle.Left;
       this.comboBoxPostgresqlSchema.FormattingEnabled = true;
       this.comboBoxPostgresqlSchema.Location = new System.Drawing.Point(1683, 35);
       this.comboBoxPostgresqlSchema.Name = "comboBoxPostgresqlSchema";
-      this.comboBoxPostgresqlSchema.Size = new System.Drawing.Size(868, 37);
+      this.comboBoxPostgresqlSchema.Size = new System.Drawing.Size(600, 37);
       this.comboBoxPostgresqlSchema.TabIndex = 116;
       this.comboBoxPostgresqlSchema.SelectedIndexChanged += new System.EventHandler(this.ComboBoxPostgresqlSchema_SelectedIndexChanged);
       // 
@@ -1082,9 +1092,9 @@
       // buttonTablesCompare
       // 
       this.buttonTablesCompare.Dock = System.Windows.Forms.DockStyle.Top;
-      this.buttonTablesCompare.Location = new System.Drawing.Point(1534, 245);
+      this.buttonTablesCompare.Location = new System.Drawing.Point(1278, 204);
       this.buttonTablesCompare.Name = "buttonTablesCompare";
-      this.buttonTablesCompare.Size = new System.Drawing.Size(149, 55);
+      this.buttonTablesCompare.Size = new System.Drawing.Size(124, 46);
       this.buttonTablesCompare.TabIndex = 118;
       this.buttonTablesCompare.Text = "Compare";
       this.buttonTablesCompare.UseVisualStyleBackColor = true;
@@ -1112,11 +1122,102 @@
       this.labelNumberOfLinesInPostgreSqlButNotInOracle.TabIndex = 122;
       this.labelNumberOfLinesInPostgreSqlButNotInOracle.Text = "Number of lines in PostgreSql but not in Oracle: 0";
       // 
+      // tabPageInsert
+      // 
+      this.tabPageInsert.Controls.Add(this.comboBoxInsertSchemaTarget);
+      this.tabPageInsert.Controls.Add(this.labelInsertSchemaTarget);
+      this.tabPageInsert.Controls.Add(this.comboBoxInsertTableSource);
+      this.tabPageInsert.Controls.Add(this.labelInsertTableNameTarget);
+      this.tabPageInsert.Controls.Add(this.labelInsertTableNameSource);
+      this.tabPageInsert.Controls.Add(this.comboBoxInsertTableNameTarget);
+      this.tabPageInsert.Controls.Add(this.labelInsertTarget);
+      this.tabPageInsert.Controls.Add(this.labelInsertSource);
+      this.tabPageInsert.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.tabPageInsert.Location = new System.Drawing.Point(4, 29);
+      this.tabPageInsert.Name = "tabPageInsert";
+      this.tabPageInsert.Size = new System.Drawing.Size(2469, 1094);
+      this.tabPageInsert.TabIndex = 2;
+      this.tabPageInsert.Text = "Insert";
+      this.tabPageInsert.UseVisualStyleBackColor = true;
+      // 
+      // comboBoxInsertSchemaTarget
+      // 
+      this.comboBoxInsertSchemaTarget.FormattingEnabled = true;
+      this.comboBoxInsertSchemaTarget.Location = new System.Drawing.Point(1337, 89);
+      this.comboBoxInsertSchemaTarget.Name = "comboBoxInsertSchemaTarget";
+      this.comboBoxInsertSchemaTarget.Size = new System.Drawing.Size(522, 37);
+      this.comboBoxInsertSchemaTarget.TabIndex = 120;
+      this.comboBoxInsertSchemaTarget.SelectedIndexChanged += new System.EventHandler(this.ComboBoxInsertSchemaTarget_SelectedIndexChanged);
+      // 
+      // labelInsertSchemaTarget
+      // 
+      this.labelInsertSchemaTarget.AutoSize = true;
+      this.labelInsertSchemaTarget.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.labelInsertSchemaTarget.Location = new System.Drawing.Point(1117, 97);
+      this.labelInsertSchemaTarget.Name = "labelInsertSchemaTarget";
+      this.labelInsertSchemaTarget.Size = new System.Drawing.Size(107, 29);
+      this.labelInsertSchemaTarget.TabIndex = 121;
+      this.labelInsertSchemaTarget.Text = "Schema:";
+      // 
+      // comboBoxInsertTableSource
+      // 
+      this.comboBoxInsertTableSource.FormattingEnabled = true;
+      this.comboBoxInsertTableSource.Location = new System.Drawing.Point(197, 137);
+      this.comboBoxInsertTableSource.Name = "comboBoxInsertTableSource";
+      this.comboBoxInsertTableSource.Size = new System.Drawing.Size(522, 37);
+      this.comboBoxInsertTableSource.TabIndex = 118;
+      // 
+      // labelInsertTableNameTarget
+      // 
+      this.labelInsertTableNameTarget.AutoSize = true;
+      this.labelInsertTableNameTarget.Location = new System.Drawing.Point(1117, 137);
+      this.labelInsertTableNameTarget.Name = "labelInsertTableNameTarget";
+      this.labelInsertTableNameTarget.Size = new System.Drawing.Size(148, 29);
+      this.labelInsertTableNameTarget.TabIndex = 119;
+      this.labelInsertTableNameTarget.Text = "Table name:";
+      // 
+      // labelInsertTableNameSource
+      // 
+      this.labelInsertTableNameSource.AutoSize = true;
+      this.labelInsertTableNameSource.Location = new System.Drawing.Point(43, 137);
+      this.labelInsertTableNameSource.Name = "labelInsertTableNameSource";
+      this.labelInsertTableNameSource.Size = new System.Drawing.Size(148, 29);
+      this.labelInsertTableNameSource.TabIndex = 117;
+      this.labelInsertTableNameSource.Text = "Table name:";
+      // 
+      // comboBoxInsertTableNameTarget
+      // 
+      this.comboBoxInsertTableNameTarget.FormattingEnabled = true;
+      this.comboBoxInsertTableNameTarget.Location = new System.Drawing.Point(1337, 137);
+      this.comboBoxInsertTableNameTarget.Name = "comboBoxInsertTableNameTarget";
+      this.comboBoxInsertTableNameTarget.Size = new System.Drawing.Size(522, 37);
+      this.comboBoxInsertTableNameTarget.TabIndex = 116;
+      // 
+      // labelInsertTarget
+      // 
+      this.labelInsertTarget.AutoSize = true;
+      this.labelInsertTarget.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.labelInsertTarget.Location = new System.Drawing.Point(1116, 29);
+      this.labelInsertTarget.Name = "labelInsertTarget";
+      this.labelInsertTarget.Size = new System.Drawing.Size(269, 32);
+      this.labelInsertTarget.TabIndex = 110;
+      this.labelInsertTarget.Text = "Target: PostgreSql";
+      // 
+      // labelInsertSource
+      // 
+      this.labelInsertSource.AutoSize = true;
+      this.labelInsertSource.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.labelInsertSource.Location = new System.Drawing.Point(41, 29);
+      this.labelInsertSource.Name = "labelInsertSource";
+      this.labelInsertSource.Size = new System.Drawing.Size(217, 32);
+      this.labelInsertSource.TabIndex = 109;
+      this.labelInsertSource.Text = "Source: Oracle";
+      // 
       // FormMain
       // 
       this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
       this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-      this.ClientSize = new System.Drawing.Size(2402, 1182);
+      this.ClientSize = new System.Drawing.Size(2477, 1182);
       this.Controls.Add(this.tabControlMain);
       this.Controls.Add(this.statusStrip1);
       this.Controls.Add(this.menuStrip1);
@@ -1136,6 +1237,8 @@
       this.tableLayoutPanelTables.PerformLayout();
       ((System.ComponentModel.ISupportInitialize)(this.dataGridViewPostgreSql)).EndInit();
       ((System.ComponentModel.ISupportInitialize)(this.dataGridViewOracle)).EndInit();
+      this.tabPageInsert.ResumeLayout(false);
+      this.tabPageInsert.PerformLayout();
       this.ResumeLayout(false);
       this.PerformLayout();
 
@@ -1241,6 +1344,15 @@
     private System.Windows.Forms.Button buttonTablesCompare;
     private System.Windows.Forms.Label labelNumberOfLinesInOracleButNotInPostgreSql;
     private System.Windows.Forms.Label labelNumberOfLinesInPostgreSqlButNotInOracle;
+    private System.Windows.Forms.TabPage tabPageInsert;
+    private System.Windows.Forms.Label labelInsertTarget;
+    private System.Windows.Forms.Label labelInsertSource;
+    private System.Windows.Forms.ComboBox comboBoxInsertTableSource;
+    private System.Windows.Forms.Label labelInsertTableNameTarget;
+    private System.Windows.Forms.Label labelInsertTableNameSource;
+    private System.Windows.Forms.ComboBox comboBoxInsertTableNameTarget;
+    private System.Windows.Forms.ComboBox comboBoxInsertSchemaTarget;
+    private System.Windows.Forms.Label labelInsertSchemaTarget;
   }
 }
 

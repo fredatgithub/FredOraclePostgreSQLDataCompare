@@ -19,7 +19,7 @@ namespace FredOraclePostgreSQLDataCompare
     public static string GetAllTableNamesForASpecificSchemaRequest(string schemaName = "public")
     {
       // table_schema,
-      return $"SELECT table_name FROM information_schema.tables WHERE table_schema = {schemaName} ORDER BY table_name;";
+      return $"SELECT table_name FROM information_schema.tables WHERE table_schema = '{schemaName}' ORDER BY table_name;";
       //return "SELECT sobjects.name FROM sysobjects sobjects WHERE sobjects.xtype = 'U'";
     }
 

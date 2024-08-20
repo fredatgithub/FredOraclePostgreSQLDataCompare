@@ -875,23 +875,13 @@ namespace FredOraclePostgreSQLDataCompare
       if (tabControlMain.SelectedIndex == 1)
       {
         // loading target controls
-        comboBoxPostgresqlTable.Items.Clear();
-        comboBoxPostgresqlSchema.Items.Clear();
-        var items = new List<string>();
-        var dbTargetConnexion = GetTargetConnexion();
-        var query = PostgreSqlConnection.GetAllSchemasRequest();
-        items = PostgreSqlDALHelper.ExecuteSqlQueryToListOfStrings(dbTargetConnexion.ToString(), query);
-        LoadCombobox(comboBoxPostgresqlSchema, items);
-        if (comboBoxPostgresqlSchema.Items.Count > 0)
-        {
-          comboBoxPostgresqlSchema.SelectedIndex = 0;
-        }
+        LoadTargetComboboxes(comboBoxPostgresqlSchema, PostgreSqlConnection.GetAllSchemasRequest());
 
         // loading source controls
         comboBoxOracleTable.Items.Clear();
-        items = new List<string>();
+        var items = new List<string>();
         var dbSourceConnexion = GetSourceConnexion();
-        query = OracleDALHelper.GetAllOracleTablesRequest();
+        var query = OracleDALHelper.GetAllOracleTablesRequest();
         items = OracleDALHelper.ExecuteQueryToListOfStrings(dbSourceConnexion.ToString(), query);
         LoadCombobox(comboBoxOracleTable, items);
         if (comboBoxOracleTable.Items.Count > 0)
@@ -902,6 +892,29 @@ namespace FredOraclePostgreSQLDataCompare
         {
           comboBoxOracleTable.SelectedIndex = -1;
         }
+      }
+
+      if (tabControlMain.SelectedIndex == 2)
+      {
+        LoadTargetComboboxes(comboBoxInsertSchemaTarget, PostgreSqlConnection.GetAllSchemasRequest());
+        var schema = comboBoxInsertSchemaTarget.SelectedItem.ToString();
+        if (!string.IsNullOrEmpty(schema))
+        {
+          LoadTargetComboboxes(comboBoxInsertTableNameTarget, PostgreSqlConnection.GetAllTableNamesForASpecificSchemaRequest(schema));
+        }
+      }
+    }
+
+    private void LoadTargetComboboxes(ComboBox comboBox, string query)
+    {
+      comboBox.Items.Clear();
+      var items = new List<string>();
+      var dbTargetConnexion = GetTargetConnexion();
+      items = PostgreSqlDALHelper.ExecuteSqlQueryToListOfStrings(dbTargetConnexion.ToString(), query);
+      LoadCombobox(comboBox, items);
+      if (comboBox.Items.Count > 0)
+      {
+        comboBox.SelectedIndex = 0;
       }
     }
 
@@ -916,9 +929,9 @@ namespace FredOraclePostgreSQLDataCompare
       // loading tables for the selected schema
       comboBoxPostgresqlTable.Items.Clear();
       var items = new List<string>();
-      var user = comboBoxPostgresqlSchema.SelectedItem as string;
+      var schema = comboBoxPostgresqlSchema.SelectedItem as string;
       var dbTargetConnexion = GetTargetConnexion();
-      var query = PostgreSqlConnection.GetAllPostgreSqlTables(user);
+      var query = PostgreSqlConnection.GetAllPostgreSqlTables(schema);
       items = PostgreSqlDALHelper.ExecuteSqlQueryToListOfStrings(dbTargetConnexion.ToString(), query);
       LoadCombobox(comboBoxPostgresqlTable, items);
       if (comboBoxPostgresqlTable.Items.Count > 0)
@@ -1066,6 +1079,15 @@ namespace FredOraclePostgreSQLDataCompare
     private Color GetColorForEquality(int numberSource, int numberTarget)
     {
       return numberSource != numberTarget ? Color.Red : Color.Green;
+    }
+
+    private void ComboBoxInsertSchemaTarget_SelectedIndexChanged(object sender, EventArgs e)
+    {
+      var schema = comboBoxInsertSchemaTarget.SelectedItem.ToString();
+      if (!string.IsNullOrEmpty(schema))
+      {
+        LoadTargetComboboxes(comboBoxInsertTableNameTarget, PostgreSqlConnection.GetAllTableNamesForASpecificSchemaRequest(schema));
+      }
     }
   }
 }

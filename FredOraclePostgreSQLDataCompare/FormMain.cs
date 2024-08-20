@@ -1021,7 +1021,7 @@ namespace FredOraclePostgreSQLDataCompare
     {
       if (dgv1.Rows.Count != dgv2.Rows.Count)
       {
-        MessageBox.Show("Les DataGridViews n'ont pas le même nombre de lignes.");
+        MessageBox.Show("Les tables n'ont pas le même nombre de lignes.");
         return;
       }
 
@@ -1031,7 +1031,7 @@ namespace FredOraclePostgreSQLDataCompare
 
         if (dgv1.Columns.Count != dgv2.Columns.Count)
         {
-          MessageBox.Show("Les DataGridViews n'ont pas le même nombre de colonnes.");
+          MessageBox.Show("Les tables n'ont pas le même nombre de colonnes.");
           return;
         }
 

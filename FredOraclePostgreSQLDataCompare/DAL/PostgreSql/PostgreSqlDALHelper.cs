@@ -511,5 +511,27 @@ namespace FredOraclePostgreSQLDataCompare.DAL.PostgreSql
         }
       }
     }
+
+    internal static DataTable ExecuteQuerytoDataTable(string connectionString, string query)
+    {
+      var dataTable = new DataTable();
+      using (NpgsqlConnection connection = new NpgsqlConnection(connectionString))
+      {
+        try
+        {
+          connection.Open();
+          using (NpgsqlDataAdapter adapter = new NpgsqlDataAdapter(query, connection))
+          {
+            dataTable = new DataTable();
+            adapter.Fill(dataTable);
+          }
+        }
+        catch (Exception)
+        {
+        }
+      }
+
+      return dataTable;
+    }
   }
 }

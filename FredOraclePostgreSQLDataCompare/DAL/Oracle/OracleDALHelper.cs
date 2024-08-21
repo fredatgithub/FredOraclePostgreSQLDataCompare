@@ -154,5 +154,28 @@ namespace FredOraclePostgreSQLDataCompare.DAL.Oracle
     {
       return $"SELECT * FROM {tableName}";
     }
+
+    internal static DataTable ExecuteQueryToDataTable(string connectionString, string query)
+    {
+      var dataTable = new DataTable();
+      using (OracleConnection connection = new OracleConnection(connectionString))
+      {
+        try
+        {
+          connection.Open();
+          using (OracleDataAdapter adapter = new OracleDataAdapter(query, connection))
+          {
+            dataTable = new DataTable();
+            adapter.Fill(dataTable);
+          }
+        }
+        catch (Exception)
+        {
+
+        }
+      }
+
+      return dataTable;
+    }
   }
 }

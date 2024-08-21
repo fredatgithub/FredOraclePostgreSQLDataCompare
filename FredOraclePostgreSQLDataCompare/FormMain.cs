@@ -1019,8 +1019,6 @@ namespace FredOraclePostgreSQLDataCompare
       // comparison of number of columns: necessary? maybe on column types
 
       // creation of datagridviews
-      var datagridSource = new DataGridView();
-      var datagridTarget = new DataGridView();
       // get original names for requests
       oracleTableName = comboBoxOracleTable.SelectedItem.ToString();
       postgresqlTableName = comboBoxPostgresqlTable.SelectedItem.ToString();
@@ -1138,8 +1136,95 @@ namespace FredOraclePostgreSQLDataCompare
         return;
       }
 
+      int backupPositionX = Location.X;
+      int backupPositionY = Location.Y + Size.Height / 2;
+      var pleaseWait = new PleaseWaitForm(backupPositionX, backupPositionY);
+      pleaseWait.Show();
+      Application.DoEvents();
+
+      // get original names for requests
+      var oracleTableName = comboBoxInsertTableSource.SelectedItem.ToString();
+      var postgresqlTableName = comboBoxInsertTableNameTarget.SelectedItem.ToString();
+
+      // comparison of number of lines
+      var numberTarget = 0;
+      var dbTargetConnexion = GetTargetConnexion();
+      var query = PostgreSqlConnection.CountNumberOfRecordsRequest(postgresqlTableName);
+      numberTarget = PostgreSqlDALHelper.ExecuteQueryToInteger(dbTargetConnexion.ToString(), query);
+      string formattedNumber = numberTarget.ToString("N0", new CultureInfo("fr-FR"));
+      formattedNumber = formattedNumber.Replace(",", " ").Replace(".", " ");
+      labelInsertNumberOfLinesTarget.Text = $"Number of lines: {formattedNumber}";
+
+      //source
+      var dbSourceConnexion = GetSourceConnexion();
+      query = OracleDALHelper.CountNumberOfRecordsRequest(oracleTableName);
+      var numberSource = OracleDALHelper.ExecuteQueryToInteger(dbSourceConnexion.ToString(), query);
+      formattedNumber = numberSource.ToString("N0", new CultureInfo("fr-FR"));
+      formattedNumber = formattedNumber.Replace(",", " ").Replace(".", " ");
+      labelInsertNumberOfLinesSource.ForeColor = GetColorForEquality(numberSource, numberTarget);
+      labelInsertNumberOfLinesTarget.ForeColor = GetColorForEquality(numberSource, numberTarget);
+      labelInsertNumberOfLinesSource.Text = $"Number of lines: {formattedNumber}";
+
+      // creation of datagridviews
+      // add selection column to Datagridviews
       AddSelectColumnToDGV(dataGridViewInsertSource);
       AddSelectColumnToDGV(dataGridViewInsertTarget);
+
+      // datagridview oracle
+      query = OracleDALHelper.SelectAllFromTableRequest(oracleTableName);
+      var dataTableSource = OracleDALHelper.ExecuteQueryToDataTable(dbSourceConnexion.ToString(), query);
+      dataGridViewInsertSource.DataSource = dataTableSource;
+
+      // datagridview postgresql
+      query = PostgreSqlConnection.SelectAllFromTableRequest(postgresqlTableName);
+      var dataTableTarget = PostgreSqlDALHelper.ExecuteQuerytoDataTable(dbTargetConnexion.ToString(), query);
+      dataGridViewInsertTarget.DataSource = dataTableTarget;
+
+      // autosize all columns for Datagridviews
+      AutosizeAllColumns(dataGridViewInsertSource);
+      AutosizeAllColumns(dataGridViewInsertTarget);
+
+      CheckAllRowsToBeInserted(dataTableSource, dataTableTarget, 1);
+      pleaseWait.Close();
+    }
+
+    private void CheckAllRowsToBeInserted(DataTable dataTableSource, DataTable dataTableTarget, params int[] index)
+    {
+      foreach (DataRow sourceRow in dataTableSource.Rows)
+      {
+        bool foundInTarget = false;
+
+        foreach (DataRow targetRow in dataTableTarget.Rows)
+        {
+          bool[] allIndexes = new bool[index.Length];
+          for (int i = 0; i < index.Length; i++)
+          {
+            if (sourceRow[i].Equals(targetRow[i]))
+            {
+              allIndexes[i] = true;
+            }
+            else
+            {
+              allIndexes[i] = false;
+            }
+          }
+
+          if (Helper.AllTrue(allIndexes))
+          {
+            foundInTarget = true;
+            break;
+          }
+        }
+
+        if (!foundInTarget)
+        {
+          sourceRow["selectColumn"] = true;
+        }
+        else
+        {
+          sourceRow["selectColumn"] = false;
+        }
+      }
     }
 
     private void AddSelectColumnToDGV(DataGridView dataGidView)

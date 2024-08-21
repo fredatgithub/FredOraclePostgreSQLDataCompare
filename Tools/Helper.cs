@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
 using System.Xml.XPath;
@@ -230,6 +231,16 @@ namespace Tools
       }
 
       return result;
+    }
+
+    /// <summary>
+    /// Check if all items are true.
+    /// </summary>
+    /// <param name="array">The array to be checked.</param>
+    /// <returns>True if all items are true, false otherwise.</returns>
+    public static bool AllTrue(bool[] array)
+    {
+      return array.All(element => element);
     }
   }
 }

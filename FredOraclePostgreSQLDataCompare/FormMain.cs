@@ -1167,8 +1167,8 @@ namespace FredOraclePostgreSQLDataCompare
 
       // creation of datagridviews
       // add selection column to Datagridviews
-      AddSelectColumnToDGV(dataGridViewInsertSource);
-      AddSelectColumnToDGV(dataGridViewInsertTarget);
+      dataGridViewInsertSource = AddSelectColumnToDGV(dataGridViewInsertSource);
+      dataGridViewInsertTarget = AddSelectColumnToDGV(dataGridViewInsertTarget);
 
       // datagridview oracle
       query = OracleDALHelper.SelectAllFromTableRequest(oracleTableName);
@@ -1183,6 +1183,18 @@ namespace FredOraclePostgreSQLDataCompare
       // autosize all columns for Datagridviews
       AutosizeAllColumns(dataGridViewInsertSource);
       AutosizeAllColumns(dataGridViewInsertTarget);
+
+      if (dataTableSource.Rows.Count == 0)
+      {
+        MessageBox.Show("The source table returned zero lines");
+        return;
+      }
+
+      if (dataTableTarget.Rows.Count == 0)
+      {
+        MessageBox.Show("The target table returned zero lines");
+        return;
+      }
 
       CheckAllRowsToBeInserted(dataTableSource, dataTableTarget, 1);
       pleaseWait.Close();
@@ -1227,21 +1239,26 @@ namespace FredOraclePostgreSQLDataCompare
       }
     }
 
-    private void AddSelectColumnToDGV(DataGridView dataGidView)
+    private DataGridView AddSelectColumnToDGV(DataGridView dataGidView)
     {
       var selectColumn = new DataGridViewCheckBoxColumn
       {
         HeaderText = "Select",
         Name = "selectColumn",
-        Width = 50
+        Width = 50,
+        ReadOnly = false,   
+        Frozen = false      
       };
 
       dataGidView.Columns.Add(selectColumn);
+      dataGidView.SelectionMode = DataGridViewSelectionMode.CellSelect; 
+      return dataGidView;
     }
+
 
     private void ButtonInsert_Click(object sender, EventArgs e)
     {
-      // check if there is anything to insert from
+      // check if there is anything to insert from and then insert checked rows from source into target table
 
     }
   }

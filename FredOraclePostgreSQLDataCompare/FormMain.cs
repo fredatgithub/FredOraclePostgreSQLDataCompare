@@ -1196,7 +1196,7 @@ namespace FredOraclePostgreSQLDataCompare
         return;
       }
 
-      CheckAllRowsToBeInserted(dataTableSource, dataTableTarget, 1);
+      //CheckAllRowsToBeInserted(dataTableSource, dataTableTarget, 1);
       pleaseWait.Close();
     }
 
@@ -1228,14 +1228,14 @@ namespace FredOraclePostgreSQLDataCompare
           }
         }
 
-        if (!foundInTarget)
-        {
-          sourceRow["selectColumn"] = true;
-        }
-        else
-        {
-          sourceRow["selectColumn"] = false;
-        }
+        //if (!foundInTarget)
+        //{
+        //  sourceRow["selectColumn"] = true;
+        //}
+        //else
+        //{
+        //  sourceRow["selectColumn"] = false;
+        //}
       }
     }
 

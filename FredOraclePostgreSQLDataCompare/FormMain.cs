@@ -1260,6 +1260,7 @@ namespace FredOraclePostgreSQLDataCompare
     {
       // check if there is anything to insert from and then insert checked rows from source into target table
 
+
     }
   }
 }
